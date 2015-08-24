@@ -4,6 +4,7 @@ var usersExternal = require('./lib/external/usersEndpoint.js');
 var users = require('./lib/controllers/users.js');
 var app = express();
 var filter = require('./lib/filter');
+var authenticate = require('./lib/external/authenticate');
 var logger = require('./lib/framework/logger.js');
 var bodyParser = require('body-parser');
 var Constants = require('./lib/utils/Constants');
@@ -27,6 +28,7 @@ app.use(bodyParser.json());
 
 app.use('/wePlay', router); // All requests have wePlay attached
 app.use(usersExternal);
+app.use(authenticate);
 
 //middleware to use for all requests
 router.use(function(req, res, next) {
