@@ -1,13 +1,13 @@
 var express = require('express');
-var db = require('./db').connect();
-var usersExternal = require('./external/usersEndpoint.js');
-var users = require('./controllers/users.js');
-var app = express(); 
-var filter = require('./filter');
-var logger = require('./framework/logger.js');
+var db = require('./lib/db').connect('weplay_runtime' , 33153);
+var usersExternal = require('./lib/external/usersEndpoint.js');
+var users = require('./lib/controllers/users.js');
+var app = express();
+var filter = require('./lib/filter');
+var logger = require('./lib/framework/logger.js');
 var bodyParser = require('body-parser');
-var Constants = require('./utils/Constants');
-var wpresponse = require('./framework/wpResponse');
+var Constants = require('./lib/utils/Constants');
+var wpresponse = require('./lib/framework/wpResponse');
 
 var router = express.Router();
 
@@ -25,7 +25,6 @@ app.use(bodyParser.json());
 
 
 
-usersExternal.router = router;
 app.use('/wePlay', router); // All requests have wePlay attached
 app.use(usersExternal);
 
