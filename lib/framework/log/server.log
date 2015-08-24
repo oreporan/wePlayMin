@@ -1,2 +1,1 @@
-[INFO] [Mon Aug 24 2015 20:42:25 GMT+0300 (IDT)][authenticate.addUser] adding User: yosi@gmail.com to runtime DB
-[ERROR][Mon Aug 24 2015 20:42:25 GMT+0300 (IDT)][authenticate.addUser]  can not add user: yosi@gmail.com to runtime DB, ValidationError: Path `password` is required.
+[INFO] [Mon Aug 24 2015 21:10:07 GMT+0300 (IDT)][authenticate.authenticate] authenticating user: marry@gmail.com
