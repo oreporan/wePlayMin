@@ -1,5 +1,5 @@
 var express = require('express');
-var db = require('./lib/db').connect('weplay_runtime' , 33153);
+var db = require('./lib/db').connect('weplay_test' , 35693);
 var usersExternal = require('./lib/external/usersEndpoint.js');
 var users = require('./lib/controllers/users.js');
 var app = express();
@@ -60,3 +60,5 @@ function validateRequest( req, callback ) {
 
 app.listen(port);
 logger.audit("listen","Making a smarter planet on port " + port);
+
+module.exports.getApp = app;
