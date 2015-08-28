@@ -1,6 +1,8 @@
 var express = require('express');
 var db = require('./lib/db').connect('weplay_test' , 35693);
 var usersExternal = require('./lib/external/main/usersEndpoint.js');
+var leaguesExternal = require('./lib/external/main/leaguesEndpoint.js');
+
 var users = require('./lib/controllers/users.js');
 var app = express();
 var filter = require('./lib/filter');
@@ -29,6 +31,7 @@ app.use(bodyParser.json());
 app.use('/wePlay', router); // All requests have wePlay attached
 app.use(usersExternal);
 app.use(authenticate);
+app.use(leaguesExternal);
 
 //middleware to use for all requests
 router.use(function(req, res, next) {

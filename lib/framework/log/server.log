@@ -1,7 +1,12 @@
-[INFO] [Fri Aug 28 2015 13:28:03 GMT+0300 (IDT)][authenticate.addUser] adding User: signupSuccess@gmail.com to runtime DB
-[INFO] [Fri Aug 28 2015 13:28:03 GMT+0300 (IDT)][authenticate.addUser] User: signupSuccess@gmail.com added to Users DB with clientId 55e037b3a100f33c1d227bcd
-[INFO] [Fri Aug 28 2015 13:28:04 GMT+0300 (IDT)][authenticate.addUser] adding User: signupFailure@email.com to runtime DB
-[WARN] [Fri Aug 28 2015 13:28:04 GMT+0300 (IDT)][authenticate.addUser]  can not add user: signupFailure@email.com to runtime DB, WriteError({"code":11000,"index":0,"errmsg":"insertDocument :: caused by :: 11000 E11000 duplicate key error index: weplay_test.users.$name_1  dup key: { : \"name\" }","op":{"email":"signupFailure@email.com","password":"testPassword","name":"name","_id":"55e037b4a100f33c1d227bcf","attending":0,"dateCreated":"2015-08-28T10:28:04.180Z","leagues":[],"__v":0}})
-[INFO] [Fri Aug 28 2015 13:28:04 GMT+0300 (IDT)][authenticate.authenticate] authenticating user: signinSuccess@email.com
-[INFO] [Fri Aug 28 2015 13:28:05 GMT+0300 (IDT)][authenticate.authenticate] authenticating user: signinSuccess@email.com
-[ERROR][Fri Aug 28 2015 13:28:05 GMT+0300 (IDT)][authenticate.authenticate] could not authenticate user, wrong email or password signinSuccess@email.com
+[INFO ][8/28/2015 16:35:37][authenticate.signup] adding User: signupSuccess@gmail.com to runtime DB
+[INFO ][8/28/2015 16:35:37][authenticate.signup] User: signupSuccess@gmail.com added to Users DB with clientId 55e063a9bf4d71523d8117ba
+[INFO ][8/28/2015 16:35:38][authenticate.signup] adding User: signupFailure@email.com to runtime DB
+[WARN ][8/28/2015 16:35:39][authenticate.signup]  can not add user: signupFailure@email.com to runtime DB, WriteError({"code":11000,"index":0,"errmsg":"insertDocument :: caused by :: 11000 E11000 duplicate key error index: weplay_test.users.$name_1  dup key: { : \"name\" }","op":{"email":"signupFailure@email.com","password":"testPassword","name":"name","_id":"55e063aabf4d71523d8117bc","attending":0,"dateCreated":"2015-08-28T13:35:38.850Z","leagues":[],"__v":0}})
+[INFO ][8/28/2015 16:35:39][authenticate.signin] authenticating user: signinSuccess@email.com
+[INFO ][8/28/2015 16:35:40][authenticate.signin] authenticating user: signinFailure@email.com
+[ERROR][8/28/2015 16:35:40][authenticate.signin] could not authenticate user, wrong email or password signinFailure@email.com
+[INFO ][8/28/2015 16:35:40][authenticate.forgotPassword] user : forgotPassword@email.com, has forgotten his password
+[INFO ][8/28/2015 16:35:41][authenticate.forgotPassword] retrieved forgotPassword@email.com from db, sending Email that contains password
+[INFO ][8/28/2015 16:35:43][leaguesEndpoint.addLeague] adding League: addLeagueLeague to Leagues DB
+[INFO ][8/28/2015 16:35:44][leaguesEndpoint.addLeague] league: addLeagueLeague was saved to DB, admin : 55e063afbf4d71523d8117c0
+[ERROR][8/28/2015 16:35:44][usersEndpoint.getUserByName] could not get user testName, error:undefined
