@@ -1,10 +1,10 @@
 var express = require('express');
 var db = require('./lib/db').connect('weplay_test' , 35693);
-var usersExternal = require('./lib/external/usersEndpoint.js');
+var usersExternal = require('./lib/external/main/usersEndpoint.js');
 var users = require('./lib/controllers/users.js');
 var app = express();
 var filter = require('./lib/filter');
-var authenticate = require('./lib/external/authenticate');
+var authenticate = require('./lib/external/main/authenticate');
 var logger = require('./lib/framework/logger.js');
 var bodyParser = require('body-parser');
 var Constants = require('./lib/utils/Constants');

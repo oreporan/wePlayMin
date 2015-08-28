@@ -1,3 +1,7 @@
-[INFO] [Wed Aug 26 2015 21:36:59 GMT+0300 (IDT)][users.getUserById] Getting user: 55db5893611066a9c1528e61
-[INFO] [Wed Aug 26 2015 21:40:35 GMT+0300 (IDT)][users.getUserById] Getting user: 55db5893611066a9c1528e61
-[INFO] [Wed Aug 26 2015 21:40:35 GMT+0300 (IDT)][users.getUserById] User 55db5893611066a9c1528e61 found succesfully
+[INFO] [Fri Aug 28 2015 13:28:03 GMT+0300 (IDT)][authenticate.addUser] adding User: signupSuccess@gmail.com to runtime DB
+[INFO] [Fri Aug 28 2015 13:28:03 GMT+0300 (IDT)][authenticate.addUser] User: signupSuccess@gmail.com added to Users DB with clientId 55e037b3a100f33c1d227bcd
+[INFO] [Fri Aug 28 2015 13:28:04 GMT+0300 (IDT)][authenticate.addUser] adding User: signupFailure@email.com to runtime DB
+[WARN] [Fri Aug 28 2015 13:28:04 GMT+0300 (IDT)][authenticate.addUser]  can not add user: signupFailure@email.com to runtime DB, WriteError({"code":11000,"index":0,"errmsg":"insertDocument :: caused by :: 11000 E11000 duplicate key error index: weplay_test.users.$name_1  dup key: { : \"name\" }","op":{"email":"signupFailure@email.com","password":"testPassword","name":"name","_id":"55e037b4a100f33c1d227bcf","attending":0,"dateCreated":"2015-08-28T10:28:04.180Z","leagues":[],"__v":0}})
+[INFO] [Fri Aug 28 2015 13:28:04 GMT+0300 (IDT)][authenticate.authenticate] authenticating user: signinSuccess@email.com
+[INFO] [Fri Aug 28 2015 13:28:05 GMT+0300 (IDT)][authenticate.authenticate] authenticating user: signinSuccess@email.com
+[ERROR][Fri Aug 28 2015 13:28:05 GMT+0300 (IDT)][authenticate.authenticate] could not authenticate user, wrong email or password signinSuccess@email.com
