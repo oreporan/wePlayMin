@@ -1,6 +1,14 @@
-[INFO ][8/29/2015 12:19:39][server.use] POST. New Request from: 127.0.0.1 routing to: /leagues/addLeague
-[INFO ][8/29/2015 12:19:39][users.getUserById] Getting user: 55e1792b2d86b4ce6eba6e98
-[INFO ][8/29/2015 12:19:39][users.getUserById] User 55e1792b2d86b4ce6eba6e98 found succesfully
-[INFO ][8/29/2015 12:19:39][server.use] Request has passed validation, routing to: /leagues/addLeague
-[INFO ][8/29/2015 12:19:39][leaguesEndpoint.addLeague] adding League: addLeagueLeague to Leagues DB
-[INFO ][8/29/2015 12:19:40][leaguesEndpoint.addLeague] league: addLeagueLeague was saved to DB, admin : 55e1792b2d86b4ce6eba6e98
+[INFO ][8/29/2015 20:33:31][authenticate.signup] adding User: signupSuccess@gmail.com to runtime DB
+[INFO ][8/29/2015 20:33:32][authenticate.signup] User: signupSuccess@gmail.com added to Users DB with clientId 55e1eceb5edf6451812d99ca
+[INFO ][8/29/2015 20:33:32][authenticate.signup] adding User: signupFailure@email.com to runtime DB
+[WARN ][8/29/2015 20:33:32][authenticate.signup]  can not add user: signupFailure@email.com to runtime DB, WriteError({"code":11000,"index":0,"errmsg":"insertDocument :: caused by :: 11000 E11000 duplicate key error index: weplay_test.users.$name_1  dup key: { : \"name\" }","op":{"email":"signupFailure@email.com","password":"testPassword","name":"name","_id":"55e1ecec5edf6451812d99cc","attending":0,"dateCreated":"2015-08-29T17:33:32.619Z","leagues":[],"__v":0}})
+[INFO ][8/29/2015 20:33:33][authenticate.signin] authenticating user: signinSuccess@email.com
+[INFO ][8/29/2015 20:33:34][authenticate.signin] authenticating user: signinFailure@email.com
+[ERROR][8/29/2015 20:33:34][authenticate.signin] could not authenticate user, wrong email or password signinFailure@email.com
+[INFO ][8/29/2015 20:33:34][authenticate.forgotPassword] user : forgotPassword@email.com, has forgotten his password
+[INFO ][8/29/2015 20:33:34][authenticate.forgotPassword] retrieved forgotPassword@email.com from db, sending Email that contains password
+[INFO ][8/29/2015 20:33:36][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
+[INFO ][8/29/2015 20:33:36][users.getUserById] User 55e1ecf05edf6451812d99d0 found succesfully
+[INFO ][8/29/2015 20:33:36][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
+[INFO ][8/29/2015 20:33:37][leaguesEndpoint.addLeague] adding League: addLeagueLeague to Leagues DB
+[INFO ][8/29/2015 20:33:37][leaguesEndpoint.addLeague] league: addLeagueLeague was saved to DB, admin : 55e1ecf05edf6451812d99d0
