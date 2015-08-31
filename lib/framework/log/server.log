@@ -1,19 +1,19 @@
-[INFO ][8/31/2015 19:34:57][authenticate.signup] adding User: signupSuccess@gmail.com to runtime DB
-[INFO ][8/31/2015 19:34:57][authenticate.signup] User: signupSuccess@gmail.com added to Users DB with clientId 55e4823175dd1d0c4eb2a0a8
-[INFO ][8/31/2015 19:34:57][authenticate.signup] adding User: signupFailure@email.com to runtime DB
-[WARN ][8/31/2015 19:34:58][authenticate.signup]  can not add user: signupFailure@email.com to runtime DB, WriteError({"code":11000,"index":0,"errmsg":"insertDocument :: caused by :: 11000 E11000 duplicate key error index: weplay_test.users.$name_1  dup key: { : \"name\" }","op":{"email":"signupFailure@email.com","password":"testPassword","name":"name","_id":"55e4823175dd1d0c4eb2a0aa","attending":0,"dateCreated":"2015-08-31T16:34:57.913Z","leagues":[],"__v":0}})
-[INFO ][8/31/2015 19:34:58][authenticate.signin] authenticating user: signinSuccess@email.com
-[INFO ][8/31/2015 19:34:59][authenticate.signin] authenticating user: signinFailure@email.com
-[ERROR][8/31/2015 19:34:59][authenticate.signin] could not authenticate user, wrong email or password signinFailure@email.com
-[INFO ][8/31/2015 19:34:59][authenticate.forgotPassword] user : forgotPassword@email.com, has forgotten his password
-[INFO ][8/31/2015 19:35:0][authenticate.forgotPassword] retrieved forgotPassword@email.com from db, sending Email that contains password
-[INFO ][8/31/2015 19:35:0][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
-[INFO ][8/31/2015 19:35:1][users.getUserById] User 55e4823475dd1d0c4eb2a0ae found succesfully
-[INFO ][8/31/2015 19:35:1][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
-[INFO ][8/31/2015 19:35:1][leaguesEndpoint.addLeague] adding League: addLeagueLeague to Leagues DB
-[INFO ][8/31/2015 19:35:1][leaguesEndpoint.addLeague] league: addLeagueLeague was saved to DB, admin : 55e4823475dd1d0c4eb2a0ae
-[INFO ][8/31/2015 19:35:2][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
-[INFO ][8/31/2015 19:35:2][users.getUserById] User 55e4823575dd1d0c4eb2a0b1 found succesfully
-[INFO ][8/31/2015 19:35:2][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
-[INFO ][8/31/2015 19:35:2][leaguesEndpoint.addLeague] adding League: addLeagueFailure to Leagues DB
-[WARN ][8/31/2015 19:35:2][leaguesEndpoint.addLeague] could not add League: addLeagueFailure to DB, reason : WriteError({"code":11000,"index":0,"errmsg":"insertDocument :: caused by :: 11000 E11000 duplicate key error index: weplay_test.leagues.$users.name_1  dup key: { : null }","op":{"admin":"55e4823575dd1d0c4eb2a0b1","name":"addLeagueFailure","_id":"55e4823675dd1d0c4eb2a0b3","games":[],"frequency":-1,"endDate":"2015-08-31T16:35:02.190Z","startDate":"2015-08-31T16:35:02.190Z","dateCreated":"2015-08-31T16:35:02.190Z","users":["55e4823575dd1d0c4eb2a0b1"],"__v":0}})
+[INFO ][8/31/2015 20:11:25][authenticate.signup] adding User: signupSuccess@gmail.com to runtime DB
+[INFO ][8/31/2015 20:11:25][authenticate.signup] User: signupSuccess@gmail.com added to Users DB with clientId 55e48abd919f34fd670aa979
+[INFO ][8/31/2015 20:11:26][authenticate.signup] adding User: signupFailure@email.com to runtime DB
+[WARN ][8/31/2015 20:11:26][authenticate.signup]  can not add user: signupFailure@email.com to runtime DB, WriteError({"code":11000,"index":0,"errmsg":"insertDocument :: caused by :: 11000 E11000 duplicate key error index: weplay_test.users.$name_1  dup key: { : \"name\" }","op":{"email":"signupFailure@email.com","password":"testPassword","name":"name","_id":"55e48abe919f34fd670aa97b","attending":0,"dateCreated":"2015-08-31T17:11:26.303Z","leagues":[],"__v":0}})
+[INFO ][8/31/2015 20:11:27][authenticate.signin] authenticating user: signinSuccess@email.com
+[INFO ][8/31/2015 20:11:27][authenticate.signin] authenticating user: signinFailure@email.com
+[ERROR][8/31/2015 20:11:27][authenticate.signin] could not authenticate user, wrong email or password signinFailure@email.com
+[INFO ][8/31/2015 20:11:28][authenticate.forgotPassword] user : forgotPassword@email.com, has forgotten his password
+[INFO ][8/31/2015 20:11:28][authenticate.forgotPassword] retrieved forgotPassword@email.com from db, sending Email that contains password
+[INFO ][8/31/2015 20:11:29][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
+[INFO ][8/31/2015 20:11:29][users.getUserById] User 55e48ac1919f34fd670aa97f found succesfully
+[INFO ][8/31/2015 20:11:29][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
+[INFO ][8/31/2015 20:11:29][leaguesEndpoint.addLeague] adding League: addLeagueLeague to Leagues DB
+[INFO ][8/31/2015 20:11:30][leaguesEndpoint.addLeague] league: addLeagueLeague was saved to DB, admin : 55e48ac1919f34fd670aa97f
+[INFO ][8/31/2015 20:11:30][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
+[INFO ][8/31/2015 20:11:31][users.getUserById] User 55e48ac2919f34fd670aa982 found succesfully
+[INFO ][8/31/2015 20:11:31][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
+[INFO ][8/31/2015 20:11:31][leaguesEndpoint.addLeague] adding League: addLeagueFailure to Leagues DB
+[WARN ][8/31/2015 20:11:31][leaguesEndpoint.addLeague] could not add League: addLeagueFailure to DB, reason : WriteError({"code":11000,"index":0,"errmsg":"insertDocument :: caused by :: 11000 E11000 duplicate key error index: weplay_test.leagues.$users.name_1  dup key: { : null }","op":{"admin":"55e48ac2919f34fd670aa982","name":"addLeagueFailure","_id":"55e48ac3919f34fd670aa984","games":[],"frequency":-1,"endDate":"2015-08-31T17:11:31.055Z","startDate":"2015-08-31T17:11:31.055Z","dateCreated":"2015-08-31T17:11:31.055Z","users":["55e48ac2919f34fd670aa982"],"__v":0}})
