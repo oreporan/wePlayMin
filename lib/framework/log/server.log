@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [INFO ][8/31/2015 20:11:25][authenticate.signup] adding User: signupSuccess@gmail.com to runtime DB
 [INFO ][8/31/2015 20:11:25][authenticate.signup] User: signupSuccess@gmail.com added to Users DB with clientId 55e48abd919f34fd670aa979
 [INFO ][8/31/2015 20:11:26][authenticate.signup] adding User: signupFailure@email.com to runtime DB
@@ -17,3 +18,24 @@
 [INFO ][8/31/2015 20:11:31][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
 [INFO ][8/31/2015 20:11:31][leaguesEndpoint.addLeague] adding League: addLeagueFailure to Leagues DB
 [WARN ][8/31/2015 20:11:31][leaguesEndpoint.addLeague] could not add League: addLeagueFailure to DB, reason : WriteError({"code":11000,"index":0,"errmsg":"insertDocument :: caused by :: 11000 E11000 duplicate key error index: weplay_test.leagues.$users.name_1  dup key: { : null }","op":{"admin":"55e48ac2919f34fd670aa982","name":"addLeagueFailure","_id":"55e48ac3919f34fd670aa984","games":[],"frequency":-1,"endDate":"2015-08-31T17:11:31.055Z","startDate":"2015-08-31T17:11:31.055Z","dateCreated":"2015-08-31T17:11:31.055Z","users":["55e48ac2919f34fd670aa982"],"__v":0}})
+=======
+[INFO ][8/31/2015 20:28:47][authenticate.signup] adding User: signupSuccess@gmail.com to runtime DB
+[INFO ][8/31/2015 20:28:48][authenticate.signup] User: signupSuccess@gmail.com added to Users DB with clientId 55e48ecfbd8abc808fcaec7a
+[INFO ][8/31/2015 20:28:48][authenticate.signup] adding User: signupFailure@email.com to runtime DB
+[WARN ][8/31/2015 20:28:48][authenticate.signup]  can not add user: signupFailure@email.com to runtime DB, WriteError({"code":11000,"index":0,"errmsg":"insertDocument :: caused by :: 11000 E11000 duplicate key error index: weplay_test.users.$name_1  dup key: { : \"name\" }","op":{"email":"signupFailure@email.com","password":"testPassword","name":"name","_id":"55e48ed0bd8abc808fcaec7c","attending":0,"dateCreated":"2015-08-31T17:28:48.561Z","leagues":[],"__v":0}})
+[INFO ][8/31/2015 20:28:49][authenticate.signin] authenticating user: signinSuccess@email.com
+[INFO ][8/31/2015 20:28:49][authenticate.signin] authenticating user: signinFailure@email.com
+[ERROR][8/31/2015 20:28:50][authenticate.signin] could not authenticate user, wrong email or password signinFailure@email.com
+[INFO ][8/31/2015 20:28:50][authenticate.forgotPassword] user : forgotPassword@email.com, has forgotten his password
+[INFO ][8/31/2015 20:28:50][authenticate.forgotPassword] retrieved forgotPassword@email.com from db, sending Email that contains password
+[INFO ][8/31/2015 20:28:51][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
+[INFO ][8/31/2015 20:28:51][users.getUserById] User 55e48ed3bd8abc808fcaec80 found succesfully
+[INFO ][8/31/2015 20:28:51][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
+[INFO ][8/31/2015 20:28:51][leaguesEndpoint.addLeague] adding League: addLeagueLeague to Leagues DB
+[INFO ][8/31/2015 20:28:51][leaguesEndpoint.addLeague] league: addLeagueLeague was saved to DB, admin : 55e48ed3bd8abc808fcaec80
+[INFO ][8/31/2015 20:28:52][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
+[INFO ][8/31/2015 20:28:52][users.getUserById] User 55e48ed4bd8abc808fcaec83 found succesfully
+[INFO ][8/31/2015 20:28:52][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
+[INFO ][8/31/2015 20:28:52][leaguesEndpoint.addLeague] adding League: addLeagueFailure to Leagues DB
+[WARN ][8/31/2015 20:28:53][leaguesEndpoint.addLeague] could not add League: addLeagueFailure to DB, reason : WriteError({"code":11000,"index":0,"errmsg":"insertDocument :: caused by :: 11000 E11000 duplicate key error index: weplay_test.leagues.$users.name_1  dup key: { : null }","op":{"admin":"55e48ed4bd8abc808fcaec83","name":"addLeagueFailure","_id":"55e48ed4bd8abc808fcaec85","games":[],"frequency":-1,"endDate":"2015-08-31T17:28:52.834Z","startDate":"2015-08-31T17:28:52.834Z","dateCreated":"2015-08-31T17:28:52.834Z","users":["55e48ed4bd8abc808fcaec83"],"__v":0}})
+>>>>>>> acb9645bb2d5e057daf890d8c0af474732c876a4
