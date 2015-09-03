@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [INFO ][9/2/2015 22:39:52][authenticate.signup] adding User: signupSuccess@gmail.com to runtime DB
 [INFO ][9/2/2015 22:39:52][authenticate.signup] User: signupSuccess@gmail.com added to Users DB with clientId 55e7508846ed36b195986ff6
 [INFO ][9/2/2015 22:39:52][authenticate.signup] adding User: signupSuccess0@gmail.com to runtime DB
@@ -107,3 +108,7 @@
 [INFO ][9/2/2015 22:39:53][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
 [INFO ][9/2/2015 22:39:53][leaguesEndpoint.addLeague] adding League: addLeagueFailure to Leagues DB
 [WARN ][9/2/2015 22:39:53][leaguesEndpoint.addLeague] could not add League: addLeagueFailure to DB, reason : WriteError({"code":11000,"index":0,"errmsg":"E11000 duplicate key error index: weplay_test.leagues.$name_1 dup key: { : \"addLeagueFailure\" }","op":{"admin":"1234","name":"addLeagueFailure","_id":"55e7508946ed36b19598703d","games":[],"frequency":-1,"endDate":"2015-09-02T19:39:53.030Z","startDate":"2015-09-02T19:39:53.030Z","dateCreated":"2015-09-02T19:39:53.030Z","users":["1234"],"__v":0}})
+=======
+[INFO ][9/3/2015 0:0:42][filter.validateRequest] new request coming in: POST localhost /leagues/addLeague
+[ERROR][9/3/2015 0:0:42][filter.validateRequest] Request failed validation
+>>>>>>> f34cca5455baaa7933f79bd24a744388e5b01aac
