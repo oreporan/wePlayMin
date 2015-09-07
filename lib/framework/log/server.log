@@ -1,114 +1,109 @@
-<<<<<<< HEAD
-[INFO ][9/2/2015 22:39:52][authenticate.signup] adding User: signupSuccess@gmail.com to runtime DB
-[INFO ][9/2/2015 22:39:52][authenticate.signup] User: signupSuccess@gmail.com added to Users DB with clientId 55e7508846ed36b195986ff6
-[INFO ][9/2/2015 22:39:52][authenticate.signup] adding User: signupSuccess0@gmail.com to runtime DB
-[INFO ][9/2/2015 22:39:52][authenticate.signup] adding User: signupSuccess1@gmail.com to runtime DB
-[INFO ][9/2/2015 22:39:52][authenticate.signup] adding User: signupSuccess2@gmail.com to runtime DB
-[INFO ][9/2/2015 22:39:52][authenticate.signup] adding User: signupSuccess3@gmail.com to runtime DB
-[INFO ][9/2/2015 22:39:52][authenticate.signup] adding User: signupSuccess4@gmail.com to runtime DB
-[INFO ][9/2/2015 22:39:52][authenticate.signup] adding User: signupSuccess5@gmail.com to runtime DB
-[INFO ][9/2/2015 22:39:52][authenticate.signup] adding User: signupSuccess6@gmail.com to runtime DB
-[INFO ][9/2/2015 22:39:52][authenticate.signup] adding User: signupSuccess7@gmail.com to runtime DB
-[INFO ][9/2/2015 22:39:52][authenticate.signup] adding User: signupSuccess8@gmail.com to runtime DB
-[INFO ][9/2/2015 22:39:52][authenticate.signup] adding User: signupSuccess9@gmail.com to runtime DB
-[INFO ][9/2/2015 22:39:52][authenticate.signup] adding User: signupSuccess10@gmail.com to runtime DB
-[INFO ][9/2/2015 22:39:52][authenticate.signup] adding User: signupSuccess11@gmail.com to runtime DB
-[INFO ][9/2/2015 22:39:52][authenticate.signup] adding User: signupSuccess12@gmail.com to runtime DB
-[INFO ][9/2/2015 22:39:52][authenticate.signup] adding User: signupSuccess13@gmail.com to runtime DB
-[INFO ][9/2/2015 22:39:52][authenticate.signup] adding User: signupSuccess14@gmail.com to runtime DB
-[INFO ][9/2/2015 22:39:52][authenticate.signup] adding User: signupSuccess15@gmail.com to runtime DB
-[INFO ][9/2/2015 22:39:52][authenticate.signup] adding User: signupSuccess16@gmail.com to runtime DB
-[INFO ][9/2/2015 22:39:52][authenticate.signup] adding User: signupSuccess17@gmail.com to runtime DB
-[INFO ][9/2/2015 22:39:52][authenticate.signup] adding User: signupSuccess18@gmail.com to runtime DB
-[INFO ][9/2/2015 22:39:52][authenticate.signup] adding User: signupSuccess19@gmail.com to runtime DB
-[INFO ][9/2/2015 22:39:52][authenticate.signup] User: signupSuccess0@gmail.com added to Users DB with clientId 55e7508846ed36b195986ff7
-[INFO ][9/2/2015 22:39:52][authenticate.signup] User: signupSuccess5@gmail.com added to Users DB with clientId 55e7508846ed36b195986ffc
-[INFO ][9/2/2015 22:39:52][authenticate.signup] User: signupSuccess10@gmail.com added to Users DB with clientId 55e7508846ed36b195987001
-[INFO ][9/2/2015 22:39:52][authenticate.signup] User: signupSuccess15@gmail.com added to Users DB with clientId 55e7508846ed36b195987006
-[INFO ][9/2/2015 22:39:52][authenticate.signup] User: signupSuccess1@gmail.com added to Users DB with clientId 55e7508846ed36b195986ff8
-[INFO ][9/2/2015 22:39:52][authenticate.signup] User: signupSuccess6@gmail.com added to Users DB with clientId 55e7508846ed36b195986ffd
-[INFO ][9/2/2015 22:39:52][authenticate.signup] User: signupSuccess11@gmail.com added to Users DB with clientId 55e7508846ed36b195987002
-[INFO ][9/2/2015 22:39:52][authenticate.signup] User: signupSuccess16@gmail.com added to Users DB with clientId 55e7508846ed36b195987007
-[INFO ][9/2/2015 22:39:52][authenticate.signup] User: signupSuccess2@gmail.com added to Users DB with clientId 55e7508846ed36b195986ff9
-[INFO ][9/2/2015 22:39:52][authenticate.signup] User: signupSuccess7@gmail.com added to Users DB with clientId 55e7508846ed36b195986ffe
-[INFO ][9/2/2015 22:39:52][authenticate.signup] User: signupSuccess12@gmail.com added to Users DB with clientId 55e7508846ed36b195987003
-[INFO ][9/2/2015 22:39:52][authenticate.signup] User: signupSuccess17@gmail.com added to Users DB with clientId 55e7508846ed36b195987008
-[INFO ][9/2/2015 22:39:52][authenticate.signup] User: signupSuccess3@gmail.com added to Users DB with clientId 55e7508846ed36b195986ffa
-[INFO ][9/2/2015 22:39:52][authenticate.signup] User: signupSuccess8@gmail.com added to Users DB with clientId 55e7508846ed36b195986fff
-[INFO ][9/2/2015 22:39:52][authenticate.signup] User: signupSuccess13@gmail.com added to Users DB with clientId 55e7508846ed36b195987004
-[INFO ][9/2/2015 22:39:52][authenticate.signup] User: signupSuccess18@gmail.com added to Users DB with clientId 55e7508846ed36b195987009
-[INFO ][9/2/2015 22:39:52][authenticate.signup] User: signupSuccess4@gmail.com added to Users DB with clientId 55e7508846ed36b195986ffb
-[INFO ][9/2/2015 22:39:52][authenticate.signup] User: signupSuccess9@gmail.com added to Users DB with clientId 55e7508846ed36b195987000
-[INFO ][9/2/2015 22:39:52][authenticate.signup] User: signupSuccess14@gmail.com added to Users DB with clientId 55e7508846ed36b195987005
-[INFO ][9/2/2015 22:39:52][authenticate.signup] User: signupSuccess19@gmail.com added to Users DB with clientId 55e7508846ed36b19598700a
-[INFO ][9/2/2015 22:39:52][authenticate.signup] adding User: signupFailure@email.com to runtime DB
-[WARN ][9/2/2015 22:39:52][authenticate.signup]  can not add user: signupFailure@email.com to runtime DB, WriteError({"code":11000,"index":0,"errmsg":"E11000 duplicate key error index: weplay_test.users.$email_1 dup key: { : \"signupFailure@email.com\" }","op":{"email":"signupFailure@email.com","password":"testPassword","name":"newName","_id":"55e7508846ed36b19598700c","attending":0,"dateCreated":"2015-09-02T19:39:52.923Z","leagues":[],"__v":0}})
-[INFO ][9/2/2015 22:39:52][authenticate.signin] authenticating user: signinSuccess@email.com
-[INFO ][9/2/2015 22:39:52][authenticate.signin] authenticating user: signinFailure@email.com
-[ERROR][9/2/2015 22:39:52][authenticate.signin] could not authenticate user, wrong email or password signinFailure@email.com
-[INFO ][9/2/2015 22:39:52][authenticate.forgotPassword] user : forgotPassword@email.com, has forgotten his password
-[INFO ][9/2/2015 22:39:52][authenticate.forgotPassword] retrieved forgotPassword@email.com from db, sending Email that contains password
-[INFO ][9/2/2015 22:39:52][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
-[INFO ][9/2/2015 22:39:52][users.getUserById] User 55e7508846ed36b195987010 found succesfully
-[INFO ][9/2/2015 22:39:52][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
-[INFO ][9/2/2015 22:39:52][leaguesEndpoint.addLeague] adding League: addLeagueLeague to Leagues DB
-[INFO ][9/2/2015 22:39:52][leaguesEndpoint.addLeague] league: addLeagueLeague was saved to DB, admin : 55e7508846ed36b195987010
-[INFO ][9/2/2015 22:39:52][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
-[INFO ][9/2/2015 22:39:52][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
-[INFO ][9/2/2015 22:39:52][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
-[INFO ][9/2/2015 22:39:52][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
-[INFO ][9/2/2015 22:39:52][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
-[INFO ][9/2/2015 22:39:52][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
-[INFO ][9/2/2015 22:39:52][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
-[INFO ][9/2/2015 22:39:52][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
-[INFO ][9/2/2015 22:39:52][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
-[INFO ][9/2/2015 22:39:52][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
-[INFO ][9/2/2015 22:39:52][users.getUserById] User 55e7508846ed36b19598701d found succesfully
-[INFO ][9/2/2015 22:39:53][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
-[INFO ][9/2/2015 22:39:53][leaguesEndpoint.addLeague] adding League: addLeagueLeague0 to Leagues DB
-[INFO ][9/2/2015 22:39:53][users.getUserById] User 55e7508846ed36b195987022 found succesfully
-[INFO ][9/2/2015 22:39:53][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
-[INFO ][9/2/2015 22:39:53][leaguesEndpoint.addLeague] adding League: addLeagueLeague5 to Leagues DB
-[INFO ][9/2/2015 22:39:53][users.getUserById] User 55e7508846ed36b19598701e found succesfully
-[INFO ][9/2/2015 22:39:53][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
-[INFO ][9/2/2015 22:39:53][leaguesEndpoint.addLeague] adding League: addLeagueLeague1 to Leagues DB
-[INFO ][9/2/2015 22:39:53][users.getUserById] User 55e7508846ed36b195987023 found succesfully
-[INFO ][9/2/2015 22:39:53][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
-[INFO ][9/2/2015 22:39:53][leaguesEndpoint.addLeague] adding League: addLeagueLeague6 to Leagues DB
-[INFO ][9/2/2015 22:39:53][users.getUserById] User 55e7508846ed36b19598701f found succesfully
-[INFO ][9/2/2015 22:39:53][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
-[INFO ][9/2/2015 22:39:53][leaguesEndpoint.addLeague] adding League: addLeagueLeague2 to Leagues DB
-[INFO ][9/2/2015 22:39:53][users.getUserById] User 55e7508846ed36b195987024 found succesfully
-[INFO ][9/2/2015 22:39:53][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
-[INFO ][9/2/2015 22:39:53][leaguesEndpoint.addLeague] adding League: addLeagueLeague7 to Leagues DB
-[INFO ][9/2/2015 22:39:53][users.getUserById] User 55e7508846ed36b195987020 found succesfully
-[INFO ][9/2/2015 22:39:53][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
-[INFO ][9/2/2015 22:39:53][leaguesEndpoint.addLeague] adding League: addLeagueLeague3 to Leagues DB
-[INFO ][9/2/2015 22:39:53][users.getUserById] User 55e7508846ed36b195987025 found succesfully
-[INFO ][9/2/2015 22:39:53][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
-[INFO ][9/2/2015 22:39:53][leaguesEndpoint.addLeague] adding League: addLeagueLeague8 to Leagues DB
-[INFO ][9/2/2015 22:39:53][users.getUserById] User 55e7508846ed36b195987021 found succesfully
-[INFO ][9/2/2015 22:39:53][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
-[INFO ][9/2/2015 22:39:53][leaguesEndpoint.addLeague] adding League: addLeagueLeague4 to Leagues DB
-[INFO ][9/2/2015 22:39:53][users.getUserById] User 55e7508846ed36b195987026 found succesfully
-[INFO ][9/2/2015 22:39:53][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
-[INFO ][9/2/2015 22:39:53][leaguesEndpoint.addLeague] adding League: addLeagueLeague9 to Leagues DB
-[INFO ][9/2/2015 22:39:53][leaguesEndpoint.addLeague] league: addLeagueLeague0 was saved to DB, admin : 55e7508846ed36b19598701d
-[INFO ][9/2/2015 22:39:53][leaguesEndpoint.addLeague] league: addLeagueLeague7 was saved to DB, admin : 55e7508846ed36b195987024
-[INFO ][9/2/2015 22:39:53][leaguesEndpoint.addLeague] league: addLeagueLeague5 was saved to DB, admin : 55e7508846ed36b195987022
-[INFO ][9/2/2015 22:39:53][leaguesEndpoint.addLeague] league: addLeagueLeague3 was saved to DB, admin : 55e7508846ed36b195987020
-[INFO ][9/2/2015 22:39:53][leaguesEndpoint.addLeague] league: addLeagueLeague1 was saved to DB, admin : 55e7508846ed36b19598701e
-[INFO ][9/2/2015 22:39:53][leaguesEndpoint.addLeague] league: addLeagueLeague8 was saved to DB, admin : 55e7508846ed36b195987025
-[INFO ][9/2/2015 22:39:53][leaguesEndpoint.addLeague] league: addLeagueLeague6 was saved to DB, admin : 55e7508846ed36b195987023
-[INFO ][9/2/2015 22:39:53][leaguesEndpoint.addLeague] league: addLeagueLeague4 was saved to DB, admin : 55e7508846ed36b195987021
-[INFO ][9/2/2015 22:39:53][leaguesEndpoint.addLeague] league: addLeagueLeague2 was saved to DB, admin : 55e7508846ed36b19598701f
-[INFO ][9/2/2015 22:39:53][leaguesEndpoint.addLeague] league: addLeagueLeague9 was saved to DB, admin : 55e7508846ed36b195987026
-[INFO ][9/2/2015 22:39:53][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
-[INFO ][9/2/2015 22:39:53][users.getUserById] User 55e7508946ed36b19598703b found succesfully
-[INFO ][9/2/2015 22:39:53][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
-[INFO ][9/2/2015 22:39:53][leaguesEndpoint.addLeague] adding League: addLeagueFailure to Leagues DB
-[WARN ][9/2/2015 22:39:53][leaguesEndpoint.addLeague] could not add League: addLeagueFailure to DB, reason : WriteError({"code":11000,"index":0,"errmsg":"E11000 duplicate key error index: weplay_test.leagues.$name_1 dup key: { : \"addLeagueFailure\" }","op":{"admin":"1234","name":"addLeagueFailure","_id":"55e7508946ed36b19598703d","games":[],"frequency":-1,"endDate":"2015-09-02T19:39:53.030Z","startDate":"2015-09-02T19:39:53.030Z","dateCreated":"2015-09-02T19:39:53.030Z","users":["1234"],"__v":0}})
-=======
-[INFO ][9/3/2015 0:0:42][filter.validateRequest] new request coming in: POST localhost /leagues/addLeague
-[ERROR][9/3/2015 0:0:42][filter.validateRequest] Request failed validation
->>>>>>> f34cca5455baaa7933f79bd24a744388e5b01aac
+[INFO ][9/7/2015 10:41:26][authenticate.signup] adding User: signupSuccess@gmail.com to runtime DB
+[INFO ][9/7/2015 10:41:26][authenticate.signup] User: signupSuccess@gmail.com added to Users DB with clientId 55ed3fa6df3d6a0f1642df45
+[INFO ][9/7/2015 10:41:26][authenticate.signup] adding User: signupSuccess0@gmail.com to runtime DB
+[INFO ][9/7/2015 10:41:26][authenticate.signup] adding User: signupSuccess1@gmail.com to runtime DB
+[INFO ][9/7/2015 10:41:26][authenticate.signup] adding User: signupSuccess2@gmail.com to runtime DB
+[INFO ][9/7/2015 10:41:26][authenticate.signup] adding User: signupSuccess3@gmail.com to runtime DB
+[INFO ][9/7/2015 10:41:26][authenticate.signup] adding User: signupSuccess4@gmail.com to runtime DB
+[INFO ][9/7/2015 10:41:26][authenticate.signup] adding User: signupSuccess5@gmail.com to runtime DB
+[INFO ][9/7/2015 10:41:26][authenticate.signup] adding User: signupSuccess6@gmail.com to runtime DB
+[INFO ][9/7/2015 10:41:26][authenticate.signup] adding User: signupSuccess7@gmail.com to runtime DB
+[INFO ][9/7/2015 10:41:26][authenticate.signup] adding User: signupSuccess8@gmail.com to runtime DB
+[INFO ][9/7/2015 10:41:26][authenticate.signup] adding User: signupSuccess9@gmail.com to runtime DB
+[INFO ][9/7/2015 10:41:26][authenticate.signup] adding User: signupSuccess10@gmail.com to runtime DB
+[INFO ][9/7/2015 10:41:26][authenticate.signup] adding User: signupSuccess11@gmail.com to runtime DB
+[INFO ][9/7/2015 10:41:26][authenticate.signup] adding User: signupSuccess12@gmail.com to runtime DB
+[INFO ][9/7/2015 10:41:26][authenticate.signup] adding User: signupSuccess13@gmail.com to runtime DB
+[INFO ][9/7/2015 10:41:26][authenticate.signup] adding User: signupSuccess14@gmail.com to runtime DB
+[INFO ][9/7/2015 10:41:26][authenticate.signup] adding User: signupSuccess15@gmail.com to runtime DB
+[INFO ][9/7/2015 10:41:26][authenticate.signup] adding User: signupSuccess16@gmail.com to runtime DB
+[INFO ][9/7/2015 10:41:26][authenticate.signup] adding User: signupSuccess17@gmail.com to runtime DB
+[INFO ][9/7/2015 10:41:26][authenticate.signup] adding User: signupSuccess18@gmail.com to runtime DB
+[INFO ][9/7/2015 10:41:26][authenticate.signup] adding User: signupSuccess19@gmail.com to runtime DB
+[INFO ][9/7/2015 10:41:26][authenticate.signup] User: signupSuccess0@gmail.com added to Users DB with clientId 55ed3fa6df3d6a0f1642df46
+[INFO ][9/7/2015 10:41:26][authenticate.signup] User: signupSuccess5@gmail.com added to Users DB with clientId 55ed3fa6df3d6a0f1642df4b
+[INFO ][9/7/2015 10:41:26][authenticate.signup] User: signupSuccess10@gmail.com added to Users DB with clientId 55ed3fa6df3d6a0f1642df50
+[INFO ][9/7/2015 10:41:26][authenticate.signup] User: signupSuccess15@gmail.com added to Users DB with clientId 55ed3fa6df3d6a0f1642df55
+[INFO ][9/7/2015 10:41:26][authenticate.signup] User: signupSuccess1@gmail.com added to Users DB with clientId 55ed3fa6df3d6a0f1642df47
+[INFO ][9/7/2015 10:41:26][authenticate.signup] User: signupSuccess6@gmail.com added to Users DB with clientId 55ed3fa6df3d6a0f1642df4c
+[INFO ][9/7/2015 10:41:26][authenticate.signup] User: signupSuccess11@gmail.com added to Users DB with clientId 55ed3fa6df3d6a0f1642df51
+[INFO ][9/7/2015 10:41:26][authenticate.signup] User: signupSuccess16@gmail.com added to Users DB with clientId 55ed3fa6df3d6a0f1642df56
+[INFO ][9/7/2015 10:41:26][authenticate.signup] User: signupSuccess2@gmail.com added to Users DB with clientId 55ed3fa6df3d6a0f1642df48
+[INFO ][9/7/2015 10:41:26][authenticate.signup] User: signupSuccess7@gmail.com added to Users DB with clientId 55ed3fa6df3d6a0f1642df4d
+[INFO ][9/7/2015 10:41:26][authenticate.signup] User: signupSuccess12@gmail.com added to Users DB with clientId 55ed3fa6df3d6a0f1642df52
+[INFO ][9/7/2015 10:41:26][authenticate.signup] User: signupSuccess17@gmail.com added to Users DB with clientId 55ed3fa6df3d6a0f1642df57
+[INFO ][9/7/2015 10:41:26][authenticate.signup] User: signupSuccess3@gmail.com added to Users DB with clientId 55ed3fa6df3d6a0f1642df49
+[INFO ][9/7/2015 10:41:26][authenticate.signup] User: signupSuccess8@gmail.com added to Users DB with clientId 55ed3fa6df3d6a0f1642df4e
+[INFO ][9/7/2015 10:41:26][authenticate.signup] User: signupSuccess13@gmail.com added to Users DB with clientId 55ed3fa6df3d6a0f1642df53
+[INFO ][9/7/2015 10:41:26][authenticate.signup] User: signupSuccess18@gmail.com added to Users DB with clientId 55ed3fa6df3d6a0f1642df58
+[INFO ][9/7/2015 10:41:26][authenticate.signup] User: signupSuccess4@gmail.com added to Users DB with clientId 55ed3fa6df3d6a0f1642df4a
+[INFO ][9/7/2015 10:41:26][authenticate.signup] User: signupSuccess9@gmail.com added to Users DB with clientId 55ed3fa6df3d6a0f1642df4f
+[INFO ][9/7/2015 10:41:26][authenticate.signup] User: signupSuccess14@gmail.com added to Users DB with clientId 55ed3fa6df3d6a0f1642df54
+[INFO ][9/7/2015 10:41:26][authenticate.signup] User: signupSuccess19@gmail.com added to Users DB with clientId 55ed3fa6df3d6a0f1642df59
+[INFO ][9/7/2015 10:41:26][authenticate.signup] adding User: signupFailure@email.com to runtime DB
+[WARN ][9/7/2015 10:41:26][authenticate.signup]  can not add user: signupFailure@email.com to runtime DB, WriteError({"code":11000,"index":0,"errmsg":"E11000 duplicate key error index: weplay_test.users.$email_1 dup key: { : \"signupFailure@email.com\" }","op":{"email":"signupFailure@email.com","password":"testPassword","name":"newName","_id":"55ed3fa6df3d6a0f1642df5b","attending":0,"dateCreated":"2015-09-07T07:41:26.248Z","leagues":[],"__v":0}})
+[INFO ][9/7/2015 10:41:26][authenticate.signin] authenticating user: signinSuccess@email.com
+[INFO ][9/7/2015 10:41:26][authenticate.signin] authenticating user: signinFailure@email.com
+[ERROR][9/7/2015 10:41:26][authenticate.signin] could not authenticate user, wrong email or password signinFailure@email.com
+[INFO ][9/7/2015 10:41:26][authenticate.forgotPassword] user : forgotPassword@email.com, has forgotten his password
+[INFO ][9/7/2015 10:41:26][authenticate.forgotPassword] retrieved forgotPassword@email.com from db, sending Email that contains password
+[INFO ][9/7/2015 10:41:26][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
+[INFO ][9/7/2015 10:41:26][users.getUserById] User 55ed3fa6df3d6a0f1642df5f found successfully
+[INFO ][9/7/2015 10:41:26][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
+[INFO ][9/7/2015 10:41:26][leaguesEndpoint.addLeague] adding League: addLeagueLeague to Leagues DB
+[INFO ][9/7/2015 10:41:26][leaguesEndpoint.addLeague] league: addLeagueLeague was saved to DB, admin : 55ed3fa6df3d6a0f1642df5f
+[INFO ][9/7/2015 10:41:26][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
+[INFO ][9/7/2015 10:41:26][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
+[INFO ][9/7/2015 10:41:26][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
+[INFO ][9/7/2015 10:41:26][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
+[INFO ][9/7/2015 10:41:26][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
+[INFO ][9/7/2015 10:41:26][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
+[INFO ][9/7/2015 10:41:26][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
+[INFO ][9/7/2015 10:41:26][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
+[INFO ][9/7/2015 10:41:26][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
+[INFO ][9/7/2015 10:41:26][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
+[INFO ][9/7/2015 10:41:26][users.getUserById] User 55ed3fa6df3d6a0f1642df6c found successfully
+[INFO ][9/7/2015 10:41:26][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
+[INFO ][9/7/2015 10:41:26][leaguesEndpoint.addLeague] adding League: addLeagueLeague0 to Leagues DB
+[INFO ][9/7/2015 10:41:26][users.getUserById] User 55ed3fa6df3d6a0f1642df71 found successfully
+[INFO ][9/7/2015 10:41:26][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
+[INFO ][9/7/2015 10:41:26][leaguesEndpoint.addLeague] adding League: addLeagueLeague5 to Leagues DB
+[INFO ][9/7/2015 10:41:26][users.getUserById] User 55ed3fa6df3d6a0f1642df6d found successfully
+[INFO ][9/7/2015 10:41:26][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
+[INFO ][9/7/2015 10:41:26][leaguesEndpoint.addLeague] adding League: addLeagueLeague1 to Leagues DB
+[INFO ][9/7/2015 10:41:26][users.getUserById] User 55ed3fa6df3d6a0f1642df72 found successfully
+[INFO ][9/7/2015 10:41:26][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
+[INFO ][9/7/2015 10:41:26][leaguesEndpoint.addLeague] adding League: addLeagueLeague6 to Leagues DB
+[INFO ][9/7/2015 10:41:26][users.getUserById] User 55ed3fa6df3d6a0f1642df6e found successfully
+[INFO ][9/7/2015 10:41:26][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
+[INFO ][9/7/2015 10:41:26][leaguesEndpoint.addLeague] adding League: addLeagueLeague2 to Leagues DB
+[INFO ][9/7/2015 10:41:26][users.getUserById] User 55ed3fa6df3d6a0f1642df73 found successfully
+[INFO ][9/7/2015 10:41:26][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
+[INFO ][9/7/2015 10:41:26][leaguesEndpoint.addLeague] adding League: addLeagueLeague7 to Leagues DB
+[INFO ][9/7/2015 10:41:26][users.getUserById] User 55ed3fa6df3d6a0f1642df6f found successfully
+[INFO ][9/7/2015 10:41:26][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
+[INFO ][9/7/2015 10:41:26][leaguesEndpoint.addLeague] adding League: addLeagueLeague3 to Leagues DB
+[INFO ][9/7/2015 10:41:26][users.getUserById] User 55ed3fa6df3d6a0f1642df74 found successfully
+[INFO ][9/7/2015 10:41:26][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
+[INFO ][9/7/2015 10:41:26][leaguesEndpoint.addLeague] adding League: addLeagueLeague8 to Leagues DB
+[INFO ][9/7/2015 10:41:26][users.getUserById] User 55ed3fa6df3d6a0f1642df70 found successfully
+[INFO ][9/7/2015 10:41:26][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
+[INFO ][9/7/2015 10:41:26][leaguesEndpoint.addLeague] adding League: addLeagueLeague4 to Leagues DB
+[INFO ][9/7/2015 10:41:26][users.getUserById] User 55ed3fa6df3d6a0f1642df75 found successfully
+[INFO ][9/7/2015 10:41:26][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
+[INFO ][9/7/2015 10:41:26][leaguesEndpoint.addLeague] adding League: addLeagueLeague9 to Leagues DB
+[INFO ][9/7/2015 10:41:26][leaguesEndpoint.addLeague] league: addLeagueLeague0 was saved to DB, admin : 55ed3fa6df3d6a0f1642df6c
+[INFO ][9/7/2015 10:41:26][leaguesEndpoint.addLeague] league: addLeagueLeague5 was saved to DB, admin : 55ed3fa6df3d6a0f1642df71
+[INFO ][9/7/2015 10:41:26][leaguesEndpoint.addLeague] league: addLeagueLeague3 was saved to DB, admin : 55ed3fa6df3d6a0f1642df6f
+[INFO ][9/7/2015 10:41:26][leaguesEndpoint.addLeague] league: addLeagueLeague1 was saved to DB, admin : 55ed3fa6df3d6a0f1642df6d
+[INFO ][9/7/2015 10:41:26][leaguesEndpoint.addLeague] league: addLeagueLeague8 was saved to DB, admin : 55ed3fa6df3d6a0f1642df74
+[INFO ][9/7/2015 10:41:26][leaguesEndpoint.addLeague] league: addLeagueLeague6 was saved to DB, admin : 55ed3fa6df3d6a0f1642df72
+[INFO ][9/7/2015 10:41:26][leaguesEndpoint.addLeague] league: addLeagueLeague4 was saved to DB, admin : 55ed3fa6df3d6a0f1642df70
+[INFO ][9/7/2015 10:41:26][leaguesEndpoint.addLeague] league: addLeagueLeague2 was saved to DB, admin : 55ed3fa6df3d6a0f1642df6e
+[INFO ][9/7/2015 10:41:26][leaguesEndpoint.addLeague] league: addLeagueLeague9 was saved to DB, admin : 55ed3fa6df3d6a0f1642df75
+[INFO ][9/7/2015 10:41:26][leaguesEndpoint.addLeague] league: addLeagueLeague7 was saved to DB, admin : 55ed3fa6df3d6a0f1642df73
+[INFO ][9/7/2015 10:41:26][filter.validateRequest] new request coming in: POST 127.0.0.1 /leagues/addLeague
+[INFO ][9/7/2015 10:41:26][users.getUserById] User 55ed3fa6df3d6a0f1642df8a found successfully
+[INFO ][9/7/2015 10:41:26][filter.validateRequest] Request has passed validation, routing to: /leagues/addLeague
+[INFO ][9/7/2015 10:41:26][leaguesEndpoint.addLeague] adding League: addLeagueFailure to Leagues DB
+[WARN ][9/7/2015 10:41:26][leaguesEndpoint.addLeague] could not add League: addLeagueFailure to DB, reason : WriteError({"code":11000,"index":0,"errmsg":"E11000 duplicate key error index: weplay_test.leagues.$name_1 dup key: { : \"addLeagueFailure\" }","op":{"admin":"1234","name":"addLeagueFailure","_id":"55ed3fa6df3d6a0f1642df8c","games":[],"frequency":-1,"endDate":"2015-09-07T07:41:26.357Z","startDate":"2015-09-07T07:41:26.357Z","dateCreated":"2015-09-07T07:41:26.357Z","users":["1234"],"__v":0}})
