@@ -2,8 +2,7 @@ var express = require('express');
 var db = require('./lib/framework/db').connect('weplay_test' , 27017);
 var usersExternal = require('./lib/external/main/usersEndpoint.js');
 var leaguesExternal = require('./lib/external/main/leaguesEndpoint.js');
-
-var users = require('./lib/controllers/users.js');
+var gamesExternal = require('./lib/external/main/gamesEndpoint.js');
 var app = express();
 var filter = require('./lib/filter');
 var authenticate = require('./lib/external/main/authenticate');
@@ -37,6 +36,8 @@ router.use(filter.validateRequest);
 
 router.use(leaguesExternal);
 router.use(usersExternal);
+router.use(gamesExternal);
+
 
 app.listen(port);
 logger.audit("listen","Making a smarter planet on port " + port);
