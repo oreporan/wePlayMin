@@ -1,5 +1,5 @@
 var express = require('express');
-var db = require('./lib/framework/db').connect('weplay_test' , 27017, false);
+var db = require('./lib/framework/db').connect('weplay_test' , 27017);
 var usersExternal = require('./lib/external/main/usersEndpoint.js');
 var leaguesExternal = require('./lib/external/main/leaguesEndpoint.js');
 var gamesExternal = require('./lib/external/main/gamesEndpoint.js');
