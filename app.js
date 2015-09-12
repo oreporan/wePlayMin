@@ -1,5 +1,5 @@
 var express = require('express');
-var db = require('./lib/framework/db').connect('weplay_test' , 27017);
+var db = require('./lib/framework/db').connect('weplay_test' , 27017, true);
 var usersExternal = require('./lib/external/main/usersEndpoint.js');
 var leaguesExternal = require('./lib/external/main/leaguesEndpoint.js');
 var gamesExternal = require('./lib/external/main/gamesEndpoint.js');
@@ -13,7 +13,7 @@ var wpresponse = require('./lib/framework/wpResponse');
 var path = require('./lib/utils/Paths');
 var router = express.Router();
 
-var port = 3000;
+var port = process.env.PORT || 3000;
 
 // Since server has just started - we create a new logger file
 logger.initFile();
@@ -29,7 +29,6 @@ app.use(bodyParser.json());
 
 app.use(path.ROOT, router); // All requests have wePlay attached
 router.use(authenticate);
-
 
 //middleware to use for all requests
 router.use(filter.validateRequest);
