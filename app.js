@@ -13,10 +13,10 @@ var wpresponse = require('./lib/framework/wpResponse');
 var path = require('./lib/utils/Paths');
 var router = express.Router();
 
-var port = 3000;
+var port = process.env.PORT || 3000;
 
 // Since server has just started - we create a new logger file
-logger.initFile();
+//logger.initFile();
 logger = logger.init('server');
 
 
@@ -29,7 +29,6 @@ app.use(bodyParser.json());
 
 app.use(path.ROOT, router); // All requests have wePlay attached
 router.use(authenticate);
-
 
 //middleware to use for all requests
 router.use(filter.validateRequest);
