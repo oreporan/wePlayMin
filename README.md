@@ -1,8 +1,6 @@
-// Paths
+This README provides the API to all the requests
 
-// Application Root - all requests are prefixed with this path
-// http://wwww.HOST.com/wePlay/v1/*
-module.exports.ROOT = '/wePlay/v1';
+ROOT = '/wePlay/v1';
 
 //---------------Authenticate endpoint----------------//
 
