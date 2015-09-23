@@ -109,14 +109,14 @@ path: http://wwww.HOST.com/wePlay/v1/leagues/*
 ##### path : '/getLeaguesListById'
 *info*: gets a list of league objects   
 *method*: `POST`   
-*accepts*: `JSON` - an array of leagueIds  `{leagues: ["1234", "5436"...]}`   n
+*accepts*: `JSON` - an array of leagueIds  `{leagues: ["1234", "5436"...]}`  
 *returns*: `JSON` - an array of JSONs - league objects   
 *example*: http://wwww.HOST.com/wePlay/v1/leagues/getLeaguesListById/
 
 ##### path : '/updateLeague'
 *info*: updates league parameters i.e name or frequency   
 *method*: `PUT`   
-*accepts*: `JSON` - an array of leagueIds  `{ name: <new name>, frequency : <new frequency>}`   
+*accepts*: `JSON` - an object with League model parameters i.e  `{ name: <new name>, frequency : <new frequency>}`   
 *returns*: `JSON` - league object with new parameters   
 *example*: http://wwww.HOST.com/wePlay/v1/leagues/updateLeague/
 
