@@ -1,5 +1,29 @@
 # WePlay API
-root path :  `/wePlay/v1`
+### root path :  `/wePlay/v1`
+
+<!-- TOC depth:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [WePlay API](#weplay-api)
+		- [root path :  `/wePlay/v1`](#root-path-weplayv1)
+- [--Authenticate endpoint--](#-authenticate-endpoint-)
+				- [path: '/signup'](#path-signup)
+				- [path : '/signin'](#path-signin)
+				- [path : '/forgotpassword'](#path-forgotpassword)
+- [--User endpoint--](#-user-endpoint-)
+				- [path: '/getUser'](#path-getuser)
+				- [path : '/getUserByName'](#path-getuserbyname)
+				- [path : '/updateUser'](#path-updateuser)
+				- [path : '/getUsersListById'](#path-getuserslistbyid)
+- [-- League Endpoint --](#-league-endpoint-)
+				- [path : '/addLeague'](#path-addleague)
+				- [path : '/getLeague'](#path-getleague)
+				- [path : '/getLeagueByName'](#path-getleaguebyname)
+				- [path : '/addUserToLeague'](#path-addusertoleague)
+				- [path : '/removeUserFromLeague'](#path-removeuserfromleague)
+				- [path : '/getLeaguesListById'](#path-getleagueslistbyid)
+				- [path : '/updateLeague'](#path-updateleague)
+- [-- Game Endpoint - TODO --](#-game-endpoint-todo-)
+<!-- /TOC -->
 
 # --Authenticate endpoint--
 Authenticates users, signup, signin
