@@ -17,7 +17,9 @@ var router = express.Router();
 // initalizations
 matches.initMatches();
 
-//configure app to use bodyParser()
+// For client side
+app.use(express.static(__dirname + '/public'));
+
 //this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
