@@ -10,12 +10,12 @@ var bodyParser = require('body-parser');
 var Constants = require('./lib/utils/Constants');
 var wpresponse = require('./lib/framework/wpResponse');
 var path = require('./lib/utils/Paths');
-var matchManager = require('./lib/controllers/matches')
+var matches = require('./lib/models/main/matches')
 var app = express();
 var router = express.Router();
 
 // initalizations
-matchManager.initMatches();
+matches.initMatches();
 
 //configure app to use bodyParser()
 //this will let us get the data from a POST
