@@ -48,7 +48,7 @@ path: `<HOST URL>/wePlay/v1/users/*`
 *method*: `GET`   
 *accepts*: `String` - userName   
 *returns*: `JSON` - a user object   
-*example*: <HOST URL>/wePlay/v1/users/getUser/Moshiko
+*example*: <HOST URL>/wePlay/v1/users/getUserByName/Moshiko
 
 ##### path : '/updateUser'
 *info*: updates a user's parameters   
@@ -74,7 +74,7 @@ path: <HOST URL>/wePlay/v1/leagues/*
 ##### path : '/addLeague'
 *info*: creates a new league and makes this user the admin   
 *method*: `POST`   
-*accepts*: `JSON` - object compliant with the League model - `{ name: <String - league name>, numOfPlayersPerTeam: <Number> , admin: <String - this client id>, frequency: <Int - for now, -1>}`   
+*accepts*: `JSON` - object compliant with the League model - `{ name: <String - league name>, numOfPlayersPerTeam: <Number> , admin: <String - this client id>, frequency: <Int - for now, -1>, makeTeamsAtNum: <Int - number to make teams at>}`   
 *returns*: `JSON` - an array of JSONs - user objects   
 *example*: <HOST URL>/wePlay/v1/leagues/addLeague/
 
