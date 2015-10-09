@@ -116,9 +116,16 @@ path: <HOST URL>/wePlay/v1/leagues/*
 ##### path : '/updateLeague'
 *info*: updates league parameters i.e name or frequency   
 *method*: `PUT`   
-*accepts*: `JSON` - an object with League model parameters i.e  `{ name: <new name>, frequency : <new frequency>}`   
+*accepts*: `JSON` - an object with League model parameters i.e  `{ name: <new name>, frequency : <new frequency>}`   , the query parameter holds the relevant leagueId
 *returns*: `JSON` - league object with new parameters   
-*example*: <HOST URL>/wePlay/v1/leagues/updateLeague/
+*example*: <HOST URL>/wePlay/v1/leagues/updateLeague/1312315
+
+##### path : '/addAdmin'
+*info*: Makes this client an admin in a league, can only be done by an admin   
+*method*: `PUT`   
+*accepts*: `JSON` - `{admin : <clientId>}`  , the query parameter holds the relevant leagueId
+*returns*: `JSON` - league object updated  
+*example*: <HOST URL>/wePlay/v1/leagues/addAdmin/123554
 
 # -- Game Endpoint - TODO --
 All game related requests, a game is always part of a league, and it
