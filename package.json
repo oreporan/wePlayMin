@@ -4,6 +4,7 @@
   "description": "WePlay App",
   "main": "app.js",
   "dependencies": {
+    "async": "^1.4.2",
     "body-parser": "^1.13.3",
     "cron": "^1.0.9",
     "express": "^4.13.3",
