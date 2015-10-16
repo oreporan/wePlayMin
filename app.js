@@ -14,9 +14,6 @@ var matches = require('./lib/models/main/matches')
 var app = express();
 var router = express.Router();
 
-// initalizations
-matches.initMatches();
-
 // For client side
 app.use(express.static(__dirname + '/public'));
 
