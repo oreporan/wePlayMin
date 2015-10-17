@@ -102,7 +102,7 @@ path: <HOST URL>/wePlay/v1/leagues/*
 ##### path : '/addUserToLeague'
 *info*: pushes this user to a league, the client is taken from the header   
 *method*: `PUT`   
-*accepts*: `String` - leagueId , and optional JSON Object as body `isInvite : <boolean>`    
+*accepts*: `String` - leagueId , and optional JSON Object as body `{isInvite : <boolean>}`    
 *returns*: `JSON` - a league object   
 *example*: <HOST URL>/wePlay/v1/leagues/addUserToLeague/4524262
 
@@ -143,5 +143,5 @@ to every request.
 
 module.exports.PATH_GAME_ADDGAME = '/addGame';
 module.exports.PATH_GAME_UPDATEGAME = '/updateGame';
-module.exports.PATH_GAME_ADDUSERTOGAME_WITH_GAMEID = '/addUserToGame';
-module.exports.PATH_GAME_REMOVEUSERFROMGAME_WITH_GAMEID = '/addUserToGame';
+module.exports.PATH_GAME_JOINGAME_WITH_GAMEID = '/joinGame';
+module.exports.PATH_GAME_LEAVEGAME_WITH_GAMEID = '/leaveGame';
