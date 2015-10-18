@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 var Constants = require('./lib/utils/Constants');
 var wpresponse = require('./lib/framework/wpResponse');
 var path = require('./lib/utils/Paths');
-var matches = require('./lib/models/main/matches')
+var matches = require('./lib/models/main/matches');
 var app = express();
 var router = express.Router();
 
