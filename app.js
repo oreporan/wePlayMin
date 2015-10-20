@@ -5,17 +5,14 @@ var leaguesExternal = require('./lib/external/main/leaguesEndpoint.js');
 var gamesExternal = require('./lib/external/main/gamesEndpoint.js');
 var filter = require('./lib/filter');
 var authenticate = require('./lib/external/main/authenticate');
-var logger = require('./lib/framework/logger.js').init('app');
+var logger = require('./lib/utils/logger.js').init('app');
 var bodyParser = require('body-parser');
 var Constants = require('./lib/utils/Constants');
 var wpresponse = require('./lib/framework/wpResponse');
 var path = require('./lib/utils/Paths');
-var matches = require('./lib/models/main/matches')
+var matches = require('./lib/models/main/matches');
 var app = express();
 var router = express.Router();
-
-// initalizations
-matches.initMatches();
 
 // For client side
 app.use(express.static(__dirname + '/public'));
@@ -23,6 +20,7 @@ app.use(express.static(__dirname + '/public'));
 //this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
 
 // Allow for cross-origin CORS
 app.use(function(req, res, next) {
@@ -34,7 +32,7 @@ app.use(function(req, res, next) {
 // Routing
 app.use(path.ROOT, router); // All requests have wePlay attached
 router.use(authenticate);
-router.use(filter.validateRequest);
+router.use(filter.doRequest);
 router.use(leaguesExternal);
 router.use(usersExternal);
 router.use(gamesExternal);

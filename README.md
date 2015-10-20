@@ -7,21 +7,28 @@
 Authenticates users, signup, signin
 This is the only endpoint that doesn't pass through the validation filter.
 
-path : `<HOST URL>/wePlay/v1/authenticate/*`
+path : `<HOST URL>/wePlay/v1/auth/*`
 
 ##### path: '/signup'
 *info*: signs up a user  
 *method*: `POST`  
 *accepts*: `JSON` - object compliant with the User model - `{name: <name>, email: <email> , password: <password>}`   
 *returns*: `JSON` - a user object holding a new clientId  
-*example*: <HOST URL>/wePlay/v1/authenticate/signup/
+*example*: <HOST URL>/wePlay/v1/auth/signup/
+
+##### path: '/facebook'
+*info*: signs up a user  
+*method*: `POST`  
+*accepts*: `JSON` -  `{access_token: <token>}`   
+*returns*: `JSON` - a user object holding a new clientId  
+*example*: <HOST URL>/wePlay/v1/auth/facebook/   
 
 ##### path : '/signin'
 *info*: signs in an existing user   
 *method* : `POST`   
 *accepts*: `JSON` - `{email: <email>, password: <password}`   
 *returns*: `JSON` - a user object   
-*example*: <HOST URL>/wePlay/v1/authenticate/signin/
+*example*: <HOST URL>/wePlay/v1/auth/signin/
 
 ##### path : '/forgotpassword'
 *info*: returns a user object holding the password, this is currently
@@ -29,7 +36,7 @@ under construction because we will in reality send an email not return the objec
 *method* : `GET`   
 *accepts*: `String` - email   
 *returns*: `JSON` - a user object with the email   
-*example*:<HOST URL>/wePlay/v1/authenticate/forgotpassword/ore@gmail.com
+*example*:<HOST URL>/wePlay/v1/auth/forgotpassword/ore@gmail.com
 
 # --User endpoint--
 All user related requests
@@ -94,8 +101,8 @@ path: <HOST URL>/wePlay/v1/leagues/*
 
 ##### path : '/addUserToLeague'
 *info*: pushes this user to a league, the client is taken from the header   
-*method*: `GET`   
-*accepts*: `String` - leagueId   
+*method*: `PUT`   
+*accepts*: `String` - leagueId , and optional JSON Object as body `{isInvite : <boolean>}`    
 *returns*: `JSON` - a league object   
 *example*: <HOST URL>/wePlay/v1/leagues/addUserToLeague/4524262
 
@@ -116,18 +123,25 @@ path: <HOST URL>/wePlay/v1/leagues/*
 ##### path : '/updateLeague'
 *info*: updates league parameters i.e name or frequency   
 *method*: `PUT`   
-*accepts*: `JSON` - an object with League model parameters i.e  `{ name: <new name>, frequency : <new frequency>}`   
+*accepts*: `JSON` - an object with League model parameters i.e  `{ name: <new name>, frequency : <new frequency>}`   , the query parameter holds the relevant leagueId   
 *returns*: `JSON` - league object with new parameters   
-*example*: <HOST URL>/wePlay/v1/leagues/updateLeague/
+*example*: <HOST URL>/wePlay/v1/leagues/updateLeague/1312315
+
+##### path : '/addAdmin'
+*info*: Makes this client an admin in a league, can only be done by an admin   
+*method*: `PUT`   
+*accepts*: `JSON` - `{admin : <clientId>}`  , the query parameter holds the relevant leagueId   
+*returns*: `JSON` - league object updated  
+*example*: <HOST URL>/wePlay/v1/leagues/addAdmin/123554
 
 # -- Game Endpoint - TODO --
-All game related requests, a game is always part of a league, and it
-generated on request (if frequency in the league is -1), or generated automatically if the frequency is weekly/monthly
+All game related requests, a game is always part of a league, that is why a league must always have a league-id header appended
+to every request.
 *path* : <HOST URL>/wePlay/v1/games/
 
 
 
 module.exports.PATH_GAME_ADDGAME = '/addGame';
 module.exports.PATH_GAME_UPDATEGAME = '/updateGame';
-module.exports.PATH_GAME_ADDUSERTOGAME_WITH_GAMEID = '/addUserToGame';
-module.exports.PATH_GAME_REMOVEUSERFROMGAME_WITH_GAMEID = '/addUserToGame';
+module.exports.PATH_GAME_JOINGAME_WITH_GAMEID = '/joinGame';
+module.exports.PATH_GAME_LEAVEGAME_WITH_GAMEID = '/leaveGame';
