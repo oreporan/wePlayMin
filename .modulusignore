@@ -1,2 +1,4 @@
 /node_modules
 /lib/framework/log
+/lib/external/test
+/lib/models/test
