@@ -97,12 +97,12 @@ path: <HOST URL>/wePlay/v1/leagues/*
 *method*: `GET`   
 *accepts*: `String` - leagueId   
 *returns*: `JSON` - a league object   
-*example*: <HOST URL>/wePlay/v1/leagues/getLeague/4524262
+*example*: <HOST URL>/wePlay/v1/leagues/getLeagueByName/4524262
 
 ##### path : '/addUserToLeague'
-*info*: pushes this user to a league, the client is taken from the header   
+*info*: pushes this user to a league, the client is taken from the header , the position parameter can be found in the Constants.js file   
 *method*: `PUT`   
-*accepts*: `String` - leagueId , and optional JSON Object as body `{isInvite : <boolean>}`    
+*accepts*: Query parameter - `String` - leagueId , Body parameter - `JSON` - `{isInvite : <boolean>, position:<String>}`    
 *returns*: `JSON` - a league object   
 *example*: <HOST URL>/wePlay/v1/leagues/addUserToLeague/4524262
 
