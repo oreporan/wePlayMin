@@ -59,6 +59,7 @@ angular.module('app.controllers', [])
   $scope.facebookSignIn = function() {
 
     facebookConnectPlugin.getLoginStatus(function(success){
+
      if(success.status === 'connected'){
         // the user is logged in and has authenticated your app, and response.authResponse supplies
         // the user's ID, a valid access token, a signed request, and the time the access token
@@ -67,9 +68,9 @@ angular.module('app.controllers', [])
 
 				//check if we have our user saved
 				var user = UserService.getUser('facebook');
-
 				if(!user.userID)
 				{
+
 					getFacebookProfileInfo(success.authResponse)
 					.then(function(profileInfo) {
 
@@ -82,21 +83,20 @@ angular.module('app.controllers', [])
 							picture : "http://graph.facebook.com/" + success.authResponse.userID + "/picture?type=large"
 						});
 
-						$state.go('app.home');
+						$state.go('tabsController.game');
 
 					}, function(fail){
 						//fail get profile info
 						console.log('profile info fail', fail);
 					});
 				}else{
-					$state.go('app.home');
+					$state.go('tabsController.game');
 				}
 
      } else {
         //if (success.status === 'not_authorized') the user is logged in to Facebook, but has not authenticated your app
         //else The person is not logged into Facebook, so we're not sure if they are logged into this app or not.
         console.log('getLoginStatus', success.status);
-
 			  $ionicLoading.show({
           template: 'Logging in...'
         });
