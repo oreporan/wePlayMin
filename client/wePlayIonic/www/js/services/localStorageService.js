@@ -1,16 +1,20 @@
 angular.module('app.services')
-.service('localStorageService', function() {
+.service('localStorageService', function(logger) {
 
-  var getClientId = function() {
-    window.localStorage. = JSON.stringify('clientId');
+  var setByKey = function(key, object) {
+    if (key && object) {
+      window.localStorage.setItem(key, object);
+    }
   };
 
-  var setClientId = function(clientId){
-    return JSON.parse(window.localStorage. || '{}');
+  var getByKey = function(key){
+    if (key) {
+      return window.localStorage.getItem(key);
+    }
   };
 
   return {
-    getUser: getUser,
-    setUser: setUser
+    getByKey: getByKey,
+    setByKey: setByKey
   };
 });

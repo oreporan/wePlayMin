@@ -1,11 +1,20 @@
 angular.module('app.controllers')
-  .controller('homeCtrl', ['$scope', function($scope) {
-    // alert(constants.myApp);
-    var user = window.localStorage.wp_user;
-    console.info("homeCtrl, user: " + JSON.stringify(user));
-    $scope.userName = user.name;
+  .controller('homeCtrl', function($scope, logger, localStorageService, userService) {
 
-    $scope.userDetails = user;
+    var wpLogger = logger.logger("homeCtrl");
+    var clientId = localStorageService.getByKey("wp_clientId");
+
+    var user = userService.getWpUser(clientId, function(response, err) {
+      if (err) {
+        wpLogger.audit("", "failed to get user");
+        $scope.userName = "Error: failed to get user";
+      } else {
+        wpLogger.audit("", "user: " + JSON.stringify(response));
+        $scope.userName = response.name;
+        $scope.userDetails = response;
+      }
+    });
+
 
 
     //This method is executed when the user press the "Login with facebook" button
@@ -17,4 +26,4 @@ angular.module('app.controllers')
         console.log("logout failed");
       });
     };
-  }])
+  })
