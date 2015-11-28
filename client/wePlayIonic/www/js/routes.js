@@ -20,12 +20,12 @@ angular.module('app.routes', [])
 
 
 
-    .state('tabsController.myProfile', {
-      url: '/profile',
+    .state('tabsController.home', {
+      url: '/home',
       views: {
         'tab1': {
-          templateUrl: 'templates/myProfile.html',
-          controller: 'myProfileCtrl'
+          templateUrl: 'templates/home.html',
+          controller: 'homeCtrl'
         }
       }
     })
