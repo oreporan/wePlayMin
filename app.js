@@ -34,7 +34,7 @@ app.use(function(req, res, next) {
 // Routing
 app.use(path.ROOT, router); // All requests have wePlay attached
 router.use(authenticate);
-router.use(filter.doRequest);
+router.use(filter.doFilter);
 router.use(leaguesExternal);
 router.use(usersExternal);
 router.use(gamesExternal);
