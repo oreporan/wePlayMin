@@ -39,7 +39,7 @@ angular.module('app.services')
     var signUp = function(userName, password, email) {
       var req = {
         method: 'POST',
-        url: 'http://localhost:3000/wePlay/v1/auth/signup/',
+        url: 'http://10.0.0.2:3000/wePlay/v1/auth/signup/',
         headers: {
           'Content-Type': 'application/json'
         },

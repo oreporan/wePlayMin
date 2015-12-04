@@ -23,11 +23,11 @@ app.use(bodyParser.json());
 
 
 // Allow for cross-origin CORS
-app.use(function(req, res, next) {
+app.all('/', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
   next();
-});
+ });
 
 // Routing
 app.use(path.ROOT, router); // All requests have wePlay attached

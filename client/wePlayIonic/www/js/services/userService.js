@@ -24,27 +24,6 @@ angular.module('app.services')
           console.error('ERR', err);
           // err.status will contain the status code
         })
-
-        var req = {
-          method: 'GET',
-          url: 'http://10.0.0.2:3000/wePlay/v1/users/getUser/' + clientId,
-          headers: {
-            'client-id': clientId
-          }
-        }
-
-        $http(req).then(function successCallback(response) {
-
-          wpLogger.audit("getWpUser", "succeeded to get user ");
-          if (response.data || response.data.responseText) {
-            return wpLogger.error("getWpUser", "successCallback, response data is invalid");
-          }
-          user = response.data.responseText.user;
-          callback(user);
-        }, function errorCallback(error) {
-          wpLogger.error("getWpUser", JSON.stringify(error));
-          callback(error);
-        });
       }
     };
 

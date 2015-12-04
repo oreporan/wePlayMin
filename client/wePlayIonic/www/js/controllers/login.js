@@ -2,12 +2,18 @@ angular.module('app.controllers')
   .controller('loginCtrl', function($scope, $state, $q, userService, userFacebookService, localStorageService, $ionicLoading, authenticateService, logger) {
     var wpLogger = logger.logger("loginCtrl");
 
+
+    // For testing: clear clientId before starting
+    localStorageService.removeItem("wp_clientId");
+
     // wp app start here.
     // Check if clientId exist, go to home page if true, else - Login page
     var clientId = localStorageService.getByKey("wp_clientId");
     if (clientId) {
+      wpLogger.audit("clientId exists");
       var user = userService.getWpUser(clientId, function(response, err) {
         if (err) {
+          wpLogger.audit("couldn't get wpUser. err" + err);
 
         } else {
           $state.go('tabsController.home');

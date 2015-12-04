@@ -13,7 +13,14 @@ angular.module('app.services')
     }
   };
 
+  var removeItem = function(key){
+    if (key) {
+      return window.localStorage.removeItem(key);
+    }
+  };
+
   return {
+    removeItem: removeItem,
     getByKey: getByKey,
     setByKey: setByKey
   };
