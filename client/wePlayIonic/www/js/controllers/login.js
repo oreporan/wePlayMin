@@ -2,6 +2,10 @@ angular.module('app.controllers')
   .controller('loginCtrl', function($scope, $state, $q, userService, userFacebookService, localStorageService, $ionicLoading, authenticateService, logger) {
     var wpLogger = logger.logger("loginCtrl");
 
+    $scope.fakeLogin = function(){
+      $state.go('tabsController.home');
+    }
+
     // wp app start here.
     // Check if clientId exist, go to home page if true, else - Login page
     var clientId = localStorageService.getByKey("wp_clientId");
