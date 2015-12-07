@@ -1,7 +1,10 @@
 angular.module('app.services')
-    .service('leagueService',['$http', function($http) {
+    .service('leagueService',['$http', '$state', function($http, $state) {
 
         return {
+            getMyLeagues: function(clientId){
+                /* TODO */
+            },
             createLeague: function(clientId, params){
                 var req = {
                     method: 'POST',
@@ -17,11 +20,12 @@ angular.module('app.services')
                         frequency: params.frequency,
                         makeTeamsAtNum: params.makeTeamsAtNum
                     }
-                }
+                };
                 $http(req).then(function successCallback(response){
-
+                    alert('League added successfully');
+                    $state.go('tabsController.league');
                 }, function errorCallback(error){
-
+                    alert(error);
                 })
             }
         }

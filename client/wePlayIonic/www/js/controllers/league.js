@@ -9,8 +9,9 @@ angular.module('app.controllers')
             $state.go('tabsController.createLeague');
         }
         $scope.createLeague = function(){
-            console.log($scope.params);
-            leagueService.createLeague($scope.clientId, $scope.params )
-
+            leagueService.createLeague($scope.clientId, $scope.params)
         }
-}])
+        $scope.getMyLeagues = function(){
+            leagueService.getMyLeagues(clientId);
+        }
+}]);
