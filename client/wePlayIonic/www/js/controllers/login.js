@@ -2,7 +2,6 @@ angular.module('app.controllers')
   .controller('loginCtrl', function($scope, $state, $q, userService, userFacebookService, localStorageService, $ionicLoading, authenticateService, logger, constants) {
     var wpLogger = logger.logger("loginCtrl");
 
-
     // For testing: clear clientId before starting
     // localStorageService.removeItem("wp_clientId");
 
