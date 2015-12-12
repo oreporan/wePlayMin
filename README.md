@@ -161,7 +161,7 @@ to every request.
 *info*: changes the attending status for this user between -1 (not attending), 0 (undecided) and 1 (attending)       
 *method*: `GET`   
 *accepts*: `String/String` - GameId to toggle attending for, followed by '/', followed by attending status (-1,0,1)      
-*returns*: `JSON` - The updated [gameUserObject](#####GameUserObject)      
+*returns*: `JSON` - The updated [gameUserObject](#gameUserObject)      
 *example*: <HOST URL>/wePlay/v1/leagues/toggleAttending/1234/1      
 
 ##### path : '/getGame/{gameId}'
@@ -179,6 +179,6 @@ to every request.
 *example*: <HOST URL>/wePlay/v1/leagues/getGame/1234     
 
 
-##### GameUserObject
+# GameUserObject
 *info*: A GameUserObject is a JSON object that has details about a user, that are relevant only to a game, since we are not interested in the user's activeGames, leagues etc. In addition, more fields are added.    
 ```{_id' : <id>, form : [], isInvite : <bool>,  date: Date(), team : <int>, attending : <int>}```
