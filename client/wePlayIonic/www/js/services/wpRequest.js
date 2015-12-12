@@ -3,6 +3,7 @@ angular.module('app.services')
 
     var wpLogger = logger.logger("wpRequest");
 
+    // Not always we have to add the client-id header
     var sendPostWithHeaders = function(path, params, headers, callback) {
       var clientId = localStorageService.getByKey("wp_clientId");
 
