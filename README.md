@@ -100,7 +100,7 @@ path: <HOST URL>/wePlay/v1/leagues/*
 *example*: <HOST URL>/wePlay/v1/leagues/getLeagueByName/4524262
 
 ##### path : '/getLeagueByKeyword'
-*info*: gets all the leagues objects that contain this word, for example calling this method with the keyword : 'over' will find the league 'over' , 'overflow' but not the league 'stack overflow'    
+*info*: gets all the leagues objects that contain this word, for example calling this method with the keyword : 'over' will find the league 'over' , 'overflow' and the league 'stack overflow'    
 *method*: `GET`   
 *accepts*: `String` - league name keyword   
 *returns*: `JSON` - `{leagues : <an array of leagueObject JSONs>}`      
