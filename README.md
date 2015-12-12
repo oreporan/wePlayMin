@@ -180,5 +180,8 @@ to every request.
 
 
 # GameUserObject
-*info*: A GameUserObject is a JSON object that has details about a user, that are relevant only to a game, since we are not interested in the user's activeGames, leagues etc. In addition, more fields are added.    
-```{_id' : <id>, form : [], isInvite : <bool>,  date: Date(), team : <int>, attending : <int>}```
+*info*: A GameUserObject is a JSON object that has details about a user, that are relevant only to a game, since we are not interested in the user's activeGames, leagues etc. In addition, more fields are added.     
+-`team` field (0,1,2...), the current team the player is in    
+-`form` field ([-1,0,0,0,1,1,-1]), the attending form in the last X games     
+-`isInvite` field (true/false) if the player is a bench player or not   
+```{_id : <id>, form : [], isInvite : <bool>,  date: <Date()>, team : <int>, attending : <int>}```    
