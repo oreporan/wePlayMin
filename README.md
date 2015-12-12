@@ -43,14 +43,14 @@ All user related requests
 
 path: `<HOST URL>/wePlay/v1/users/*`
 
-##### path: '/getUser'
+##### path: '/getUser/{clientId}'
 *info*: gets a user by id   
 *method*: `GET`   
 *accepts*: `String` - clientId   
 *returns*: `JSON` - a user object   
 *example*: <HOST URL>/wePlay/v1/users/getUser/43524261
 
-##### path : '/getUserByName'
+##### path : '/getUserByName/{name}'
 *info*: gets a user by his user name (not email!)   
 *method*: `GET`   
 *accepts*: `String` - userName   
@@ -85,21 +85,21 @@ path: <HOST URL>/wePlay/v1/leagues/*
 *returns*: `JSON` - an array of JSONs - user objects   
 *example*: <HOST URL>/wePlay/v1/leagues/addLeague/
 
-##### path : '/getLeague'
+##### path : '/getLeague/{leagueId}'
 *info*: gets the league object by league Id   
 *method*: `GET`   
 *accepts*: `String` - leagueId   
 *returns*: `JSON` - a league object   
 *example*: <HOST URL>/wePlay/v1/leagues/getLeague/4524262
 
-##### path : '/getLeagueByName'
+##### path : '/getLeagueByName/{leagueId}'
 *info*: gets the league object by league Id   
 *method*: `GET`   
 *accepts*: `String` - leagueId   
 *returns*: `JSON` - a league object   
 *example*: <HOST URL>/wePlay/v1/leagues/getLeagueByName/4524262
 
-##### path : '/getLeagueByKeyword'
+##### path : '/getLeagueByKeyword/{keyword}'
 *info*: gets all the leagues objects that contain this word, for example calling this method with the keyword : 'over' will find the league 'over' , 'overflow' and the league 'stack overflow'    
 *method*: `GET`   
 *accepts*: `String` - league name keyword   
@@ -107,14 +107,14 @@ path: <HOST URL>/wePlay/v1/leagues/*
 *example*: <HOST URL>/wePlay/v1/leagues/getLeagueByKeyword/mylea
 
 
-##### path : '/addUserToLeague'
+##### path : '/addUserToLeague/{leagueId}'
 *info*: pushes this user to a league, the client is taken from the header , the position parameter can be found in the Constants.js file   
 *method*: `PUT`   
 *accepts*: Query parameter - `String` - leagueId , Body parameter - `JSON` - `{isInvite : <boolean>, position:<String>}`    
 *returns*: `JSON` - a league object   
 *example*: <HOST URL>/wePlay/v1/leagues/addUserToLeague/4524262
 
-##### path : '/removeUserFromLeague'
+##### path : '/removeUserFromLeague/{leagueId}'
 *info*: removes this user from a league, the client is taken from the header   
 *method*: `GET`   
 *accepts*: `String` - leagueId   
@@ -128,14 +128,14 @@ path: <HOST URL>/wePlay/v1/leagues/*
 *returns*: `JSON` - an array of JSONs - league objects   
 *example*: <HOST URL>/wePlay/v1/leagues/getLeaguesListById/
 
-##### path : '/updateLeague'
+##### path : '/updateLeague/{leagueId}'
 *info*: updates league parameters i.e name or frequency   
 *method*: `PUT`   
 *accepts*: `JSON` - an object with League model parameters i.e  `{ name: <new name>, frequency : <new frequency>}`   , the query parameter holds the relevant leagueId   
 *returns*: `JSON` - league object with new parameters   
 *example*: <HOST URL>/wePlay/v1/leagues/updateLeague/1312315
 
-##### path : '/addAdmin'
+##### path : '/addAdmin/{leagueId}'
 *info*: Makes this client an admin in a league, can only be done by an admin   
 *method*: `PUT`   
 *accepts*: `JSON` - `{admin : <clientId>}`  , the query parameter holds the relevant leagueId   
@@ -145,11 +145,35 @@ path: <HOST URL>/wePlay/v1/leagues/*
 # -- Game Endpoint - TODO --
 All game related requests, a game is always part of a league, that is why a league must always have a league-id header appended
 to every request.
-*path* : <HOST URL>/wePlay/v1/games/
+*path* : <HOST URL>/wePlay/v1/games/*  
+*required header* : `league-id`    
+*required header* : `client-id`    
 
 
+##### path : '/addGame'
+*info*: creates a new game   
+*method*: `POST`   
+*accepts*: `JSON` - `{matchDay : <date object>}`  , a date object in Date() format   
+*returns*: `JSON` - game object   
+*example*: <HOST URL>/wePlay/v1/leagues/addGame    
 
-module.exports.PATH_GAME_ADDGAME = '/addGame';
-module.exports.PATH_GAME_UPDATEGAME = '/updateGame';
-module.exports.PATH_GAME_JOINGAME_WITH_GAMEID = '/joinGame';
-module.exports.PATH_GAME_LEAVEGAME_WITH_GAMEID = '/leaveGame';
+##### path : '/toggleAttending/{gameId}/{attending}'
+*info*: changes the attending status for this user between -1 (not attending), 0 (undecided) and 1 (attending)       
+*method*: `GET`   
+*accepts*: `String/String` - GameId to toggle attending for, followed by '/', followed by attending status (-1,0,1)      
+*returns*: `JSON` - The updated **gameUserObject** *(see bottom for definition of gameUser)*    
+*example*: <HOST URL>/wePlay/v1/leagues/toggleAttending/1234/1      
+
+##### path : '/getGame/{gameId}'
+*info*: gets the game object           
+*method*: `GET`   
+*accepts*: `String` - gameId      
+*returns*: `JSON` - The game object       
+*example*: <HOST URL>/wePlay/v1/leagues/getGame/1234         
+
+##### path : '/getGamesListById/'
+*info*: returns a list of game objects       
+*method*: `POST`   
+*accepts*: `JSON` - a JSON with an array value in the format `{games : <array of gameIds>}`      
+*returns*: `JSON` - A JSON with an array value in the format `{games : <array of game objects>}`       
+*example*: <HOST URL>/wePlay/v1/leagues/getGame/1234     
