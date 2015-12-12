@@ -12,8 +12,8 @@ angular.module('app.services')
       $http({
         method: 'POST',
         url: paths.SERVER_URL + paths.ROOT + path,
-        headers,
-        params
+        headers: headers,
+        data: params
       }).then(function successCallback(response) {
         success(response, callback);
       }, function errorCallback(response) {
@@ -22,11 +22,13 @@ angular.module('app.services')
     };
 
     var sendPostWithoutClientId = function(path, params, callback) {
-      sendPostWithHeaders(path,params, null, callback)
+      sendPostWithHeaders(path, params, null, callback)
     };
 
     var sendPost = function(path, params, callback) {
-      sendPostWithHeaders(path,params, {'client-id': clientId}, callback);
+      sendPostWithHeaders(path, params, {
+        'client-id': clientId
+      }, callback);
     };
 
     var sendGet = function(path, params, callback) {
@@ -47,7 +49,6 @@ angular.module('app.services')
       });
     };
 
-
     var sendPut = function(path, pathParams, params, callback) {
       var clientId = localStorageService.getByKey("wp_clientId");
 
@@ -59,7 +60,7 @@ angular.module('app.services')
           'Content-Type': 'application/json',
           'client-id': clientId
         },
-        params
+        data: params
       }).then(function successCallback(response) {
         success(response, callback);
       }, function errorCallback(response) {
@@ -78,7 +79,7 @@ angular.module('app.services')
           'Content-Type': 'application/json',
           'client-id': clientId
         },
-        params
+        data: params
       }).then(function successCallback(response) {
         success(response, callback);
       }, function errorCallback(response) {
