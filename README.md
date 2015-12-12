@@ -108,9 +108,9 @@ path: <HOST URL>/wePlay/v1/leagues/*
 
 
 ##### path : '/addUserToLeague/{leagueId}'
-*info*: pushes this user to a league, the client is taken from the header , the position parameter can be found in the Constants.js file   
+*info*: pushes this user to a league, the client is taken from the header    
 *method*: `PUT`   
-*accepts*: Query parameter - `String` - leagueId , Body parameter - `JSON` - `{isInvite : <boolean>, position:<String>}`    
+*accepts*: Query parameter - `String` - leagueId , Body parameter - `JSON` - `{isInvite : <boolean>}`    
 *returns*: `JSON` - a league object   
 *example*: <HOST URL>/wePlay/v1/leagues/addUserToLeague/4524262
 
@@ -142,7 +142,7 @@ path: <HOST URL>/wePlay/v1/leagues/*
 *returns*: `JSON` - league object updated  
 *example*: <HOST URL>/wePlay/v1/leagues/addAdmin/123554
 
-# -- Game Endpoint - TODO --
+# -- Game Endpoint --
 All game related requests, a game is always part of a league, that is why a league must always have a league-id header appended
 to every request.
 *path* : <HOST URL>/wePlay/v1/games/*  
@@ -161,7 +161,7 @@ to every request.
 *info*: changes the attending status for this user between -1 (not attending), 0 (undecided) and 1 (attending)       
 *method*: `GET`   
 *accepts*: `String/String` - GameId to toggle attending for, followed by '/', followed by attending status (-1,0,1)      
-*returns*: `JSON` - The updated **gameUserObject** *(see bottom for definition of gameUser)*    
+*returns*: `JSON` - The updated [gameUserObject](#####GameUserObject)      
 *example*: <HOST URL>/wePlay/v1/leagues/toggleAttending/1234/1      
 
 ##### path : '/getGame/{gameId}'
@@ -177,3 +177,8 @@ to every request.
 *accepts*: `JSON` - a JSON with an array value in the format `{games : <array of gameIds>}`      
 *returns*: `JSON` - A JSON with an array value in the format `{games : <array of game objects>}`       
 *example*: <HOST URL>/wePlay/v1/leagues/getGame/1234     
+
+
+##### GameUserObject
+*info*: A GameUserObject is a JSON object that has details about a user, that are relevant only to a game, since we are not interested in the user's activeGames, leagues etc. In addition, more fields are added.    
+```{_id' : <id>, form : [], isInvite : <bool>,  date: Date(), team : <int>, attending : <int>}```
