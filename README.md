@@ -161,7 +161,7 @@ to every request.
 *info*: changes the attending status for this user between -1 (not attending), 0 (undecided) and 1 (attending)       
 *method*: `GET`   
 *accepts*: `String/String` - GameId to toggle attending for, followed by '/', followed by attending status (-1,0,1)      
-*returns*: `JSON` - The updated [GameUserObject](#gameuserobject)      
+*returns*: `JSON` - The updated [GameUserObject](#gameuserobject) **(see below)**     
 *example*: <HOST URL>/wePlay/v1/leagues/toggleAttending/1234/1      
 
 ##### path : '/getGame/{gameId}'
