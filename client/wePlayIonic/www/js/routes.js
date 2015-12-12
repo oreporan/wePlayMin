@@ -15,52 +15,42 @@ angular.module('app.routes', [])
       templateUrl: 'templates/login.html',
       controller: 'loginCtrl'
     })
-
-
-
-
-
     .state('tabsController.home', {
       url: '/home',
       views: {
-        'tab1': {
+        'home': {
           templateUrl: 'templates/home.html',
           controller: 'homeCtrl'
         }
       }
     })
-
-
-
-
-
     .state('tabsController.game', {
       url: '/game',
       views: {
-        'tab2': {
+        'game': {
           templateUrl: 'templates/game.html',
           controller: 'gameCtrl'
         }
       }
     })
-
-
-
-
-
     .state('tabsController.league', {
       url: '/league',
       views: {
-        'tab3': {
+        'league': {
           templateUrl: 'templates/league.html',
           controller: 'leagueCtrl'
         }
       }
     })
-
-
-
-
+    .state('tabsController.createLeague', {
+      url: '/createLeague',
+      views: {
+        'league': {
+          templateUrl: 'templates/league/createLeague.html',
+          controller: 'leagueCtrl'
+        }
+      }
+    })
     .state('tabsController', {
       url: '/page3',
       abstract:true,
