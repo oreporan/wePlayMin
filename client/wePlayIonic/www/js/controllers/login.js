@@ -1,28 +1,34 @@
 angular.module('app.controllers')
-  .controller('loginCtrl', function($scope, $state, $q, userService, userFacebookService, localStorageService, $ionicLoading, authenticateService, logger) {
+  .controller('loginCtrl', function($scope, $state, $q, userService, userFacebookService, localStorageService, $ionicLoading, authenticateService, logger, constants) {
     var wpLogger = logger.logger("loginCtrl");
 
-    $scope.fakeLogin = function(){
-      $state.go('tabsController.home');
-    }
+    // For testing: clear clientId before starting
+    // localStorageService.removeItem("wp_clientId");
 
-    // wp app start here.
+    // WP app start here.
     // Check if clientId exist, go to home page if true, else - Login page
-    var clientId = localStorageService.getByKey("wp_clientId");
-    if (clientId) {
-      var user = userService.getWpUser(clientId, function(response, err) {
-        if (err) {
+    var clientId = localStorageService.getByKey(constants.STORAGE_CLIENTID);
+    function main(){
+      if (clientId) {
+        wpLogger.audit("clientId exists");
+        var user = userService.getWpUser(clientId, function(response, err) {
+          if (err) {
+            wpLogger.audit("couldn't get wpUser. err" + err);
 
-        } else {
-          $state.go('tabsController.home');
-        }
-      });
+          } else {
+            $state.go('tabsController.home');
+          }
+        });
+      }
     }
+
+    main();
+
 
     //This is the success callback from the login method
     var fbLoginSuccess = function(response) {
 
-      wpLogger.audit("fbLoginSuccess", "success function");
+      wpLogger.audit("fbLoginSuccess", "succeeded to login with facebook");
 
       if (!response.authResponse) {
         fbLoginError("Cannot find the authResponse");
@@ -36,30 +42,29 @@ angular.module('app.controllers')
         if (err) {
           wpLogger.error("fbLoginSuccess", JSON.stringify(err));
         } else {
+          $ionicLoading.hide();
+
+          getFacebookProfileInfo(authResponse)
+            .then(function(profileInfo) {
+                //for the purpose of this example I will store user data on local storage
+                userFacebookService.setUser({
+                  authResponse: authResponse,
+                  userID: profileInfo.id,
+                  name: profileInfo.name,
+                  email: profileInfo.email,
+                  picture: "http://graph.facebook.com/" + authResponse.userID
+                });
+
+                $ionicLoading.hide();
+
+              },
+              function(fail) {
+                //fail get profile info
+                wpLogger.error("getFacebookProfileInfo", 'profile info fail: ' + fail);
+              });
           $state.go('tabsController.home');
         }
       });
-
-      $ionicLoading.hide();
-
-      getFacebookProfileInfo(authResponse)
-        .then(function(profileInfo) {
-            //for the purpose of this example I will store user data on local storage
-            userFacebookService.setUser({
-              authResponse: authResponse,
-              userID: profileInfo.id,
-              name: profileInfo.name,
-              email: profileInfo.email,
-              picture: "http://graph.facebook.com/" + authResponse.userID + "/picture?type=large"
-            });
-
-            $ionicLoading.hide();
-
-          },
-          function(fail) {
-            //fail get profile info
-            wpLogger.error("getFacebookProfileInfo", 'profile info fail: ' + fail);
-          });
     };
 
 
@@ -97,7 +102,6 @@ angular.module('app.controllers')
 
     //This method is executed when the user press the "Login with facebook" button
     $scope.facebookSignIn = function() {
-      facebookLogout();
       facebookConnectPlugin.getLoginStatus(function(success) {
 
         if (success.status === 'connected') {

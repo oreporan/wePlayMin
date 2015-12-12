@@ -25,7 +25,11 @@ app.use(bodyParser.json());
 // Allow for cross-origin CORS
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
+<<<<<<< HEAD
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, client-id");
+=======
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept,client-id");
+>>>>>>> client
   next();
 });
 
