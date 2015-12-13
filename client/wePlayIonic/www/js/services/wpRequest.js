@@ -7,7 +7,7 @@ angular.module('app.services')
     var sendPostWithHeaders = function(path, params, headers, callback) {
       var clientId = localStorageService.getByKey("wp_clientId");
 
-      wpLogger.audit("sendPost", "send POST request to: " + path);
+      wpLogger.audit("sendPost", "send POST request to: " + path + " with params: " + JSON.stringify(params));
 
       $http({
         method: 'POST',
@@ -93,12 +93,12 @@ angular.module('app.services')
       if (!response.data || !response.data.responseText) {
         wpLogger.error("wpRequest", "Invalid response data");
         callback(null, "Invalid response data");
+      } else {
+        responseText = response.data.responseText;
+        wpLogger.audit('wpRequest succeeded with responseText: ', JSON.stringify(responseText));
+
+        callback(responseText);
       }
-
-      responseText = response.data.responseText;
-      wpLogger.audit('wpRequest succeeded with responseText: ', JSON.stringify(responseText));
-
-      callback(responseText);
     }
 
     function failure(err, callback) {

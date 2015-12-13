@@ -3,7 +3,7 @@ angular.module('app.constants')
 .constant('paths', {
 
   // Server root url
-  SERVER_URL: "http://10.0.0.19:3000",
+  SERVER_URL: "http://10.0.0.2:3000",
 
   // Application Root - all requests are prefixed with this path
   ROOT: '/wePlay/v1',
@@ -25,7 +25,7 @@ angular.module('app.constants')
    * returns: JSON - a user object holding a new clientId
    * example: http://wwww.HOST.com/wePlay/v1/authenticate/signup/
    */
-  PATH_AUTHENTICATE_SIGNUP: '/signup',
+  PATH_AUTHENTICATE_SIGNUP: '/signup/',
 
   /*
    * info: signs in an existing user
@@ -34,7 +34,7 @@ angular.module('app.constants')
    * returns: JSON - a user object
    * example: http://wwww.HOST.com/wePlay/v1/authenticate/signin/
    */
-  PATH_AUTHENTICATE_SIGNIN: '/signin',
+  PATH_AUTHENTICATE_SIGNIN: '/signin/',
 
   /*
    * info: facebook authentication

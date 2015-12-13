@@ -16,16 +16,5 @@ angular.module('app.controllers')
         $scope.userImg = "http://graph.facebook.com/" + userFacebookService.getUser.userID + "/picture?type=large";
       }
     });
-
-
-
-    //This method is executed when the user press the "Login with facebook" button
-    // $scope.facebookLogout = function() {
-    //
-    //   facebookConnectPlugin.logout(function(success) {
-    //     console.log("logout success");
-    //   }, function(error) {
-    //     console.log("logout failed");
-    //   });
-    // };
+    
   })
