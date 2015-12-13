@@ -6,8 +6,8 @@
     <form class="list">
       <div class="spacer" style="width: 300px; height: 40px;"></div>
       <ion-list>
-        <label class="item item-input">
-          <input type="text" name='username' placeholder="Username" ng-model="formData.username" ng-show="isSignUp" required>
+        <label class="item item-input" ng-show="isSignUp">
+          <input type="text" name='username' placeholder="Username" ng-model="formData.username" required>
         </label>
         <label class="item item-input">
           <i class="icon  icon-fixed-width ion-at placeholder-icon"></i>
@@ -17,9 +17,9 @@
           <i class="icon ion-key  icon-fixed-width   placeholder-icon"></i>
           <input type="password" placeholder="Password" ng-model='formData.password' required>
         </label>
-        <label class="item item-input">
+        <label class="item item-input" ng-show="isSignUp">
           <i class="icon ion-key  icon-fixed-width   placeholder-icon" ng-show="isSignUp"></i>
-          <input type="password" placeholder="Confirm Password" ng-model='formData.confirm_password' ng-show="isSignUp" required>
+          <input type="password" placeholder="Confirm Password" ng-model='formData.confirm_password' required>
         </label>
       </ion-list>
       <div class="spacer" style="width: 300px; height: 16px;"></div>
