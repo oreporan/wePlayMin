@@ -76,16 +76,6 @@ angular.module('app.services')
       return info.promise;
     };
 
-    var facebookLogout = function(callback) {
-      facebookConnectPlugin.logout(function(success) {
-        wpLogger.audit('facebookLogout', "logout success");
-        callback(success);
-      }, function(error) {
-        wpLogger.error('facebookLogout', "logout failed");
-        callback(error);
-      });
-    };
-
     //This method is executed when the user press the "Login with facebook" button
     var facebookSignIn = function(callback) {
       facebookConnectPlugin.getLoginStatus(function(success) {
@@ -158,7 +148,6 @@ angular.module('app.services')
     };
 
     return {
-      facebookLogout: facebookLogout,
       facebookSignIn: facebookSignIn
     };
   });

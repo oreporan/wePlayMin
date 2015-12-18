@@ -1,5 +1,5 @@
 angular.module('app.controllers')
-  .controller('homeCtrl', function($scope, logger, localStorageService, userService, constants, userFacebookService) {
+  .controller('homeCtrl', function($scope, $state, logger, authenticateService, localStorageService, userService, constants, userFacebookService) {
 
     var wpLogger = logger.logger("homeCtrl");
     var clientId = localStorageService.getByKey(constants.STORAGE_CLIENTID);
@@ -13,8 +13,22 @@ angular.module('app.controllers')
         wpLogger.audit("", "user: " + JSON.stringify(response));
         $scope.userName = response.name;
         $scope.userDetails = response;
-        $scope.userImg = "http://graph.facebook.com/" + userFacebookService.getUser.userID + "/picture?type=large";
+        if (userFacebookService.getUser) {
+          $scope.userImg = "http://graph.facebook.com/" + userFacebookService.getUser.userID + "/picture?type=large";
+        }
       }
     });
-    
+
+    $scope.logout = function() {
+      wpLogger.error("logout", "");
+      authenticateService.logout(function(error){
+        if (error) {
+          wpLogger.error("logout", "failed to logout");
+        } else {
+          wpLogger.audit("logout", "succeeded to logout");
+          $state.go('login');
+        }
+      });
+    }
+
   })

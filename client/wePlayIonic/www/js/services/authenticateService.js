@@ -56,7 +56,7 @@ angular.module('app.services')
         if (err) {
           callback(null, err);
         } else {
-          var clientId = response["client-id"];
+          var clientId = response["_id"];
           if (!clientId) {
             wpLogger.error("signIn", "client-id does not exist on the response");
             callback(null, "client-id does not exist on the response")
@@ -69,8 +69,26 @@ angular.module('app.services')
       })
     }
 
+    var logout = function(callback) {
+      if (ionic.Platform.isWebView()) {
+        facebookConnectPlugin.logout(function(success) {
+          wpLogger.audit('facebookLogout', "logout success");
+          localStorageService.removeItem(constants.STORAGE_CLIENTID);
+          callback(null);
+        }, function(error) {
+          wpLogger.error('facebookLogout', "logout failed");
+          callback(error);
+        });
+      } else {
+        localStorageService.removeItem(constants.STORAGE_CLIENTID);
+        callback(null);
+      }
+    }
+
     return {
       wpFacebookSignUp: wpFacebookSignUp,
       signUp: signUp,
+      signIn: signIn,
+      logout: logout
     };
   });

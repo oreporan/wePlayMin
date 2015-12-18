@@ -1,27 +1,27 @@
 angular.module('app.services')
-.service('localStorageService', function(logger) {
+  .service('localStorageService', function(logger) {
 
-  var setByKey = function(key, object) {
-    if (key && object) {
-      window.localStorage.setItem(key, object);
-    }
-  };
+    var setByKey = function(key, object) {
+      if (key && object) {
+        window.localStorage.setItem(key, object);
+      }
+    };
 
-  var getByKey = function(key){
-    if (key) {
-      return window.localStorage.getItem(key);
-    }
-  };
+    var getByKey = function(key) {
+      if (key) {
+        return window.localStorage.getItem(key);
+      }
+    };
 
-  var removeItem = function(key){
-    if (key) {
-      return window.localStorage.removeItem(key);
-    }
-  };
+    var removeItem = function(key) {
+      if (key) {
+        window.localStorage.removeItem(key);
+      }
+    };
 
-  return {
-    removeItem: removeItem,
-    getByKey: getByKey,
-    setByKey: setByKey
-  };
-});
+    return {
+      removeItem: removeItem,
+      getByKey: getByKey,
+      setByKey: setByKey
+    };
+  });
