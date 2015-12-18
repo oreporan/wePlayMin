@@ -26,17 +26,15 @@ angular.module('app.services')
       })
     };
 
-    var signUp = function(userName, password, email) {
-      wpRequest.sendPost(paths.BASE_AUTHENTICATE + paths.PATH_AUTHENTICATE_SIGNUP, {
-        name: userName,
+    var signUp = function(username, email, password, callback) {
+      wpRequest.sendPostWithoutClientId(paths.BASE_AUTHENTICATE + paths.PATH_AUTHENTICATE_SIGNUP, {
+        name: username,
         email: email,
         password: password
       }, function(response, err) {
         if (err) {
           callback(null, err);
         } else {
-          wpLogger.audit("signUp", "response: " + response);
-
           var clientId = response["client-id"];
           if (!clientId) {
             wpLogger.error("signUp", "client-id does not exist on the response");
@@ -50,8 +48,47 @@ angular.module('app.services')
       })
     }
 
+    var signIn = function(email, password, callback) {
+      wpRequest.sendPostWithoutClientId(paths.BASE_AUTHENTICATE + paths.PATH_AUTHENTICATE_SIGNIN, {
+        email: email,
+        password: password
+      }, function(response, err) {
+        if (err) {
+          callback(null, err);
+        } else {
+          var clientId = response["client-id"];
+          if (!clientId) {
+            wpLogger.error("signIn", "client-id does not exist on the response");
+            callback(null, "client-id does not exist on the response")
+          } else {
+            wpLogger.audit("signIn", "clientId: " + clientId);
+            localStorageService.setByKey(constants.STORAGE_CLIENTID, clientId);
+            callback(clientId);
+          }
+        }
+      })
+    }
+
+    var logout = function(callback) {
+      if (ionic.Platform.isWebView()) {
+        facebookConnectPlugin.logout(function(success) {
+          wpLogger.audit('facebookLogout', "logout success");
+          localStorageService.removeItem(constants.STORAGE_CLIENTID);
+          callback(null);
+        }, function(error) {
+          wpLogger.error('facebookLogout', "logout failed");
+          callback(error);
+        });
+      } else {
+        localStorageService.removeItem(constants.STORAGE_CLIENTID);
+        callback(null);
+      }
+    }
+
     return {
       wpFacebookSignUp: wpFacebookSignUp,
       signUp: signUp,
+      signIn: signIn,
+      logout: logout
     };
   });
