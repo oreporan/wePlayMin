@@ -48,7 +48,7 @@ angular.module('app.services')
       })
     }
 
-    var signIn = function(password, email, callback) {
+    var signIn = function(email, password, callback) {
       wpRequest.sendPostWithoutClientId(paths.BASE_AUTHENTICATE + paths.PATH_AUTHENTICATE_SIGNIN, {
         email: email,
         password: password
@@ -56,7 +56,7 @@ angular.module('app.services')
         if (err) {
           callback(null, err);
         } else {
-          var clientId = response["_id"];
+          var clientId = response["client-id"];
           if (!clientId) {
             wpLogger.error("signIn", "client-id does not exist on the response");
             callback(null, "client-id does not exist on the response")

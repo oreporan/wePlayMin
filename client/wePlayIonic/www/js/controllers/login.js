@@ -39,7 +39,8 @@ angular.module('app.controllers')
       }
 
       $scope.wpSignIn = function() {
-        authenticateService.signIn($scope.email, $scope.password, function(response, error) {
+        console.log('email:' + $scope.formData.email);
+        authenticateService.signIn($scope.formData.email, $scope.formData.password, function(response, error) {
           if (error) {
             $ionicLoading.hide();
           } else {
@@ -50,7 +51,6 @@ angular.module('app.controllers')
       }
 
       $scope.wpSignUp = function() {
-        console.log('username:' + $scope.username);
         authenticateService.signUp($scope.formData.username, $scope.formData.email, $scope.formData.password, function(response, error) {
           if (error) {
             $ionicLoading.hide();
