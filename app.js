@@ -3,6 +3,8 @@ var db = require('./lib/framework/db').connect('weplay_test' , 27017);
 var usersExternal = require('./lib/external/main/usersEndpoint.js');
 var leaguesExternal = require('./lib/external/main/leaguesEndpoint.js');
 var gamesExternal = require('./lib/external/main/gamesEndpoint.js');
+var notificationsExternal = require('./lib/external/main/notificationsEndpoint.js');
+
 var filter = require('./lib/filter');
 var authenticate = require('./lib/external/main/authenticate');
 var logger = require('./lib/utils/logger.js').init('app');
@@ -32,10 +34,12 @@ app.use(function(req, res, next) {
 // Routing
 app.use(path.ROOT, router); // All requests have wePlay attached
 router.use(authenticate);
-router.use(filter.doRequest);
+router.use(filter.doFilter);
 router.use(leaguesExternal);
 router.use(usersExternal);
 router.use(gamesExternal);
+router.use(notificationsExternal);
+
 
 var port = process.env.PORT || 3000;
 app.listen(port);
