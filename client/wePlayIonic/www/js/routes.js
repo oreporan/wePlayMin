@@ -42,11 +42,29 @@ angular.module('app.routes', [])
         }
       }
     })
+    .state('tabsController.singleLeague', {
+        url: '/singleLeague',
+        views: {
+          'league': {
+            templateUrl: 'templates/league/singleLeague.html',
+            controller: 'leagueCtrl'
+          }
+        }
+      })
     .state('tabsController.createLeague', {
       url: '/createLeague',
       views: {
         'league': {
           templateUrl: 'templates/league/createLeague.html',
+          controller: 'leagueCtrl'
+        }
+      }
+    })
+    .state('tabsController.createGame', {
+      url: '/createGame',
+      views: {
+        'league': {
+          templateUrl: 'templates/league/createGame.html',
           controller: 'leagueCtrl'
         }
       }

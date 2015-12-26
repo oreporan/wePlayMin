@@ -1,11 +1,19 @@
 angular.module('app.services')
-    .service('leagueService',['$http', '$state', function($http, $state) {
+    .service('leagueService',['$http', '$state', function($http) {
 
         return {
-            getMyLeagues: function(clientId){
-                /* TODO */
+            getLeagueById: function(clientId, leagueId, success, fail) {
+                var req = {
+                    method: 'GET',
+                    url: 'http://localhost:3000/wePlay/v1/leagues/getLeague/' + leagueId,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'client-id': clientId
+                    }
+                }
+                return $http(req).then(success, fail);
             },
-            createLeague: function(clientId, params){
+            createLeague: function(clientId, params, success, fail){
                 var req = {
                     method: 'POST',
                     url: 'http://localhost:3000/wePlay/v1/leagues/addLeague/',
@@ -21,12 +29,7 @@ angular.module('app.services')
                         makeTeamsAtNum: params.makeTeamsAtNum
                     }
                 };
-                $http(req).then(function successCallback(response){
-                    alert('League added successfully');
-                    $state.go('tabsController.league');
-                }, function errorCallback(error){
-                    alert(error);
-                })
+                return $http(req).then(success, fail);
             }
         }
     }]);

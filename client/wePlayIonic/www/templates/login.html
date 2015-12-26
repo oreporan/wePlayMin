@@ -7,11 +7,12 @@
       <div class="spacer" style="width: 300px; height: 40px;"></div>
       <ion-list>
         <label class="item item-input" ng-show="isSignUp">
-          <input type="text" name="username" ng-model="username" placeholder="Username" required ng-minlength="2" required ng-maxlength="50">
+          <input type="text" name="username" ng-model="formData.username" placeholder="Username" required ng-minlength="2" required ng-maxlength="50">
           <span ng-show="loginForm.username.$dirty && loginForm.username.$invalid">
             <span ng-show="loginForm.username.$error.required">Username is required</span>
             <span ng-show="loginForm.username.$error.minlength">Username is too short</span>
             <span ng-show="loginForm.username.$error.maxlength">Username is too long</span>
+          </span>
         </label>
         <label class="item item-input">
           <i class="icon  icon-fixed-width ion-at placeholder-icon"></i>
