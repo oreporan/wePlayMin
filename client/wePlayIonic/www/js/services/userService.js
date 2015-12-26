@@ -24,7 +24,7 @@ angular.module('app.services')
       }
     };
 
-    var updateAppUser = function (clientId, callback) {
+    var updateAppUser = function(clientId, callback) {
       wpRequest.sendGet(paths.BASE_USERS + paths.PATH_USERS_GETUSER_WITH_ID + '/', clientId, function(response, err) {
         if (err) {
           callback(null, err);
@@ -36,9 +36,15 @@ angular.module('app.services')
       });
     }
 
+    var removeUser = function() {
+      user = null;
+    }
+
 
     return {
       getWpUser: getWpUser,
+      updateAppUser: updateAppUser,
+      removeUser: removeUser,
       user: user
     };
   });

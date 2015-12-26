@@ -3,31 +3,44 @@
 
     <button class="facebook-sign-in button button-block" ng-click="facebookSignIn()">Log in with Facebook</button>
 
-    <form class="list">
+    <form class="list" name="loginForm" novalidate>
       <div class="spacer" style="width: 300px; height: 40px;"></div>
       <ion-list>
         <label class="item item-input" ng-show="isSignUp">
-          <input type="text" name='username' placeholder="Username" ng-model="formData.username" required>
+          <input type="text" name="username" ng-model="username" placeholder="Username" required ng-minlength="2" required ng-maxlength="50">
+          <span ng-show="loginForm.username.$dirty && loginForm.username.$invalid">
+            <span ng-show="loginForm.username.$error.required">Username is required</span>
+            <span ng-show="loginForm.username.$error.minlength">Username is too short</span>
+            <span ng-show="loginForm.username.$error.maxlength">Username is too long</span>
         </label>
         <label class="item item-input">
           <i class="icon  icon-fixed-width ion-at placeholder-icon"></i>
-          <input type="text" name="email" ng-model="formData.email" placeholder="E-mail" required/>
+          <input type="email" name="email" ng-model="formData.email" placeholder="E-mail">
+          <span ng-show="loginForm.email.$dirty && loginForm.email.$invalid">
+            <span ng-show="loginForm.email.$error.required">Email is required.</span>
+            <span ng-show="loginForm.email.$error.email">Invalid email address.</span>
         </label>
         <label class="item item-input">
           <i class="icon ion-key  icon-fixed-width   placeholder-icon"></i>
-          <input type="password" placeholder="Password" ng-model='formData.password' required>
+          <input type="password" name="password" placeholder="Password" ng-model='formData.password' required ng-minlength="5" required ng-maxlength="25">
+          <span ng-show="loginForm.password.$dirty && loginForm.password.$invalid">
+            <span ng-show="loginForm.password.$error.required">Password is required</span>
+            <span ng-show="loginForm.password.$error.minlength">Password is too short</span>
+            <span ng-show="loginForm.password.$error.maxlength">Password is too long</span>
         </label>
         <label class="item item-input" ng-show="isSignUp">
           <i class="icon ion-key  icon-fixed-width   placeholder-icon" ng-show="isSignUp"></i>
-          <input type="password" placeholder="Confirm Password" ng-model='formData.confirm_password' required>
+          <input type="password" name="confirm_password" placeholder="Confirm Password" ng-model='formData.confirm_password' ng-required="{{isSignUp}}" compare-to="formData.password">
+            <span ng-show="loginForm.confirm_password.$error && loginForm.confirm_password.$dirty && loginForm.confirm_password.$invalid">Password do not match</span>
         </label>
       </ion-list>
-      <div class="spacer" style="width: 300px; height: 16px;"></div>
-      <button class="button button-stable button-block " ng-click="wpSignIn()" ng-hide='isSignUp'>Log in</button>
-      <button class="button button-stable button-block " ng-click="wpSignUp()" ng-show='isSignUp'>Sign Up</button>
 
-      <a menu-close="" class="button button-positive button-clear button-block " ng-click="showSignUp()" ng-hide='isSignUp'>Or create an account</a>
-      <a menu-close="" class="button button-positive button-clear button-block " ng-click="hideSignUp()" ng-show='isSignUp'>Back To Login</a>
+      <div class="spacer " style="width: 300px; height: 16px; "></div>
+      <button class="button button-stable button-block " ng-click="wpSignIn()" ng-hide='isSignUp' ng-disabled="loginForm.password.$invalid || loginForm.email.$invalid">Log in</button>
+      <button class="button button-stable button-block " ng-click="wpSignUp()" ng-show='isSignUp' ng-disabled="loginForm.$invalid">Sign Up</button>
+
+      <a menu-close=" " class="button button-positive button-clear button-block " ng-click="showSignUp() " ng-hide='isSignUp'>Or create an account</a>
+      <a menu-close=" " class="button button-positive button-clear button-block " ng-click="hideSignUp() " ng-show='isSignUp'>Back To Login</a>
     </form>
   </ion-content>
 </ion-view>

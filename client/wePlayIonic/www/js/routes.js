@@ -15,6 +15,7 @@ angular.module('app.routes', [])
       controller: 'loginCtrl'
     })
     .state('tabsController.home', {
+      cache: false,
       url: '/home',
       views: {
         'home': {

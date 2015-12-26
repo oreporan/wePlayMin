@@ -13,14 +13,17 @@ angular.module('app.controllers')
         wpLogger.audit("", "user: " + JSON.stringify(response));
         $scope.userName = response.name;
         $scope.userDetails = response;
+        $scope.userLeagues = response.leagues;
+        $scope.userGames = response.games;
         if (userFacebookService.getUser) {
           $scope.userImg = "http://graph.facebook.com/" + userFacebookService.getUser.userID + "/picture?type=large";
         }
       }
     });
 
+
+
     $scope.logout = function() {
-      wpLogger.error("logout", "");
       authenticateService.logout(function(error){
         if (error) {
           wpLogger.error("logout", "failed to logout");
@@ -30,5 +33,6 @@ angular.module('app.controllers')
         }
       });
     }
+
 
   })
