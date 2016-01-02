@@ -50,7 +50,7 @@ angular.module('app.controllers')
       }
 
       $scope.selectThisLeague = function() {
-        $scope.selectedLeague = this.league;
+        $scope.vent = {selectedLeague: this.league};
         wpLogger.audit('selectThisLeague', 'selected League :' + $scope.selectedLeague);
       }
 
@@ -79,8 +79,6 @@ angular.module('app.controllers')
               $state.go('tabsController.leagueDetails');
             }
 
-          }
-        })
-    }
-
+          })
+        }
   });
