@@ -15,7 +15,8 @@
     "node-cache": "^3.0.0",
     "nodemailer": "^1.5.0",
     "passport": "^0.3.0",
-    "passport-facebook-token": "^3.0.5"
+    "passport-facebook-token": "^3.0.5",
+    "passport-google-oauth2": "^0.1.6"
   },
   "devDependencies": {
     "mocha": "^2.2.5",
