@@ -5,7 +5,7 @@ angular.module('app.services')
 
     return {
       addGame: function(leagueId, matchDay, users, callback) {
-        var clientId = localStorageService.getByKey(constants.STORAGE_CLIENTID);
+        var clientId = localStorageService.getClientId();
         wpRequest.sendPostWithHeaders(paths.BASE_GAME + paths.PATH_GAME_ADDGAME, {
           matchDay: matchDay,
           users: users
@@ -23,7 +23,7 @@ angular.module('app.services')
       },
 
       toggleAttending: function(leagueId, gameId, attending, callback) {
-        wpRequest.sendGetWithHeaders(paths.BASE_GAME + paths.PATH_GAME_ATTENDINGSTATUS_WITH_GAMEID + '/' + gameId + '/' + attending, leagueId, function(response, error) {
+        sendGetWithGameHeaders(paths.PATH_GAME_ATTENDINGSTATUS_WITH_GAMEID + '/' + gameId + '/' + attending, leagueId, function(response, error) {
           if (err) {
             callback(null, err);
           } else {
@@ -33,52 +33,48 @@ angular.module('app.services')
         })
       },
 
-      getLeagueByName: function(name, callback) {
-        wpRequest.sendGet(paths.BASE_GAME + paths.PATH_LEAGUES_GETLEAGUEBYNAME, name, function(response, error) {
+      buildGame: function(leagueId, gameId, attending, callback) {
+        sendGetWithGameHeaders(paths.PATH_GAME_BUILDGAME_WITH_ID + '/' + gameId, leagueId, function(response, error) {
           if (err) {
             callback(null, err);
           } else {
-            wpLogger.audit("getLeagueByName", "response: " + response);
+            wpLogger.audit("buildGame", "response: " + response);
             callback(response);
           }
         })
       },
 
-      getLeagueByKeyword: function(keyword, callback) {
-        wpRequest.sendGet(paths.BASE_GAME + paths.PATH_LEAGUES_GETLEAGUESBYKEYWORD, keyword, function(response, error) {
+      getGameById: function(gameId, callback) {
+        wpRequest.sendGet(paths.BASE_GAME + paths.PATH_GAME_GETGAME_WITH_ID + '/' + gameId, function(response, error) {
           if (err) {
             callback(null, err);
           } else {
-            wpLogger.audit("getLeagueByKeyword", "response: " + response);
+            wpLogger.audit("getGameById", "response: " + response);
             callback(response);
           }
         })
       },
 
-      addUserToLeague: function(leagueId, callback) {
-        wpRequest.sendGet(paths.BASE_GAME + paths.PATH_LEAGUES_ADDUSERTOLEAGUE, leagueId, function(response, error) {
+      changeGameStatus: function(gameId, shouldCloseGame, callback) {
+        wpRequest.sendPostWithHeaders(paths.BASE_GAME + paths.PATH_GAME_CHANGEGAMESTATUS_WITH_ID + '/' + gameId, {
+          shouldCloseGame: shouldCloseGame,
+        }, {
+          "client-id": clientId,
+          "league-id": leagueId
+        }, function(response, error) {
           if (err) {
             callback(null, err);
           } else {
-            wpLogger.audit("addUserToLeague", "response: " + response);
+            wpLogger.audit("changeGameStatus", "response: " + response);
             callback(response);
           }
         })
       },
 
-      removeUserFromLeague: function(leagueId, callback) {
-        wpRequest.sendGet(paths.BASE_GAME + paths.PATH_LEAGUES_REMOVEUSERFROMLEAGUE_WITH_ID, leagueId, function(response, error) {
-          if (err) {
-            callback(null, err);
-          } else {
-            wpLogger.audit("removeUserFromLeague", "response: " + response);
-            callback(response);
-          }
-        })
-      },
-
-      getLeaguesListById: function(leagueIds, callback) {
-        wpRequest.sendPost(paths.BASE_GAME + paths.PATH_LEAGUES_GETLEAGUESLIST_BY_ID, leagueIds, function(response, error) {
+      getGamesListById: function(games, callback) {
+        wpRequest.sendPost(paths.BASE_GAME + paths.PATH_GAME_GETGAMELIST, {
+          games: games
+        }, function(response, error) {
           if (err) {
             callback(null, err);
           } else {
@@ -88,25 +84,12 @@ angular.module('app.services')
         })
       },
 
-      updateLeague: function(adminId, leagueId, callback) {
-        wpRequest.sendPut(paths.BASE_GAME + paths.PATH_LEAGUES_UPDATELEAGUE, leagueId, function(response, error) {
+      updateGame: function(gameId, params, callback) {
+        wpRequest.sendPut(paths.BASE_GAME + paths.PATH_GAME_UPDATEGAME, params, function(response, error) {
           if (err) {
             callback(null, err);
           } else {
             wpLogger.audit("updateLeague", "response: " + response);
-            callback(response);
-          }
-        })
-      },
-
-      addAdmin: function(leagueId, admin, callback) {
-        wpRequest.sendPut(paths.BASE_GAME + paths.PATH_LEAGUES_ADD_ADMIN_WITH_LEAGUE_ID + "/" + leagueId, {
-          admin: admin
-        }, function(response, error) {
-          if (err) {
-            callback(null, err);
-          } else {
-            wpLogger.audit("addAdmin", "response: " + response);
             callback(response);
           }
         })

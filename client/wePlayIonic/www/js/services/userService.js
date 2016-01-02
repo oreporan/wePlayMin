@@ -41,6 +41,7 @@ angular.module('app.services')
     }
 
 
+
     return {
       getWpUser: getWpUser,
       updateAppUser: updateAppUser,

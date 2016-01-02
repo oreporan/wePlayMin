@@ -77,7 +77,7 @@ angular.module('app.services')
       },
 
       getLeaguesListById : function(leagueIds, callback) {
-        wpRequest.sendPost(paths.BASE_LEAGUES + paths.PATH_LEAGUES_GETLEAGUESLIST_BY_ID, leagueIds, function(response, error) {
+        wpRequest.sendPost(paths.BASE_LEAGUES + paths.PATH_LEAGUES_GETLEAGUESLIST_BY_ID, {leagueIds: leagueIds}, function(response, error) {
           if (err) {
             callback(null, err);
           } else {

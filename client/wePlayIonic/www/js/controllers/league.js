@@ -30,7 +30,7 @@ angular.module('app.controllers')
               logger
             } else {
               leagueObject = response;
-              $scope.userLeagues.push(leagueObject.data.responseText);  
+              $scope.userLeagues.push(leagueObject.data.responseText);
             }
           });
         })
@@ -59,14 +59,14 @@ angular.module('app.controllers')
       var gameObject;
       console.log($scope.selectedLeague);
       $scope.selectedLeague.games.forEach(function(elem, index, array) {
-        gameService.getGameById($scope.clientId, $scope.selectedLeague.id, array[index], function(response) {
+        gameService.getGameById(array[index], function(response) {
           gameObject = response;
           $scope.userGames.push(gameObject);
         })
       })
     }
     $scope.createGame = function() {
-      gameService.createGame($scope.clientId, $scope.selectedLeague.id, function() {
+      gameService.createGame($scope.selectedLeague.id, function() {
         alert('A new game has been successfully created');
         $scope.userUpdate();
         $state.go('tabsController.leagueDetails');
@@ -74,13 +74,5 @@ angular.module('app.controllers')
 
       })
     }
-
-
-
-
-
-
-
-
 
   });

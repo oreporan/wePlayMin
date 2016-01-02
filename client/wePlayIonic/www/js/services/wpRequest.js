@@ -5,7 +5,7 @@ angular.module('app.services')
 
     // Not always we have to add the client-id header
     var sendPostWithHeaders = function(path, params, headers, callback) {
-      var clientId = localStorageService.getByKey(constants.STORAGE_CLIENTID);
+      var clientId = localStorageService.getClientId();
 
       wpLogger.audit("sendPost", "send POST request to: " + path + " with params: " + JSON.stringify(params));
 
@@ -32,7 +32,7 @@ angular.module('app.services')
     };
 
     var sendGet = function(path, callback) {
-      var clientId = localStorageService.getByKey("wp_clientId");
+      var clientId = localStorageService.getClientId();
 
       wpLogger.audit("sendGet", "send GET request to: " + path);
       $http({
@@ -50,7 +50,7 @@ angular.module('app.services')
     };
 
     var sendGetWithHeaders = function(path, headers, callback) {
-      var clientId = localStorageService.getByKey("wp_clientId");
+      var clientId = localStorageService.getClientId();
 
       wpLogger.audit("sendGet", "send GET request to: " + path);
       $http({
@@ -65,7 +65,7 @@ angular.module('app.services')
     };
 
     var sendPut = function(path, pathParams, params, callback) {
-      var clientId = localStorageService.getByKey("wp_clientId");
+      var clientId = localStorageService.getClientId();
 
       wpLogger.audit("sendPut", "send PUT request to: " + path);
       $http({
@@ -84,7 +84,7 @@ angular.module('app.services')
     };
 
     var sendDelete = function(path, params, callback) {
-      var clientId = localStorageService.getByKey("wp_clientId");
+      var clientId = localStorageService.getClientId();
 
       wpLogger.audit("sendDelete", "send DELETE request to: " + path);
       $http({
