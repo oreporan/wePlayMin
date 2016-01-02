@@ -29,8 +29,7 @@ angular.module('app.controllers')
               if (error) {
                 logger
               } else {
-                leagueObject = response;
-                $scope.userLeagues.push(leagueObject.data.responseText);
+                $scope.userLeagues.push(response);
               }
             });
           })
@@ -43,7 +42,7 @@ angular.module('app.controllers')
           if (error) {
             wpLogger.audit('createLeague', error);
           } else {
-            wpLogger.audit(createLeague, 'League added successfully');
+            wpLogger.audit('createLeague', 'League added successfully');
             $scope.userUpdate();
             $state.go('tabsController.league');
             window.location.reload();
