@@ -176,10 +176,40 @@ to every request.
 *method*: `POST`   
 *accepts*: `JSON` - a JSON with an array value in the format `{games : <array of gameIds>}`      
 *returns*: `JSON` - A JSON with an array value in the format `{games : <array of game objects>}`       
-*example*: <HOST URL>/wePlay/v1/leagues/getGame/1234     
+*example*: <HOST URL>/wePlay/v1/leagues/getGamesListById/     
 
 * * *
 
+# -- Notifications Endpoint --
+Endpoint for reading and marking notifications, each user has a notifications array in his user object, this array is
+an array of notification id's which can be gotten via this endpoint
+*path* : <HOST URL>/wePlay/v1/notifications/*  
+*required header* : `client-id`   
+* * *
+
+##### path : '/getNotifications/'
+*info*: returns a list of notification objects, a notification object schema:
+`sender : {type : String},
+receiver : {type : String},
+message : {type : String},
+read: {type : Boolean, default : false},
+dateCreated: { type: Date}`   
+
+*method*: `POST`   
+*accepts*: `JSON` - a JSON with an array value in the format `{notifications : <array of notification IDs>}`      
+*returns*: `JSON` - A JSON with an array value in the format `{notifications : <array of game objects>}`       
+*example*: <HOST URL>/wePlay/v1/notifications/getNotifications/  
+* * *
+
+##### path : '/markAsRead/{notificationId}'
+*info*: Marks this notification as "read" in the server, so that the next time this user logs in, all his old notifications
+are ordered. It is recommended to mark every notification as read.           
+*method*: `GET`   
+*accepts*: `String` - notificationId      
+*returns*: `Boolean` - The success field is the only interesting field in this return value       
+*example*: <HOST URL>/wePlay/v1/notifications/markAsRead/1234
+
+* * *
 # GameUserObject
 *info*: A GameUserObject is a JSON object that has details about a user, that are relevant only to a game, since we are not interested in the user's activeGames, leagues etc. In addition, more fields are added.     
 -`team` field (0,1,2...), the current team the player is in    
