@@ -12,7 +12,7 @@ angular.module('app.services')
         wpLogger.audit("getWpUser", "user already exist in app. user: " + user);
         callback(user);
       } else {
-        wpRequest.sendGet(paths.BASE_USERS + paths.PATH_USERS_GETUSER_WITH_ID + '/', clientId, function(response, err) {
+        wpRequest.sendGet(paths.BASE_USERS + paths.PATH_USERS_GETUSER_WITH_ID + '/' + clientId, function(response, err) {
           if (err) {
             callback(null, err);
           } else {
@@ -25,7 +25,7 @@ angular.module('app.services')
     };
 
     var updateAppUser = function(clientId, callback) {
-      wpRequest.sendGet(paths.BASE_USERS + paths.PATH_USERS_GETUSER_WITH_ID + '/', clientId, function(response, err) {
+      wpRequest.sendGet(paths.BASE_USERS + paths.PATH_USERS_GETUSER_WITH_ID + '/' + clientId, function(response, err) {
         if (err) {
           callback(null, err);
         } else {

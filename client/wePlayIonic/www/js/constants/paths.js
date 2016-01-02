@@ -201,6 +201,10 @@ angular.module('app.constants')
   PATH_GAME_GETGAME_WITH_ID: '/getGame',
   PATH_GAME_GETGAMELIST: '/getGamesListById',
   PATH_GAME_BUILDGAME_WITH_ID: '/buildGame',
-  PATH_GAME_ATTENDINGSTATUS_WITH_GAMEID: '/attending'
+  PATH_GAME_ATTENDINGSTATUS_WITH_GAMEID: '/attending',
 
+  // Notification endpoint
+  BASE_NOTIFICATIONS: '/notifications',
+  PATH_NOTIFICATIONS_GET_NOTIFICATIONS: '/getNotifications',
+  PATH_NOTIFICATIONS_MARK_AS_READ: '/markAsRead'
 });
