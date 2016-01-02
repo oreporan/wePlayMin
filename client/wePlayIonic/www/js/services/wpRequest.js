@@ -54,7 +54,7 @@ angular.module('app.services')
 
       wpLogger.audit("sendPut", "send PUT request to: " + path);
       $http({
-        method: 'POST',
+        method: 'PUT',
         url: paths.SERVER_URL + paths.ROOT + path + pathParams,
         headers: {
           'Content-Type': 'application/json',
