@@ -3,7 +3,7 @@ angular.module('app.constants')
 .constant('paths', {
 
   // Server root url
-  SERVER_URL: "http://10.0.0.10:3000",
+  SERVER_URL: "http://10.0.0.2:3000",
 
   // Application Root - all requests are prefixed with this path
   ROOT: '/wePlay/v1',

@@ -36,8 +36,10 @@ angular.module('app.controllers')
           })
         }
       }
+
+      $scope.params = {};
       $scope.createLeague = function() {
-        leagueService.createLeague($scope.params.name, $scope.params.admin, $scope.params.frequency, $scope.params.numOfPlayersPerTeam, $scope.params.makeTeamsAtNum, function(rsponse, error) {
+        leagueService.addLeague($scope.params.name, $scope.params.admin, $scope.params.frequency, $scope.params.numOfPlayersPerTeam, $scope.params.makeTeamsAtNum, function(rsponse, error) {
           if (error) {
             wpLogger.audit('createLeague', error);
           } else {
@@ -50,7 +52,9 @@ angular.module('app.controllers')
       }
 
       $scope.selectThisLeague = function() {
-        $scope.vent = {selectedLeague: this.league};
+        $scope.vent = {
+          selectedLeague: this.league
+        };
         wpLogger.audit('selectThisLeague', 'selected League :' + $scope.selectedLeague);
       }
 
@@ -71,14 +75,14 @@ angular.module('app.controllers')
       }
       $scope.createGame = function() {
         gameService.createGame($scope.selectedLeague.id, function(response, error) {
-            if (error) {
+          if (error) {
 
-            } else {
-              alert('A new game has been successfully created');
-              $scope.userUpdate();
-              $state.go('tabsController.leagueDetails');
-            }
+          } else {
+            alert('A new game has been successfully created');
+            $scope.userUpdate();
+            $state.go('tabsController.leagueDetails');
+          }
 
-          })
-        }
-  });
+        })
+      }
+    });

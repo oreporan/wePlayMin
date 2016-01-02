@@ -69,9 +69,6 @@ angular.module('app.controllers')
     }
 
     $scope.showSignUp = function() {
-      if ($scope.formData) {
-        console.log(JSON.stringify($scope.formData));
-      }
       $scope.isSignUp = true;
     }
 
