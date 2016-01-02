@@ -1,9 +1,29 @@
 <ion-view title="Find a league">
     <ion-content padding="'true'" class="league find-league has-header">
         <div class="padding">
-            <button ng-click="createLeague()" class="button button-block button-positive">
-                Create !
+            <div class="list list-inset">
+                <label class="item item-input">
+                    <input type="text" ng-model="input.leagueToFind" placeholder="League Name">
+                </label>
+            </div>
+            <button ng-click="findLeague()" class="button button-block wpButton">
+                Find League !
             </button>
+        </div>
+        <div class=" card no-results-found" ng-show="noResultsFound">
+            <div class="item item-divider">
+                No Results Found
+            </div>
+            <div class="item item-text-wrap">
+                We couldn't find any leagues with this name... You probably misspelled it because you're an idiot
+            </div>
+        </div>
+        <div class="list leagues-found">
+            <a ng-click="joinLeague()" ng-repeat="league in leaguesFound" class="item item-avatar">
+                <img src="img/Liverpool_FC.jpg">
+                <h2>{{league.name}}</h2>
+                <p>{{league.admins[0]}}</p>
+            </a>
         </div>
     </ion-content>
 </ion-view>

@@ -6,6 +6,13 @@
                 Create a new game
             </button>
         </div>
+        <div class="list league-users">
+            <a ng-repeat="user in selected.league.users" class="item item-thumbnail-left">
+                <div class="info-area">
+                    <h2>{{user._id}}</h2>
+                </div>
+            </a>
+        </div>
         <div class="list games">
             <a ng-repeat="game in user.games" class="item item-thumbnail-left" ui-sref="tabsController.singleGame">
                 <div class="info-area">

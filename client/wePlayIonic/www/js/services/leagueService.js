@@ -56,7 +56,7 @@ angular.module('app.services')
       },
 
       addUserToLeague : function(leagueId, callback) {
-        wpRequest.sendGet(paths.BASE_LEAGUES + paths.PATH_LEAGUES_ADDUSERTOLEAGUE + '/' + leagueId, function(response, error) {
+        wpRequest.sendPut(paths.BASE_LEAGUES + paths.PATH_LEAGUES_ADDUSERTOLEAGUE + "/", leagueId, {isInvite: false}, function(response, error) {
           if (error) {
             callback(null, error);
           } else {

@@ -13,7 +13,11 @@ angular.module('app.controllers')
         league: null,
         game: null
       }
+      $scope.input = {
+        leagueToFind: ''
+      }
       $scope.params = {};
+      $scope.noResultsFound = false;
 
       $scope.userUpdate = function() {
         userService.updateAppUser($scope.clientId, function(response) {
@@ -42,7 +46,6 @@ angular.module('app.controllers')
       }
       if(!$scope.selected.league){
         $scope.selected.league = leagueService.getSelectedLeague();
-        console.log($scope.selected.league);
       }
 
       $scope.createLeague = function() {
@@ -88,7 +91,32 @@ angular.module('app.controllers')
             $scope.userUpdate();
             $state.go('tabsController.leagueDetails');
           }
-
         })
+      }
+      $scope.findLeague = function(){
+        $scope.leaguesFound = null;
+        $scope.noResultsFound = false;
+        leagueService.getLeagueByKeyword($scope.input.leagueToFind, function(response, error){
+          if (error){
+            $scope.noResultsFound = true;
+          } else {
+            $scope.leaguesFound = response.leagues;
+            if(!$scope.leaguesFound.length){
+
+            }
+          }
+        })
+      }
+      $scope.joinLeague = function(){
+        leagueService.addUserToLeague(this.league._id, function(response, error){
+          if(error){
+
+          }else{
+            alert("You have successfully joined " + response.name );
+            $scope.userUpdate();
+            $state.go('tabsController.league')
+            window.location.reload();
+          }
+        } );
       }
     });
