@@ -3,7 +3,7 @@ angular.module('app.constants')
 .constant('paths', {
 
   // Server root url
-  SERVER_URL: "http://10.0.0.10:3000",
+  SERVER_URL: "http://10.0.0.2:3000",
 
   // Application Root - all requests are prefixed with this path
   ROOT: '/wePlay/v1',
@@ -112,7 +112,7 @@ angular.module('app.constants')
   /*
    * info: creates a new league and makes this user the admin
    * method: POST
-   * accepts: JSON - object compliant with the League model - { name: <String - league name>, admin: <String - this client id>, frequency: <Int - for now, type -1>}
+   * accepts: JSON - object compliant with the League model - { name: <String - league name>, admin: <String - this client id>, frequency: <Int - for now, type -1>, numOfPlayersPerTeam: <Int> , makeTeamsAtNum: <Int>}
    * returns: array - an array of JSONs - user objects
    * example: http://wwww.HOST.com/wePlay/v1/users/addLeague/
    */
@@ -201,6 +201,10 @@ angular.module('app.constants')
   PATH_GAME_GETGAME_WITH_ID: '/getGame',
   PATH_GAME_GETGAMELIST: '/getGamesListById',
   PATH_GAME_BUILDGAME_WITH_ID: '/buildGame',
-  PATH_GAME_ATTENDINGSTATUS_WITH_GAMEID: '/attending'
+  PATH_GAME_ATTENDINGSTATUS_WITH_GAMEID: '/attending',
 
+  // Notification endpoint
+  BASE_NOTIFICATIONS: '/notifications',
+  PATH_NOTIFICATIONS_GET_NOTIFICATIONS: '/getNotifications',
+  PATH_NOTIFICATIONS_MARK_AS_READ: '/markAsRead'
 });

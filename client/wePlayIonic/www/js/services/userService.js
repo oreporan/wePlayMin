@@ -4,41 +4,71 @@ angular.module('app.services')
     var wpLogger = logger.logger("userService");
     wpLogger.audit("getWpUser", "Server url: " + JSON.stringify(paths.SERVER_URL));
 
+
     // Holds user's instance
     var user;
 
-    var getWpUser = function(clientId, callback) {
-      if (user != null) {
-        wpLogger.audit("getWpUser", "user already exist in app. user: " + user);
-        callback(user);
-      } else {
-        wpRequest.sendGet(paths.BASE_USERS + paths.PATH_USERS_GETUSER_WITH_ID + '/', clientId, function(response, err) {
+    return {
+      user: user,
+
+      getUserById: function(clientId, callback) {
+        if (user != null) {
+          wpLogger.audit("getWpUser", "user already exist in app. user: " + user);
+          callback(user);
+        } else {
+          wpRequest.sendGet(paths.BASE_USERS + paths.PATH_USERS_GETUSER_WITH_ID + '/' + clientId, function(response, err) {
+            if (err) {
+              callback(null, err);
+            } else {
+              wpLogger.audit('getUserById succeeded with user: ', JSON.stringify(response));
+              user = response;
+              callback(response);
+            }
+          });
+        }
+      },
+
+      getUserByName: function(name, callback) {
+        wpRequest.sendGet(paths.BASE_USERS + paths.PATH_USERS_GETUSER_WITH_NAME + '/' + name, function(response, err) {
           if (err) {
             callback(null, err);
           } else {
-            wpLogger.audit('getWpUser succeeded with user: ', JSON.stringify(response));
+            wpLogger.audit('getUserByName succeeded with user: ', JSON.stringify(response));
             user = response;
             callback(response);
           }
         });
+      },
+
+      getUsersListById: function(users, callback) {
+        wpRequest.sendPost(paths.BASE_USERS + paths.PATH_USERS_GETUSERSLIST_BY_ID, {
+          users: users
+        }, function(response, err) {
+          if (err) {
+            callback(null, err);
+          } else {
+            wpLogger.audit('getUsersListById succeeded with user: ', JSON.stringify(response));
+            user = response;
+            callback(response);
+          }
+        });
+      },
+
+      updateAppUser: function(clientId, callback) {
+        wpRequest.sendGet(paths.BASE_USERS + paths.PATH_USERS_GETUSER_WITH_ID + '/' + clientId, function(response, err) {
+          if (err) {
+            callback(null, err);
+          } else {
+            wpLogger.audit('updateAppUser succeeded with user: ', JSON.stringify(response));
+            user = response;
+            callback(response);
+          }
+        });
+      },
+
+      removeUser: function() {
+        user = null;
       }
-    };
 
-    var updateAppUser = function (clientId, callback) {
-      wpRequest.sendGet(paths.BASE_USERS + paths.PATH_USERS_GETUSER_WITH_ID + '/', clientId, function(response, err) {
-        if (err) {
-          callback(null, err);
-        } else {
-          wpLogger.audit('getWpUser succeeded with user: ', JSON.stringify(response));
-          user = response;
-          callback(response);
-        }
-      });
     }
-
-
-    return {
-      getWpUser: getWpUser,
-      user: user
-    };
   });

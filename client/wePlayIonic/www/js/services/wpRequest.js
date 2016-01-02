@@ -1,11 +1,11 @@
 angular.module('app.services')
-  .service('wpRequest', function(localStorageService, logger, $http, paths) {
+  .service('wpRequest', function(localStorageService, logger, $http, paths, constants) {
 
     var wpLogger = logger.logger("wpRequest");
 
     // Not always we have to add the client-id header
     var sendPostWithHeaders = function(path, params, headers, callback) {
-      var clientId = localStorageService.getByKey("wp_clientId");
+      var clientId = localStorageService.getClientId();
 
       wpLogger.audit("sendPost", "send POST request to: " + path + " with params: " + JSON.stringify(params));
 
@@ -31,13 +31,13 @@ angular.module('app.services')
       }, callback);
     };
 
-    var sendGet = function(path, params, callback) {
-      var clientId = localStorageService.getByKey("wp_clientId");
+    var sendGet = function(path, callback) {
+      var clientId = localStorageService.getClientId();
 
       wpLogger.audit("sendGet", "send GET request to: " + path);
       $http({
         method: 'GET',
-        url: paths.SERVER_URL + paths.ROOT + path + params,
+        url: paths.SERVER_URL + paths.ROOT + path,
         headers: {
           'Content-Type': 'application/json',
           'client-id': clientId
@@ -49,12 +49,27 @@ angular.module('app.services')
       });
     };
 
+    var sendGetWithHeaders = function(path, headers, callback) {
+      var clientId = localStorageService.getClientId();
+
+      wpLogger.audit("sendGet", "send GET request to: " + path);
+      $http({
+        method: 'GET',
+        url: paths.SERVER_URL + paths.ROOT + path,
+        headers
+      }).then(function successCallback(response) {
+        success(response, callback);
+      }, function errorCallback(response) {
+        failure(response, callback);
+      });
+    };
+
     var sendPut = function(path, pathParams, params, callback) {
-      var clientId = localStorageService.getByKey("wp_clientId");
+      var clientId = localStorageService.getClientId();
 
       wpLogger.audit("sendPut", "send PUT request to: " + path);
       $http({
-        method: 'POST',
+        method: 'PUT',
         url: paths.SERVER_URL + paths.ROOT + path + pathParams,
         headers: {
           'Content-Type': 'application/json',
@@ -69,7 +84,7 @@ angular.module('app.services')
     };
 
     var sendDelete = function(path, params, callback) {
-      var clientId = localStorageService.getByKey("wp_clientId");
+      var clientId = localStorageService.getClientId();
 
       wpLogger.audit("sendDelete", "send DELETE request to: " + path);
       $http({
@@ -112,6 +127,8 @@ angular.module('app.services')
       sendPostWithoutClientId: sendPostWithoutClientId,
       sendGet: sendGet,
       sendPut: sendPut,
-      sendDelete: sendDelete
+      sendDelete: sendDelete,
+      sendPostWithHeaders: sendPostWithHeaders,
+      sendGetWithHeaders: sendGetWithHeaders
     };
   });
