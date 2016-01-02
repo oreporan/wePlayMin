@@ -1,5 +1,5 @@
 angular.module('app.services')
-  .service('authenticateService', function(logger, localStorageService, wpRequest, $http, paths, constants) {
+  .service('authenticateService', function(logger, localStorageService, userService, wpRequest, paths, constants) {
 
     var wpLogger = logger.logger("authenticateService");
 
@@ -71,18 +71,23 @@ angular.module('app.services')
 
     var logout = function(callback) {
       if (ionic.Platform.isWebView()) {
-        facebookConnectPlugin.logout(function(success) {
-          wpLogger.audit('facebookLogout', "logout success");
-          localStorageService.removeItem(constants.STORAGE_CLIENTID);
+        facebookConnectPlugin.logout(function(success){
+          logoutSuccess();
           callback(null);
         }, function(error) {
           wpLogger.error('facebookLogout', "logout failed");
           callback(error);
         });
       } else {
-        localStorageService.removeItem(constants.STORAGE_CLIENTID);
+        logoutSuccess();
         callback(null);
       }
+    }
+
+    function logoutSuccess() {
+      wpLogger.audit('facebookLogout', "logout success");
+      localStorageService.removeItem(constants.STORAGE_CLIENTID);
+      userService.removeUser();
     }
 
     return {

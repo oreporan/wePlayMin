@@ -1,0 +1,14 @@
+<ion-view title="Create a new Game">
+    <ion-content padding="'true'" class="league create-game has-header">
+        <div class="list list-inset">
+            <label class="item item-input">
+                <input type="date" ng-model="params.dateOfGame" placeholder="Date of game">
+            </label>
+        </div>
+        <div class="padding">
+            <button ng-click="createGame()" class="button button-block button-positive">
+                Create !
+            </button>
+        </div>
+    </ion-content>
+</ion-view>

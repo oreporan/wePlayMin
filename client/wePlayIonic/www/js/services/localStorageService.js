@@ -1,5 +1,6 @@
 angular.module('app.services')
-  .service('localStorageService', function(logger) {
+  .service('localStorageService', function(logger, constants) {
+
 
     var setByKey = function(key, object) {
       if (key && object) {
@@ -19,9 +20,20 @@ angular.module('app.services')
       }
     };
 
+    var clientId = getByKey(constants.STORAGE_CLIENTID);
+
+    var getClientId = function() {
+      if (clientId) {
+        return clientId;
+      }
+      clientId = getByKey(constants.STORAGE_CLIENTID);
+      return clientId;
+    }
+
     return {
       removeItem: removeItem,
       getByKey: getByKey,
-      setByKey: setByKey
+      setByKey: setByKey,
+      getClientId: getClientId
     };
   });
