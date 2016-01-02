@@ -2,6 +2,7 @@ angular.module('app.services')
   .service('leagueService', function(logger, localStorageService, userService, wpRequest, paths, constants) {
 
     var wpLogger = logger.logger("leagueService");
+    var selectedLeague = {};
 
     return {
       addLeague : function(name, admin, frequency, numOfPlayersPerTeam, makeTeamsAtNum, callback) {
@@ -109,6 +110,12 @@ angular.module('app.services')
             callback(response);
           }
         })
+      },
+      setSelectedLeague: function(selectedLeague){
+        this.selectedLeague = selectedLeague;
+      },
+      getSelectedLeague: function(){
+        return this.selectedLeague;
       }
     }
   });

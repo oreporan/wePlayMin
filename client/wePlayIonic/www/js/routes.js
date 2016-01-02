@@ -60,6 +60,15 @@ angular.module('app.routes', [])
         }
       }
     })
+    .state('tabsController.findLeague', {
+      url: '/findLeague',
+      views: {
+        'league': {
+          templateUrl: 'templates/league/findLeague.html',
+          controller: 'leagueCtrl'
+        }
+      }
+    })
     .state('tabsController.createGame', {
       url: '/createGame',
       views: {

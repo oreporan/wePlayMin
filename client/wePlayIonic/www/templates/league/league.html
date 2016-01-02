@@ -1,15 +1,15 @@
 <ion-view title="League">
   <ion-content padding="'true'" class="league has-header">
     <div class="buttons">
-      <button class="button button-positive" ui-sref="tabsController.createLeague">
+      <button class="button wp-button" ui-sref="tabsController.createLeague">
         Create a new league
       </button>
-      <button class="button button-positive">
+      <button class="button wp-button" ui-sref="tabsController.findLeague">
         Find a league
       </button>
     </div>
     <div class="list">
-      <a ng-repeat="league in userLeagues" ng-click="selectThisLeague()" ui-sref="tabsController.singleLeague" class="item item-thumbnail-left">
+      <a ng-repeat="league in user.leagues" ng-click="selectThisLeague()" ui-sref="tabsController.singleLeague" class="item item-thumbnail-left">
         <img src="img/Liverpool_FC.jpg">
         <div class="info-area">
           <h2>{{league.name}}</h2>

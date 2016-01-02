@@ -4,41 +4,51 @@ angular.module('app.controllers')
       var wpLogger = logger.logger("leagueCtrl");
       $scope.clientId = localStorageService.getByKey(constants.STORAGE_CLIENTID);
 
+      $scope.user = {
+        me: null,
+        leagues: [],
+        games: [],
+      }
+      $scope.selected = {
+        league: null,
+        game: null
+      }
+      $scope.params = {};
+
       $scope.userUpdate = function() {
         userService.updateAppUser($scope.clientId, function(response) {
-          $scope.user = response;
+          $scope.user.me = response;
           $scope.getLeaguesDetails();
         }, function(error) {
           alert(error);
         });
       }
-      if (!$scope.user) {
-        $scope.userUpdate();
-      }
-
-      $scope.userLeagues = [];
-      $scope.userGames = [];
-      $scope.selectedLeague = null;
-      $scope.selectedGame = null;
-
       $scope.getLeaguesDetails = function() {
-        var leagueObject;
-        if ($scope.user) {
-          $scope.user.leagues.forEach(function(elem, index, array) {
+        if ($scope.user.me) {
+          $scope.user.me.leagues.forEach(function(elem, index, array) {
             leagueService.getLeagueById(array[index], function(response, error) {
               if (error) {
                 logger
               } else {
-                $scope.userLeagues.push(response);
+                $scope.user.leagues.push(response);
               }
             });
           })
         }
       }
 
-      $scope.params = {};
+      if (!$scope.user.me) {
+        $scope.userUpdate();
+      }
+      if(!$scope.selected.league){
+        $scope.selected.league = leagueService.getSelectedLeague();
+        console.log($scope.selected.league);
+      }
+
       $scope.createLeague = function() {
-        leagueService.addLeague($scope.params.name, $scope.params.admin, $scope.params.frequency, $scope.params.numOfPlayersPerTeam, $scope.params.makeTeamsAtNum, function(rsponse, error) {
+        leagueService.addLeague
+        ($scope.params.name, $scope.params.admin, $scope.params.frequency, $scope.params.numOfPlayersPerTeam, $scope.params.makeTeamsAtNum,
+          function(response, error) {
           if (error) {
             wpLogger.audit('createLeague', error);
           } else {
@@ -51,29 +61,26 @@ angular.module('app.controllers')
       }
 
       $scope.selectThisLeague = function() {
-        $scope.vent = {
-          selectedLeague: this.league
-        };
-        wpLogger.audit('selectThisLeague', 'selected League :' + $scope.selectedLeague);
+        leagueService.setSelectedLeague(this.league);
+        wpLogger.audit('selectThisLeague', 'selected League :' + $scope.selected.league);
       }
 
       //Games Data
       $scope.getGamesDetails = function() {
         var gameObject;
-        console.log($scope.selectedLeague);
-        $scope.selectedLeague.games.forEach(function(elem, index, array) {
+        $scope.selected.league.games.forEach(function(elem, index, array) {
           gameService.getGameById(array[index], function(response, error) {
             if (error) {
 
             } else {
               gameObject = response;
-              $scope.userGames.push(gameObject);
+              $scope.user.games.push(gameObject);
             }
           })
         })
       }
       $scope.createGame = function() {
-        gameService.createGame($scope.selectedLeague.id, function(response, error) {
+        gameService.createGame($scope.selected.league.id, function(response, error) {
           if (error) {
 
           } else {

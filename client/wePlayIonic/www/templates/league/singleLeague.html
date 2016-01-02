@@ -1,15 +1,13 @@
-<ion-view title="League">
+<ion-view title="{{selected.league.name}}">
     <ion-content padding="'true'" class="league single-league has-header">
 
-        <h2>{{vent.selectedLeague}}</h2>
-
         <div class="buttons">
-            <button class="button button-positive" ui-sref="tabsController.createGame">
+            <button class="button wp-button" ui-sref="tabsController.createGame">
                 Create a new game
             </button>
         </div>
-        <div class="list">
-            <a ng-repeat="game in games" class="item item-thumbnail-left" ui-sref="tabsController.singleGame">
+        <div class="list games">
+            <a ng-repeat="game in user.games" class="item item-thumbnail-left" ui-sref="tabsController.singleGame">
                 <div class="info-area">
                     <h2>game.name</h2>
                     <p>Time of Game</p>
