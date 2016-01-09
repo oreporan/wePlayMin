@@ -17,11 +17,18 @@ path : `<HOST URL>/wePlay/v1/auth/*`
 *example*: <HOST URL>/wePlay/v1/auth/signup/
 * * *
 ##### path: '/facebook'
-*info*: signs up a user  
+*info*: signs up a user using a facebook oauth token
 *method*: `POST`  
 *accepts*: `JSON` -  `{access_token: <token>}`   
-*returns*: `JSON` - a user object holding a new clientId  
+*returns*: `JSON` - `{'client_id' : clientId}`  
 *example*: <HOST URL>/wePlay/v1/auth/facebook/   
+* * *
+##### path: '/google'
+*info*: signs up a user using a google oauth token  
+*method*: `POST`  
+*accepts*: `JSON` -  `{access_token: <token>}`   
+*returns*: `JSON` - `{'client_id' : clientId}`  
+*example*: <HOST URL>/wePlay/v1/auth/google/   
 * * *
 ##### path : '/signin'
 *info*: signs in an existing user   
