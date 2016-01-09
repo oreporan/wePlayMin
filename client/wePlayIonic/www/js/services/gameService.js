@@ -13,8 +13,8 @@ angular.module('app.services')
           "client-id": clientId,
           "league-id": leagueId
         }, function(response, error) {
-          if (err) {
-            callback(null, err);
+          if (error) {
+            callback(null, error);
           } else {
             wpLogger.audit("addGame", "response: " + response);
             callback(response);
@@ -24,8 +24,8 @@ angular.module('app.services')
 
       toggleAttending: function(leagueId, gameId, attending, callback) {
         sendGetWithGameHeaders(paths.PATH_GAME_ATTENDINGSTATUS_WITH_GAMEID + '/' + gameId + '/' + attending, leagueId, function(response, error) {
-          if (err) {
-            callback(null, err);
+          if (error) {
+            callback(null, error);
           } else {
             wpLogger.audit("toggleAttending", "response: " + response);
             callback(response);
@@ -35,8 +35,8 @@ angular.module('app.services')
 
       buildGame: function(leagueId, gameId, attending, callback) {
         sendGetWithGameHeaders(paths.PATH_GAME_BUILDGAME_WITH_ID + '/' + gameId, leagueId, function(response, error) {
-          if (err) {
-            callback(null, err);
+          if (error) {
+            callback(null, error);
           } else {
             wpLogger.audit("buildGame", "response: " + response);
             callback(response);
@@ -46,8 +46,8 @@ angular.module('app.services')
 
       getGameById: function(gameId, callback) {
         wpRequest.sendGet(paths.BASE_GAME + paths.PATH_GAME_GETGAME_WITH_ID + '/' + gameId, function(response, error) {
-          if (err) {
-            callback(null, err);
+          if (error) {
+            callback(null, error);
           } else {
             wpLogger.audit("getGameById", "response: " + response);
             callback(response);
@@ -62,8 +62,8 @@ angular.module('app.services')
           "client-id": clientId,
           "league-id": leagueId
         }, function(response, error) {
-          if (err) {
-            callback(null, err);
+          if (error) {
+            callback(null, error);
           } else {
             wpLogger.audit("changeGameStatus", "response: " + response);
             callback(response);
@@ -75,8 +75,8 @@ angular.module('app.services')
         wpRequest.sendPost(paths.BASE_GAME + paths.PATH_GAME_GETGAMELIST, {
           games: games
         }, function(response, error) {
-          if (err) {
-            callback(null, err);
+          if (error) {
+            callback(null, error);
           } else {
             wpLogger.audit("getLeaguesListById", "response: " + response);
             callback(response);
@@ -86,8 +86,8 @@ angular.module('app.services')
 
       updateGame: function(gameId, params, callback) {
         wpRequest.sendPut(paths.BASE_GAME + paths.PATH_GAME_UPDATEGAME, params, function(response, error) {
-          if (err) {
-            callback(null, err);
+          if (error) {
+            callback(null, error);
           } else {
             wpLogger.audit("updateLeague", "response: " + response);
             callback(response);
