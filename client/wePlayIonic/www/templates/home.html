@@ -1,34 +1,26 @@
 <ion-view title="My Profile">
-  <ion-content padding="'true'" class="has-header">
+  <ion-content padding="'true'" class="has-header my-profile">
     <div class="row">
       <div class="col col-33">
         <img ng-src="{{userImg}}" width="100%">
       </div>
-      <div class="col col-offset-10">
+      <div class="col col-offset-10 username">
         <h1>{{userName}}</h1>
         <p>
           <div class="row">
-            <div class="col">
-              <p>
-                <ion-list>
-                  <ion-item ng-repeat="league in userLeagues">
-                    <p> Leagues : {{league}}</p>
-                  </ion-item>
-                </ion-list>
-              </p>
-            </div>
+            <ul class="list col-md-6">
+              <li ng-repeat="league in userLeagues">
+                <a> League : {{league}}</a>
+              </li>
+            </ul>
           </div>
 
           <div class="row">
-            <div class="col">
-              <p>
-                <ion-list>
-                  <ion-item ng-repeat="game in userGames">
-                    <p> Games : {{game}}</p>
-                  </ion-item>
-                </ion-list>
-              </p>
-            </div>
+            <ul class="list col-md-6">
+              <li ng-repeat="game in userGames">
+                <a> Game : {{game}}</a>
+              </li>
+            </ul>
 
           </div>
 
