@@ -20,7 +20,7 @@ angular.module('app.controllers')
             wpLogger.audit("couldn't get wpUser. err" + err);
 
           } else {
-            $state.go('tabsController.home', {}, {
+            $state.go('tabsController.game', {}, {
               reload: true
             });
           }
@@ -35,7 +35,7 @@ angular.module('app.controllers')
         if (error) {
           $ionicLoading.hide();
         } else {
-          $state.go('tabsController.home', {}, {
+          $state.go('tabsController.game', {}, {
             reload: true
           });
         }
@@ -48,7 +48,7 @@ angular.module('app.controllers')
           $ionicLoading.hide();
         } else {
           $ionicLoading.hide();
-          $state.go('tabsController.home', {}, {
+          $state.go('tabsController.game', {}, {
             reload: true
           });
         }
@@ -61,7 +61,7 @@ angular.module('app.controllers')
           $ionicLoading.hide();
         } else {
           $ionicLoading.hide();
-          $state.go('tabsController.home', {}, {
+          $state.go('tabsController.game', {}, {
             reload: true
           });
         }

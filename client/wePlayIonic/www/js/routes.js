@@ -78,6 +78,24 @@ angular.module('app.routes', [])
         }
       }
     })
+    .state('tabsController.notifications', {
+      url: '/notifications',
+      views: {
+        'notifications': {
+          templateUrl: 'templates/notifications/notifications.html',
+          controller: 'notificationsCtrl'
+        }
+      }
+    })
+    .state('tabsController.profile', {
+      url: '/profile',
+      views: {
+        'profile': {
+          templateUrl: 'templates/profile/profile.html',
+          controller: 'profileCtrl'
+        }
+      }
+    })
     .state('tabsController', {
       url: '/page3',
       abstract:true,
