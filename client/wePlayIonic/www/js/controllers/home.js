@@ -15,16 +15,15 @@ angular.module('app.controllers')
         $scope.userDetails = response;
         $scope.userLeagues = response.leagues;
         $scope.userGames = response.games;
-        if (userFacebookService.getUser) {
-          $scope.userImg = "http://graph.facebook.com/" + userFacebookService.getUser.userID + "/picture?type=large";
-        }
+        $scope.userImg = "img/profileImg/demo_profile.jpeg";
+
       }
     });
 
 
 
     $scope.logout = function() {
-      authenticateService.logout(function(error){
+      authenticateService.logout(function(error) {
         if (error) {
           wpLogger.error("logout", "failed to logout");
         } else {

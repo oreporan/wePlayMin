@@ -5,8 +5,6 @@ angular.module('app.services')
 
     // Not always we have to add the client-id header
     var sendPostWithHeaders = function(path, params, headers, callback) {
-      var clientId = localStorageService.getClientId();
-
       wpLogger.audit("sendPost", "send POST request to: " + path + " with params: " + JSON.stringify(params));
 
       $http({
@@ -26,6 +24,7 @@ angular.module('app.services')
     };
 
     var sendPost = function(path, params, callback) {
+      var clientId = localStorageService.getClientId();
       sendPostWithHeaders(path, params, {
         'client-id': clientId
       }, callback);

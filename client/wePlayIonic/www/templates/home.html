@@ -2,32 +2,49 @@
   <ion-content padding="'true'" class="has-header">
     <div class="row">
       <div class="col col-33">
-        <img ng-src="{{userImg}}">
+        <img ng-src="{{userImg}}" width="100%">
       </div>
-      <div class="col">
+      <div class="col col-offset-10">
         <h1>{{userName}}</h1>
         <p>
-          <ion-list>
-          <ion-item ng-repeat="league in userLeagues">
-            <p> Leagues : {{league}}</p>
-          </ion-item>
-        </p>
+          <div class="row">
+            <div class="col">
+              <p>
+                <ion-list>
+                  <ion-item ng-repeat="league in userLeagues">
+                    <p> Leagues : {{league}}</p>
+                  </ion-item>
+                </ion-list>
+              </p>
+            </div>
+          </div>
 
-       </ion-list>
-        <p>
-          <ion-list>
-          <ion-item ng-repeat="game in userGames">
-            <p> Games : {{game}}</p>
-          </ion-item>
+          <div class="row">
+            <div class="col">
+              <p>
+                <ion-list>
+                  <ion-item ng-repeat="game in userGames">
+                    <p> Games : {{game}}</p>
+                  </ion-item>
+                </ion-list>
+              </p>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col col-33 col-offset-67">.col</div>
+          </div>
+
+          <div class="spacer" style="width: 300px; height: 100spx;"></div>
+
+          <div class="text-center">
+            <button class="button button-clear button-positive" ng-click="logout()">logout</button>
+          </div>
         </p>
       </div>
     </div>
 
-    <div class="spacer" style="width: 300px; height: 100spx;"></div>
-
-    <div class="text-center">
-      <button class="button button-clear button-positive" ng-click="logout()">logout</button>
-    </div>
 
   </ion-content>
 </ion-view>
