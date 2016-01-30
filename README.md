@@ -78,6 +78,16 @@ path: `<HOST URL>/wePlay/v1/users/*`
 *returns*: `JSON` - an array of JSONs - user objects   
 *example*: <HOST URL>/wePlay/v1/users/getUsersListById/
 * * *
+##### path : '/getUsersByKeyword/{keyword}'
+*info*: gets all the user objects that contain this word, including E-mail and user name, for example calling this method with the keyword : 'over' will find the user 'over' , 'overflow' and the user 'stack overflow'    
+*method*: `GET`   
+*accepts*: `String` - user name keyword, email or username   
+*returns*: `JSON` - `{users : <an array of userObject JSONs>}`      
+*example*: <HOST URL>/wePlay/v1/users/getUsersByKeyword/myUs
+
+
+
+* * *
 # -- League Endpoint --
 All league related requests, a league is always created by a user, and
 this user becomes the admin, a user can have multiple leagues, and these
@@ -88,7 +98,7 @@ path: <HOST URL>/wePlay/v1/leagues/*
 ##### path : '/addLeague'
 *info*: creates a new league and makes this user the admin   
 *method*: `POST`   
-*accepts*: `JSON` - object compliant with the League model - `{ name: <String - league name>, numOfPlayersPerTeam: <Number> , admin: <String - this client id>, frequency: <Int - for now, -1>, makeTeamsAtNum: <Int - number to make teams at>}`   
+*accepts*: `JSON` - object compliant with the League model - `{ name: <String - league name>, numOfPlayersPerTeam: <Number> , admin: <String - this client id>, weekDay: <Int, 0-6>, gameTime: <String in the form of HH:MM>, makeTeamsAtNum: <Int - number to make teams at>}`   
 *returns*: `JSON` - an array of JSONs - user objects   
 *example*: <HOST URL>/wePlay/v1/leagues/addLeague/
 * * *
@@ -151,9 +161,8 @@ path: <HOST URL>/wePlay/v1/leagues/*
 * * *
 # -- Game Endpoint --
 All game related requests, a game is always part of a league, that is why a league must always have a league-id header appended
-to every request.
+to every request. The only time you don't need a leagueID is calling the '/getGame/{gameId}' method    
 *path* : <HOST URL>/wePlay/v1/games/*  
-*required header* : `league-id`    
 *required header* : `client-id`    
 
 * * *
