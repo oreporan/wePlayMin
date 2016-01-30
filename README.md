@@ -125,9 +125,9 @@ path: <HOST URL>/wePlay/v1/leagues/*
 
 * * *
 ##### path : '/addUserToLeague/{leagueId}'
-*info*: pushes this user to a league, the client is taken from the header    
+*info*: admin only, pushes a user to a league, the clientId in the body is an *optional* param        
 *method*: `PUT`   
-*accepts*: Query parameter - `String` - leagueId , Body parameter - `JSON` - `{isInvite : <boolean>}`    
+*accepts*: Query parameter - `String` - leagueId , Body parameter - `JSON` - `{clientId : <string>, isInvite : <boolean>}`    
 *returns*: `JSON` - a league object   
 *example*: <HOST URL>/wePlay/v1/leagues/addUserToLeague/4524262
 * * *
