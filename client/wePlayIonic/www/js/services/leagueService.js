@@ -55,7 +55,7 @@ angular.module('app.services')
       },
 
       addUserToLeague : function(leagueId, callback) {
-        wpRequest.sendGet(paths.BASE_LEAGUES + paths.PATH_LEAGUES_ADDUSERTOLEAGUE + '/' + leagueId, function(response, error) {
+        wpRequest.sendPut(paths.BASE_LEAGUES + paths.PATH_LEAGUES_ADDUSERTOLEAGUE + '/' + leagueId, function(response, error) {
           if (err) {
             callback(null, err);
           } else {
@@ -66,7 +66,7 @@ angular.module('app.services')
       },
 
       removeUserFromLeague : function(leagueId, callback) {
-        wpRequest.sendGet(paths.BASE_LEAGUES + paths.PATH_LEAGUES_REMOVEUSERFROMLEAGUE_WITH_ID + '/' + leagueId, function(response, error) {
+        wpRequest.sendPu(paths.BASE_LEAGUES + paths.PATH_LEAGUES_REMOVEUSERFROMLEAGUE_WITH_ID + '/' + leagueId, function(response, error) {
           if (err) {
             callback(null, err);
           } else {
