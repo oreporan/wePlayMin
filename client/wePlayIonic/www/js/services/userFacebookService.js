@@ -124,7 +124,7 @@ angular.module('app.services')
               });
           } else {
 
-            authenticateService.wpFacebookSignUp(user.accessToken, function(response, err) {
+            authenticateService.wpFacebookSignUp(user.authResponse.accessToken, function(response, err) {
               if (!err) {
                 callback(response);
               } else {

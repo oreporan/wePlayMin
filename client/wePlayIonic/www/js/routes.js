@@ -14,30 +14,20 @@ angular.module('app.routes', [])
       templateUrl: 'templates/login.html',
       controller: 'loginCtrl'
     })
-    .state('tabsController.home', {
-      cache: false,
-      url: '/home',
+    .state('tabsController.games', {
+      url: '/games',
       views: {
-        'home': {
-          templateUrl: 'templates/home.html',
-          controller: 'homeCtrl'
-        }
-      }
-    })
-    .state('tabsController.game', {
-      url: '/game',
-      views: {
-        'game': {
-          templateUrl: 'templates/game.html',
+        'games': {
+          templateUrl: 'templates/games.html',
           controller: 'gameCtrl'
         }
       }
     })
-    .state('tabsController.league', {
-      url: '/league',
+    .state('tabsController.leagues', {
+      url: '/leagues',
       views: {
-        'league': {
-          templateUrl: 'templates/league/league.html',
+        'leagues': {
+          templateUrl: 'templates/leagues/leagues.html',
           controller: 'leagueCtrl'
         }
       }
@@ -45,8 +35,8 @@ angular.module('app.routes', [])
     .state('tabsController.singleLeague', {
         url: '/singleLeague',
         views: {
-          'league': {
-            templateUrl: 'templates/league/singleLeague.html',
+          'leagues': {
+            templateUrl: 'templates/leagues/singleLeague.html',
             controller: 'leagueCtrl'
           }
         }
@@ -54,8 +44,8 @@ angular.module('app.routes', [])
     .state('tabsController.createLeague', {
       url: '/createLeague',
       views: {
-        'league': {
-          templateUrl: 'templates/league/createLeague.html',
+        'leagues': {
+          templateUrl: 'templates/leagues/createLeague.html',
           controller: 'leagueCtrl'
         }
       }
@@ -63,23 +53,32 @@ angular.module('app.routes', [])
     .state('tabsController.findLeague', {
       url: '/findLeague',
       views: {
-        'league': {
-          templateUrl: 'templates/league/findLeague.html',
+        'leagues': {
+          templateUrl: 'templates/leagues/findLeague.html',
           controller: 'leagueCtrl'
         }
       }
     })
-    .state('tabsController.createGame', {
-      url: '/createGame',
+    .state('tabsController.notifications', {
+      url: '/notifications',
       views: {
-        'league': {
-          templateUrl: 'templates/league/createGame.html',
-          controller: 'leagueCtrl'
+        'notifications': {
+          templateUrl: 'templates/notifications/notifications.html',
+          controller: 'notificationsCtrl'
+        }
+      }
+    })
+    .state('tabsController.profile', {
+      url: '/profile',
+      views: {
+        'profile': {
+          templateUrl: 'templates/profile/profile.html',
+          controller: 'profileCtrl'
         }
       }
     })
     .state('tabsController', {
-      url: '/page3',
+      url: '',
       abstract:true,
       templateUrl: 'templates/tabsController.html'
     })
