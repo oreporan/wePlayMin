@@ -104,34 +104,34 @@ angular.module('app.constants')
 
   /*
    * League endpoint
-   * All league related requests
+   * All leagues related requests
    * http://wwww.HOST.com/wePlay/v1/leagues/*
    */
   BASE_LEAGUES: '/leagues',
 
   /*
-   * info: creates a new league and makes this user the admin
+   * info: creates a new leagues and makes this user the admin
    * method: POST
-   * accepts: JSON - object compliant with the League model - { name: <String - league name>, admin: <String - this client id>, frequency: <Int - for now, type -1>, numOfPlayersPerTeam: <Int> , makeTeamsAtNum: <Int>}
+   * accepts: JSON - object compliant with the League model - { name: <String - leagues name>, admin: <String - this client id>, frequency: <Int - for now, type -1>, numOfPlayersPerTeam: <Int> , makeTeamsAtNum: <Int>}
    * returns: array - an array of JSONs - user objects
    * example: http://wwww.HOST.com/wePlay/v1/users/addLeague/
    */
   PATH_LEAGUES_ADDLEAGUE: '/addLeague',
 
   /*
-   * info: gets the league object by league Id
+   * info: gets the leagues object by leagues Id
    * method: GET
    * accepts: String - leagueId
-   * returns: JSON - a league object
+   * returns: JSON - a leagues object
    * example: http://wwww.HOST.com/wePlay/v1/users/getLeague/4524262
    */
   PATH_LEAGUES_GETLEAGUEBYID: '/getLeague',
 
   /*
-   * info: gets the league object by league Id
+   * info: gets the leagues object by leagues Id
    * method: GET
    * accepts: String - leagueId
-   * returns: JSON - a league object
+   * returns: JSON - a leagues object
    * example: http://wwww.HOST.com/wePlay/v1/users/getLeague/4524262
    */
   PATH_LEAGUES_GETLEAGUEBYNAME: '/getLeagueByName',
@@ -139,56 +139,56 @@ angular.module('app.constants')
 
   /*
    * info: gets all the leagues objects that contain this word, for example
-   * calling this method with the keyword : 'over' will find the league 'over' , 'overflow' but not the league 'stack overflow'
+   * calling this method with the keyword : 'over' will find the leagues 'over' , 'overflow' but not the leagues 'stack overflow'
    * method: GET
-   * accepts: String - league name keyword
-   * returns: JSON - an array of league objects {leagues : [{},{}]}
+   * accepts: String - leagues name keyword
+   * returns: JSON - an array of leagues objects {leagues : [{},{}]}
    * example: http://wwww.HOST.com/wePlay/v1/users/getLeague/4524262
    */
   PATH_LEAGUES_GETLEAGUESBYKEYWORD: '/getLeagueByKeyword',
 
 
   /*
-   * info: pushes this user to a league, the client is taken from the header
+   * info: pushes this user to a leagues, the client is taken from the header
    * method: GET
    * accepts: String - leagueId
-   * returns: JSON - a league object
+   * returns: JSON - a leagues object
    * example: http://wwww.HOST.com/wePlay/v1/users/addUserToLeague/4524262
    */
   PATH_LEAGUES_ADDUSERTOLEAGUE: '/addUserToLeague',
 
   /*
-   * info: removes this user from a league, the client is taken from the header
+   * info: removes this user from a leagues, the client is taken from the header
    * method: GET
    * accepts: String - leagueId
-   * returns: JSON - a league object without the user in it
+   * returns: JSON - a leagues object without the user in it
    * example: http://wwww.HOST.com/wePlay/v1/users/removeUserFromLeague/4524262
    */
   PATH_LEAGUES_REMOVEUSERFROMLEAGUE_WITH_ID: '/removeUserFromLeague',
 
   /*
-   * info: gets a list of league objects
+   * info: gets a list of leagues objects
    * method: POST
    * accepts: JSON - an array of leagueIds  {leagues: ["1234", "5436"...]}
-   * returns: array - an array of JSONs - league objects
+   * returns: array - an array of JSONs - leagues objects
    * example: http://wwww.HOST.com/wePlay/v1/users/getLeaguesListById/
    */
   PATH_LEAGUES_GETLEAGUESLIST_BY_ID: '/getLeaguesListById',
 
   /*
-   * info: updates league parameters such as name or frequency
+   * info: updates leagues parameters such as name or frequency
    * method: PUT
    * accepts: JSON - {admin : <clientId>}
-   * returns: JSON - league object updated
+   * returns: JSON - leagues object updated
    * example: http://wwww.HOST.com/wePlay/v1/users/updateLeague/
    */
   PATH_LEAGUES_UPDATELEAGUE: '/updateLeague',
 
   /*
-   * info: updates league parameters such as name or frequency
+   * info: updates leagues parameters such as name or frequency
    * method: PUT
    * accepts: JSON - an array of leagueIds  { name: <new name>, frequency : <new frequency>}
-   * returns: JSON - league object with new parameters
+   * returns: JSON - leagues object with new parameters
    * example: http://wwww.HOST.com/wePlay/v1/users/updateLeague/
    */
   PATH_LEAGUES_ADD_ADMIN_WITH_LEAGUE_ID: '/addAdmin',

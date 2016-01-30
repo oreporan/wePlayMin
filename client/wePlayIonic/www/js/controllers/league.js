@@ -86,7 +86,7 @@ angular.module('app.controllers')
       if($state.current.name === 'tabsController.singleLeague' && !$scope.selected.league){
         $scope.selected.league = leagueService.getSelectedLeague();
         $scope.imAMemberOfThisLeague = $scope.checkIfImAMemberOfThisLeague($scope.selected.league, $scope.user.me);
-        /*$scope.selected.league.detailedUsers = $scope.getLeagueDetailedUser($scope.selected.league);*/
+        /*$scope.selected.leagues.detailedUsers = $scope.getLeagueDetailedUser($scope.selected.leagues);*/
       }
 
       $scope.createLeague = function() {
@@ -98,7 +98,7 @@ angular.module('app.controllers')
           } else {
             wpLogger.audit('createLeague', 'League added successfully');
             $scope.updateUser();
-            $state.go('tabsController.league');
+            $state.go('tabsController.leagues');
             window.location.reload();
           }
         })
@@ -109,31 +109,6 @@ angular.module('app.controllers')
         wpLogger.audit('selectThisLeague', 'selected League :' + $scope.selected.league);
       }
 
-      //Games Data
-      $scope.getGamesDetails = function() {
-        var gameObject;
-        $scope.selected.league.games.forEach(function(elem, index, array) {
-          gameService.getGameById(array[index], function(response, error) {
-            if (error) {
-
-            } else {
-              gameObject = response;
-              $scope.user.games.push(gameObject);
-            }
-          })
-        })
-      }
-      $scope.createGame = function() {
-        gameService.createGame($scope.selected.league.id, function(response, error) {
-          if (error) {
-
-          } else {
-            alert('A new game has been successfully created');
-            $scope.updateUser();
-            $state.go('tabsController.leagueDetails');
-          }
-        })
-      }
       $scope.findLeague = function(){
         $scope.leaguesFound = null;
         $scope.noResultsFound = false;
@@ -155,7 +130,7 @@ angular.module('app.controllers')
           }else{
             alert("You have successfully joined " + response.name );
             $scope.updateUser();
-            $state.go('tabsController.league');
+            $state.go('tabsController.leagues');
             window.location.reload();
           }
         } );
