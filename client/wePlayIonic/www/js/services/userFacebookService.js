@@ -1,5 +1,5 @@
 angular.module('app.services')
-  .service('userFacebookService', function($q, $state, logger, userService, localStorageService, $ionicLoading, authenticateService, logger, constants) {
+  .service('userFacebookService', function($q, $state, logger, userService, localStorageService, $ionicLoading, authenticateService, constants) {
 
     wpLogger = logger.logger("userFacebookService");
 

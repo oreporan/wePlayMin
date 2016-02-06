@@ -14,7 +14,7 @@ angular.module('app.controllers')
 
     function main() {
       if (clientId) {
-        wpLogger.audit("clientId exists");
+        wpLogger.audit("main", "clientId exists");
         var user = userService.getUserById(clientId, function(response, err) {
           if (err) {
             wpLogger.audit("couldn't get wpUser. err" + err);

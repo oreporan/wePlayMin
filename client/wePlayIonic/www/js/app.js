@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 // 'starter.constants' is found in constants.js
 
-angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'app.constants'])
+angular.module('app', ['ionic','ionic.service.core', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'app.constants'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

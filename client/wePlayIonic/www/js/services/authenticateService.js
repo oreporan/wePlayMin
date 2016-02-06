@@ -1,5 +1,5 @@
 angular.module('app.services')
-  .service('authenticateService', function(logger, localStorageService, userService, wpRequest, paths, constants) {
+  .service('authenticateService', function(logger, localStorageService, userService, ionicIoService, wpRequest, paths, constants) {
 
     var wpLogger = logger.logger("authenticateService");
 
@@ -19,6 +19,7 @@ angular.module('app.services')
             callback(null, "client-id does not exist on the response")
           } else {
             wpLogger.audit("wpFacebookSignUp", "clientId: " + clientId);
+            ionicIoService.registerIonicUser(clientId);
             localStorageService.setByKey(constants.STORAGE_CLIENTID, clientId);
             callback(clientId);
           }
@@ -40,8 +41,9 @@ angular.module('app.services')
             wpLogger.error("signUp", "client-id does not exist on the response");
             callback(null, "client-id does not exist on the response")
           } else {
-            wpLogger.audit("signUp", "clientId: " + clientId);
+            wpLogger.audit("signUp", "success with response: " + JSON.stringify(response));
             localStorageService.setByKey(constants.STORAGE_CLIENTID, clientId);
+            ionicIoService.registerIonicUser(clientId);
             callback(clientId);
           }
         }
@@ -61,8 +63,9 @@ angular.module('app.services')
             wpLogger.error("signIn", "client-id does not exist on the response");
             callback(null, "client-id does not exist on the response")
           } else {
-            wpLogger.audit("signIn", "clientId: " + clientId);
+            wpLogger.audit("signIn", "success with response: " + JSON.stringify(response));
             localStorageService.setByKey(constants.STORAGE_CLIENTID, clientId);
+            ionicIoService.registerIonicUser(clientId);
             callback(clientId);
           }
         }
@@ -70,8 +73,8 @@ angular.module('app.services')
     }
 
     var logout = function(callback) {
-      if (ionic.Platform.isWebView()) {
-        facebookConnectPlugin.logout(function(success){
+      if (ionic.Platform.isIOS()) {
+        facebookConnectPlugin.logout(function(success) {
           logoutSuccess();
           callback(null);
         }, function(error) {
@@ -86,6 +89,7 @@ angular.module('app.services')
 
     function logoutSuccess() {
       wpLogger.audit('facebookLogout', "logout success");
+      ionicIoService.unregisterIonicUser();
       localStorageService.removeItem(constants.STORAGE_CLIENTID);
       userService.removeUser();
     }
