@@ -1,7 +1,7 @@
 angular.module('app.services')
   .service('ionicIoService', function($q, logger, constants, userService) {
 
-    wpLogger = logger.logger("ionicIoService");
+    var wpLogger = logger.logger("ionicIoService");
 
     var io = Ionic.io();
     var ionicUser;
