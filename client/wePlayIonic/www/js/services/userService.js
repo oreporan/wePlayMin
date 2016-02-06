@@ -65,6 +65,16 @@ angular.module('app.services')
           }
         });
       },
+      findUserByKeyword: function(keyword, callback) {
+        wpRequest.sendGet(paths.BASE_USERS + paths.PATH_USERS_GETUSER_BY_KEYWORD + '/' + keyword, function(response, error) {
+          if (err) {
+            callback(null, err);
+          } else {
+            wpLogger.audit('Search for user succeeded with users: ', JSON.stringify(response));
+            callback(response);
+          }
+        });
+      },
 
       removeUser: function() {
         user = null;
