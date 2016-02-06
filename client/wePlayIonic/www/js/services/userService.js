@@ -12,8 +12,8 @@ angular.module('app.services')
       user: user,
 
       getUserById: function(clientId, callback) {
-        if (user != null) {
-          wpLogger.audit("getWpUser", "user already exist in app. user: " + user);
+        if (user != null && user._id == clientId) {
+          wpLogger.audit("getWpUser", "user already exist in app.");
           callback(user);
         } else {
           wpRequest.sendGet(paths.BASE_USERS + paths.PATH_USERS_GETUSER_WITH_ID + '/' + clientId, function(response, err) {
