@@ -5,7 +5,7 @@ angular.module('app.services')
     var selectedLeague = {};
 
     return {
-      addLeague : function(name, admin, frequency, numOfPlayersPerTeam, makeTeamsAtNum, callback) {
+      addLeague: function(name, admin, frequency, numOfPlayersPerTeam, makeTeamsAtNum, callback) {
         wpRequest.sendPost(paths.BASE_LEAGUES + paths.PATH_LEAGUES_ADDLEAGUE, {
           name: name,
           admin: admin,
@@ -22,7 +22,7 @@ angular.module('app.services')
         })
       },
 
-      getLeagueById : function(leagueId, callback) {
+      getLeagueById: function(leagueId, callback) {
         wpRequest.sendGet(paths.BASE_LEAGUES + paths.PATH_LEAGUES_GETLEAGUEBYID + '/' + leagueId, function(response, error) {
           if (error) {
             callback(null, error);
@@ -33,7 +33,7 @@ angular.module('app.services')
         })
       },
 
-      getLeagueByName : function(name, callback) {
+      getLeagueByName: function(name, callback) {
         wpRequest.sendGet(paths.BASE_LEAGUES + paths.PATH_LEAGUES_GETLEAGUEBYNAME + '/' + name, function(response, error) {
           if (error) {
             callback(null, error);
@@ -44,7 +44,7 @@ angular.module('app.services')
         })
       },
 
-      getLeagueByKeyword : function(keyword, callback) {
+      getLeagueByKeyword: function(keyword, callback) {
         wpRequest.sendGet(paths.BASE_LEAGUES + paths.PATH_LEAGUES_GETLEAGUESBYKEYWORD + '/' + keyword, function(response, error) {
           if (error) {
             callback(null, error);
@@ -55,8 +55,10 @@ angular.module('app.services')
         })
       },
 
-      addUserToLeague : function(leagueId, callback) {
-        wpRequest.sendPut(paths.BASE_LEAGUES + paths.PATH_LEAGUES_ADDUSERTOLEAGUE + "/", leagueId, {isInvite: false}, function(response, error) {
+      addUserToLeague: function(leagueId, callback) {
+        wpRequest.sendPut(paths.BASE_LEAGUES + paths.PATH_LEAGUES_ADDUSERTOLEAGUE + "/", leagueId, {
+          isInvite: false
+        }, function(response, error) {
           if (error) {
             callback(null, error);
           } else {
@@ -66,10 +68,11 @@ angular.module('app.services')
         })
       },
 
-      removeUserFromLeague : function(leagueId, callback) {
-        wpRequest.sendGet(paths.BASE_LEAGUES + paths.PATH_LEAGUES_REMOVEUSERFROMLEAGUE_WITH_ID + '/' + leagueId, function(response, error) {
-          if (error) {
-            callback(null, error);
+      removeUserFromLeague: function(leagueId, callback) {
+        wpRequest.sendPut(paths.BASE_LEAGUES + paths.PATH_LEAGUES_REMOVEUSERFROMLEAGUE_WITH_ID + '/' + leagueId, function(response, error) {
+          if (err) {
+            callback(null, err);
+
           } else {
             wpLogger.audit("removeUserFromLeague", "response: " + response);
             callback(response);
@@ -77,8 +80,10 @@ angular.module('app.services')
         })
       },
 
-      getLeaguesListById : function(leagueIds, callback) {
-        wpRequest.sendPost(paths.BASE_LEAGUES + paths.PATH_LEAGUES_GETLEAGUESLIST_BY_ID, {leagueIds: leagueIds}, function(response, error) {
+      getLeaguesListById: function(leagueIds, callback) {
+        wpRequest.sendPost(paths.BASE_LEAGUES + paths.PATH_LEAGUES_GETLEAGUESLIST_BY_ID, {
+          leagueIds: leagueIds
+        }, function(response, error) {
           if (error) {
             callback(null, error);
           } else {
@@ -88,7 +93,7 @@ angular.module('app.services')
         })
       },
 
-      updateLeague : function(adminId, leagueId, callback) {
+      updateLeague: function(adminId, leagueId, callback) {
         wpRequest.sendPut(paths.BASE_LEAGUES + paths.PATH_LEAGUES_UPDATELEAGUE, leagueId, function(response, error) {
           if (error) {
             callback(null, error);
@@ -99,7 +104,7 @@ angular.module('app.services')
         })
       },
 
-      addAdmin : function(leagueId, admin, callback) {
+      addAdmin: function(leagueId, admin, callback) {
         wpRequest.sendPut(paths.BASE_LEAGUES + paths.PATH_LEAGUES_ADD_ADMIN_WITH_LEAGUE_ID + "/" + leagueId, {
           admin: admin
         }, function(response, error) {
@@ -111,46 +116,11 @@ angular.module('app.services')
           }
         })
       },
-      setSelectedLeague: function(selectedLeague){
+      setSelectedLeague: function(selectedLeague) {
         this.selectedLeague = selectedLeague;
       },
-      getSelectedLeague: function(){
+      getSelectedLeague: function() {
         return this.selectedLeague;
       }
     }
   });
-
-// .service('leagueService',['$http', '$state', function($http) {
-//
-//     return {
-//         getLeagueById: function(clientId, leagueId, success, fail) {
-//             var req = {
-//                 method: 'GET',
-//                 url: 'http://localhost:3000/wePlay/v1/leagues/getLeague/' + leagueId,
-//                 headers: {
-//                     'Content-Type': 'application/json',
-//                     'client-id': clientId
-//                 }
-//             }
-//             return $http(req).then(success, fail);
-//         },
-//         createLeague: function(clientId, params, success, fail){
-//             var req = {
-//                 method: 'POST',
-//                 url: 'http://localhost:3000/wePlay/v1/leagues/addLeague/',
-//                 headers: {
-//                     'Content-Type': 'application/json',
-//                     'client-id': clientId
-//                 },
-//                 data: {
-//                     name: params.name,
-//                     numOfPlayersPerTeam: params.numOfPlayersPerTeam,
-//                     admin: clientId,
-//                     frequency: params.frequency,
-//                     makeTeamsAtNum: params.makeTeamsAtNum
-//                 }
-//             };
-//             return $http(req).then(success, fail);
-//         }
-//     }
-// }]);
