@@ -1,9 +1,14 @@
 <ion-view title="{{selected.league.name}}">
-    <ion-content padding="'true'" class="league single-league has-header">
+    <ion-content padding="'true'" class="leagues single-league has-header">
 
-        <div class="buttons">
+        <div class="buttons" ng-show="imAMemberOfThisLeague">
             <button class="button wp-button" ui-sref="tabsController.createGame">
                 Create a new game
+            </button>
+        </div>
+        <div class="buttons" ng-show="!imAMemberOfThisLeague">
+            <button class="button wp-button" ng-click="joinLeague(this)">
+                Join This League
             </button>
         </div>
         <div class="list league-users">

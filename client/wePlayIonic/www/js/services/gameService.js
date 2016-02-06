@@ -109,7 +109,7 @@ angular.module('app.services')
 //         headers: {
 //           'Content-Type': 'application/json',
 //           'client-id': clientId,
-//           'league-id': leagueId
+//           'leagues-id': leagueId
 //         }
 //       }
 //       return $http(req).then(success, fail);
@@ -121,7 +121,7 @@ angular.module('app.services')
 //         headers: {
 //           'Content-Type': 'application/json',
 //           'client-id': clientId,
-//           'league-id': leagueId
+//           'leagues-id': leagueId
 //         },
 //         data: {
 //           'matchDay': matchDay
