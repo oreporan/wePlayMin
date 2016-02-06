@@ -91,6 +91,7 @@ angular.module('app.controllers')
       }
 
       $scope.createLeague = function() {
+        $scope.params.frequency = 1;
         leagueService.addLeague
         ($scope.params.name, $scope.params.admin, $scope.params.frequency, $scope.params.numOfPlayersPerTeam, $scope.params.makeTeamsAtNum,
           function(response, error) {
@@ -98,9 +99,7 @@ angular.module('app.controllers')
             wpLogger.audit('createLeague', error);
           } else {
             wpLogger.audit('createLeague', 'League added successfully');
-            $scope.updateUser();
-            $state.go('tabsController.leagues');
-            window.location.reload();
+            $state.go('tabsController.addUsersToLeague');
           }
         })
       }
@@ -127,7 +126,13 @@ angular.module('app.controllers')
       $scope.findUser = function(){
         $scope.usersFound = null;
         $scope.noResultsFound = false;
-        userService.findU
+        userService.findUserByKeyword($scope.input.userToFind, function(response, err) {
+          if(err) {
+            logger;
+          } else {
+            $scope.users = response;
+          }
+        })
       }
       $scope.joinLeague = function(league){
         leagueService.addUserToLeague(league._id, function(response, error){

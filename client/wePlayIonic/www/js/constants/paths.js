@@ -100,6 +100,15 @@ angular.module('app.constants')
    */
   PATH_USERS_GETUSERSLIST_BY_ID: '/getUsersListById',
 
+  PATH_USERS_GETUSER_BY_KEYWORD: '/getUsersListSearchQuery',
+  /*
+   * info: looks for user by keyword
+   * method: GET
+   * accepts: keyword
+   * returns: array - an array of JSONs - user objects
+   * example: http://wwww.HOST.com/wePlay/v1/users/getUsersListSearchQuery/mush
+   */
+
   //---------------League endpoint----------------//
 
   /*
