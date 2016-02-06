@@ -1,0 +1,32 @@
+<ion-view title="Add Players to League">
+    <ion-content padding="'true'" class="league add-users-to-league has-header">
+        <div class="padding">
+            <div class="list list-inset">
+                <label class="item item-input">
+                    <input type="text" ng-model="input.userToFind" placeholder="Player Name or Email">
+                </label>
+            </div>
+            <button ng-click="findUser()" class="button button-block wp-button">
+                Find Player !
+            </button>
+            <button ng-click="skipAddUsersToLeague()" class="button button-stable wp-button">
+                Do that later
+            </button>
+        </div>
+        <div class=" card no-results-found" ng-show="noResultsFound">
+            <div class="item item-divider">
+                No Results Found
+            </div>
+            <div class="item item-text-wrap">
+                We couldn't find any Player with this name... You probably misspelled it because you're an idiot
+            </div>
+        </div>
+        <div class="list users-found">
+            <a ng-repeat="user in usersFound" ng-click="addThisPlayerToLeague()" class="item item-avatar">
+                <img src="img/Liverpool_FC.jpg">
+                <h2>{{user}}</h2>
+                <p>{{user}}</p>
+            </a>
+        </div>
+    </ion-content>
+</ion-view>
