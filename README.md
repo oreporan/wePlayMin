@@ -171,29 +171,35 @@ to every request. The only time you don't need a leagueID is calling the '/getGa
 *method*: `POST`   
 *accepts*: `JSON` - `{matchDay : <date object>}`  , a date object in Date() format   
 *returns*: `JSON` - game object   
-*example*: <HOST URL>/wePlay/v1/leagues/addGame    
+*example*: <HOST URL>/wePlay/v1/games/addGame    
 * * *
 ##### path : '/toggleAttending/{gameId}/{attending}'
 *info*: changes the attending status for this user between -1 (not attending), 0 (undecided) and 1 (attending)       
 *method*: `GET`   
 *accepts*: `String/String` - GameId to toggle attending for, followed by '/', followed by attending status (-1,0,1)      
 *returns*: `JSON` - The updated [GameUserObject](#gameuserobject) **(see below)**     
-*example*: <HOST URL>/wePlay/v1/leagues/toggleAttending/1234/1      
+*example*: <HOST URL>/wePlay/v1/games/toggleAttending/1234/1      
 * * *
 ##### path : '/getGame/{gameId}'
 *info*: gets the game object           
 *method*: `GET`   
 *accepts*: `String` - gameId      
 *returns*: `JSON` - The game object       
-*example*: <HOST URL>/wePlay/v1/leagues/getGame/1234         
+*example*: <HOST URL>/wePlay/v1/games/getGame/1234         
 * * *
 ##### path : '/getGamesListById/'
 *info*: returns a list of game objects       
 *method*: `POST`   
 *accepts*: `JSON` - a JSON with an array value in the format `{games : <array of gameIds>}`      
 *returns*: `JSON` - A JSON with an array value in the format `{games : <array of game objects>}`       
-*example*: <HOST URL>/wePlay/v1/leagues/getGamesListById/     
-
+*example*: <HOST URL>/wePlay/v1/games/getGamesListById/     
+* * *
+##### path : '/buildTeams/{gameId}'
+*info*: gets the game object           
+*method*: `PUT`   
+*accepts*: `String` - gameId as query parameter, `JSON` - a json which holds an array of arrays, each array is a team, and each team is a list of all the gameUserObjects *NOTE - not IDs, a game user object*, in the format `{teams : [[{gameUserObj, gameUserObj}],[gameUserObj, gameUserObj],[...],[...]]}`           
+*returns* : `JSON` - the Game object    
+*example*: <HOST URL>/wePlay/v1/games/buildTeams/1234         
 * * *
 
 # -- Notifications Endpoint --
