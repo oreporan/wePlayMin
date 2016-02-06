@@ -15,7 +15,8 @@ angular.module('app.controllers')
         leagueToViewAsGuest: null
       }
       $scope.input = {
-        leagueToFind: ''
+        leagueToFind: '',
+        userToFind: ''
       }
       $scope.params = {};
       $scope.noResultsFound = false;
@@ -113,15 +114,20 @@ angular.module('app.controllers')
         $scope.leaguesFound = null;
         $scope.noResultsFound = false;
         leagueService.getLeagueByKeyword($scope.input.leagueToFind, function(response, error){
-          if (error){
+          if(error){
             $scope.noResultsFound = true;
           } else {
             $scope.leaguesFound = response.leagues;
             if(!$scope.leaguesFound.length){
-
+              $scope.noResultsFound = true;
             }
           }
         })
+      }
+      $scope.findUser = function(){
+        $scope.usersFound = null;
+        $scope.noResultsFound = false;
+        userService.findU
       }
       $scope.joinLeague = function(league){
         leagueService.addUserToLeague(league._id, function(response, error){
