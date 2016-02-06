@@ -4,7 +4,7 @@ var usersExternal = require('./lib/external/main/usersEndpoint.js');
 var leaguesExternal = require('./lib/external/main/leaguesEndpoint.js');
 var gamesExternal = require('./lib/external/main/gamesEndpoint.js');
 var notificationsExternal = require('./lib/external/main/notificationsEndpoint.js');
-
+var configJson = require('./config.json');
 var filter = require('./lib/filter');
 var authenticate = require('./lib/external/main/authenticate');
 var logger = require('./lib/utils/logger.js').init('app');
@@ -32,6 +32,15 @@ app.use(function(req, res, next) {
   next();
 });
 
+var loggingInitMessage = function() {
+	var isDebugLogging = configJson.debugLogging;
+  var msg =	'Debug logging is set to ' + isDebugLogging ;
+	if(!isDebugLogging) {
+    msg += ', to enable debug logging, set \'debugLogging\' to true in the config.json file ';
+	}
+  logger.audit('run', msg);
+};
+
 // Routing
 app.use(path.ROOT, router); // All requests have wePlay attached
 router.use(authenticate);
@@ -44,6 +53,7 @@ router.use(notificationsExternal);
 
 var port = process.env.PORT || 3000;
 app.listen(port);
-logger.audit("listen","Making a smarter planet on port " + port);
+logger.audit("run","Go crazy on port " + port);
+loggingInitMessage();
 
 module.exports.getApp = app;
