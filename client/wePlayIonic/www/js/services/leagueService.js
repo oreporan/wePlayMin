@@ -55,8 +55,9 @@ angular.module('app.services')
         })
       },
 
-      addUserToLeague: function(leagueId, callback) {
+      addUserToLeague: function(leagueId, userId, callback) {
         wpRequest.sendPut(paths.BASE_LEAGUES + paths.PATH_LEAGUES_ADDUSERTOLEAGUE + "/", leagueId, {
+          clientId: userId,
           isInvite: false
         }, function(response, error) {
           if (error) {

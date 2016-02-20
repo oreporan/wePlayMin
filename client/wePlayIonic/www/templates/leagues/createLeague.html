@@ -16,5 +16,13 @@
         Create !
       </button>
     </div>
+    <div class="card error-box" ng-show="errorBox">
+      <div class="item item-divider">
+        Couldn't Create League
+      </div>
+      <div class="item item-text-wrap">
+        {{errorBox}}
+      </div>
+    </div>
   </ion-content>
 </ion-view>

@@ -9,7 +9,8 @@
       </button>
     </div>
     <div class="list">
-      <a ng-repeat="league in user.leagues" ng-click="selectThisLeague()" ui-sref="tabsController.singleLeague" class="item item-thumbnail-left">
+      <a ng-repeat="league in leagues" ng-click="selectThisLeague(this.league) && goToSingleLeague()"
+         class="item item-thumbnail-left">
         <img src="img/Liverpool_FC.jpg">
         <div class="info-area">
           <h2>{{league.name}}</h2>

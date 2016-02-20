@@ -3,7 +3,7 @@ angular.module('app.constants')
 .constant('paths', {
 
   // Server root url
-  SERVER_URL: "http://10.0.0.3:3000",
+  SERVER_URL: "http://10.0.0.8:3000",
 
   // Application Root - all requests are prefixed with this path
   ROOT: '/wePlay/v1',
@@ -100,7 +100,7 @@ angular.module('app.constants')
    */
   PATH_USERS_GETUSERSLIST_BY_ID: '/getUsersListById',
 
-  PATH_USERS_GETUSER_BY_KEYWORD: '/getUsersListSearchQuery',
+  PATH_USERS_GETUSER_BY_KEYWORD: '/getUsersByKeyword',
   /*
    * info: looks for user by keyword
    * method: GET

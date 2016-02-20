@@ -4,71 +4,63 @@ angular.module('app.controllers')
       var wpLogger = logger.logger("leagueCtrl");
       $scope.clientId = localStorageService.getByKey(constants.STORAGE_CLIENTID);
 
-      $scope.user = {
-        me: null,
-        leagues: [],
-        games: []
-      }
-      $scope.selected = {
-        league: null,
-        game: null,
-        leagueToViewAsGuest: null
-      }
+      $scope.user = null;
+
       $scope.input = {
         leagueToFind: '',
         userToFind: ''
-      }
+      };
       $scope.params = {};
       $scope.noResultsFound = false;
+      $scope.errorBox = null;
       $scope.imAMemberOfThisLeague = null;
+
+      $scope.getLeaguesDetails = function(leagues) {
+        leagueService.getLeaguesListById(leagues, function(response, error){
+          if(error){
+
+          } else {
+            $scope.leagues = response;
+          }
+        });
+      };
 
       $scope.getUser = function() {
         userService.getUserById($scope.clientId, function(response, error){
           if (error) {
 
           } else {
-            $scope.user.me = response;
-            $scope.getLeaguesDetails();
+            $scope.user = response;
+            $scope.getLeaguesDetails(response.leagues);
           }
-        })
+        });
+      };
+
+      //Init
+      if (!$scope.user) {
+        $scope.getUser();
       }
+      $scope.league = leagueService.getSelectedLeague();
+
 
       $scope.updateUser = function() {
         userService.updateAppUser($scope.clientId, function(response) {
-          $scope.user.me = response;
+          $scope.user = response;
           $scope.getLeaguesDetails();
         }, function(error) {
           alert(error);
         });
-      }
-
-      $scope.getLeaguesDetails = function() {
-        if ($scope.user.me) {
-          $scope.user.me.leagues.forEach(function(elem, index, array) {
-            leagueService.getLeagueById(array[index], function(response, error) {
-              if (error) {
-                logger
-              } else {
-                $scope.user.leagues.push(response);
-              }
-            });
-          })
-        }
-      }
+      };
 
       $scope.getLeagueDetailedUser = function(league){
-        var detailedUsers = [];
-        league.users.forEach(function(elem, index, array){
-          userService.getUserById(array[index]._id, function(response, error){
-            if (error) {
-              logger
-            } else {
-              detailedUsers.push(response);
-            }
-          })
-        })
-        return detailedUsers;
-      }
+        userService.getUsersListById(league.users, function(response, error){
+          if(error){
+
+          } else {
+            $scope.league.users = response;
+          }
+        });
+      };
 
       $scope.checkIfImAMemberOfThisLeague  = function(league, me){
         var res = null;
@@ -81,32 +73,19 @@ angular.module('app.controllers')
         return false;
       }
 
-      if (!$scope.user.me) {
-        $scope.getUser();
-      }
-      if($state.current.name === 'tabsController.singleLeague' && !$scope.selected.league){
-        $scope.selected.league = leagueService.getSelectedLeague();
-        $scope.imAMemberOfThisLeague = $scope.checkIfImAMemberOfThisLeague($scope.selected.league, $scope.user.me);
-        /*$scope.selected.leagues.detailedUsers = $scope.getLeagueDetailedUser($scope.selected.leagues);*/
-      }
-
       $scope.createLeague = function() {
         $scope.params.frequency = 1;
         leagueService.addLeague
-        ($scope.params.name, $scope.params.admin, $scope.params.frequency, $scope.params.numOfPlayersPerTeam, $scope.params.makeTeamsAtNum,
+        ($scope.params.name, $scope.params.admin, $scope.params.frequency,
+          $scope.params.numOfPlayersPerTeam, $scope.params.makeTeamsAtNum,
           function(response, error) {
           if (error) {
-            wpLogger.audit('createLeague', error);
-          } else {
-            wpLogger.audit('createLeague', 'League added successfully');
-            $state.go('tabsController.addUsersToLeague');
-          }
-        })
-      }
 
-      $scope.selectThisLeague = function() {
-        leagueService.setSelectedLeague(this.league);
-        wpLogger.audit('selectThisLeague', 'selected League :' + $scope.selected.league);
+          } else {
+              leagueService.setSelectedLeague(response);
+              $state.go('tabsController.addUsersToLeague');
+            }
+        });
       }
 
       $scope.findLeague = function(){
@@ -121,19 +100,37 @@ angular.module('app.controllers')
               $scope.noResultsFound = true;
             }
           }
-        })
-      }
+        });
+      };
+
+      $scope.checkMinChars = function(input){
+        if(input.length > 2)
+          return true;
+        return false;
+      };
+
       $scope.findUser = function(){
-        $scope.usersFound = null;
-        $scope.noResultsFound = false;
         userService.findUserByKeyword($scope.input.userToFind, function(response, err) {
           if(err) {
             logger;
           } else {
-            $scope.users = response;
+            if(response.users.length){
+              userService.getUsersListById(response.users, function(response, err){
+                if(err){
+                  logger;
+                } else {
+                  $scope.usersFound = response;
+                  $scope.noResultsFound = false;
+                }
+              })
+            }
+            else{
+              $scope.noResultsFound = true;
+            }
           }
-        })
-      }
+        });
+      };
+
       $scope.joinLeague = function(league){
         leagueService.addUserToLeague(league._id, function(response, error){
           if(error){
@@ -142,8 +139,41 @@ angular.module('app.controllers')
             alert("You have successfully joined " + response.name );
             $scope.updateUser();
             $state.go('tabsController.leagues');
-            window.location.reload();
+            location.reload();
           }
         } );
+      };
+
+      $scope.addPlayerToLeague = function(user){
+        var league = leagueService.getSelectedLeague();
+        leagueService.addUserToLeague(league._id, user._id, function(response, error){
+          if(error){
+            logger;
+          } else {
+            $scope.usersFound = null;
+            $scope.input.userToFind = null;
+            alert("You have successfully added " + user.name);
+          }
+        })
+      };
+
+      //Sets
+      $scope.selectThisLeague = function(league) {
+        leagueService.setSelectedLeague(league);
+        return true;
+      };
+
+      //views Routing
+
+      $scope.goToLeaguesMain = function() {
+        $state.go('tabsController.leagues');
+        location.reload();
+      };
+
+      $scope.goToSingleLeague = function() {
+        $scope.league = leagueService.getSelectedLeague();
+        $scope.imAMemberOfThisLeague = $scope.checkIfImAMemberOfThisLeague($scope.league, $scope.user);
+        $scope.getLeaguesDetails($scope.selected.league);
+        $state.go('tabsController.singleLeague');
       }
     });
