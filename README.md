@@ -2,6 +2,8 @@
 
 # WePlay API
 ### root path :  `/wePlay/v1`
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/oreporan/wePlayMin.svg)](https://greenkeeper.io/)
 * * *
 # --Authenticate endpoint--
 Authenticates users, signup, signin
